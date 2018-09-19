@@ -1,0 +1,332 @@
+<html>
+  <div id="head">
+    <head style="text-align: center;">
+      <h1> Judge Login </h1>
+    </head>
+  </div>
+
+  <div id="body">
+    <body style="text-align: center;">
+      <script src="jquery/dist/jquery.js"></script>
+      <button onclick="handleSignInClick()"> Press to sign in to verify access to Google Spreadsheets. </button>
+      <br>
+      <br>
+      <div id='login'>
+        <text> What is your judge position? </text>
+        <br>
+        <br>
+        <select id="judge-selection">
+        <option value="head">Head</option>
+        <option value="clicker">Clicker</option>
+        <option value="eval">Eval</option>
+        </select>
+        <br>
+        <br>
+        <text> What is your name? </text>
+        <br>
+        <br>
+        <input id="judge-name"> </input>
+        <br>
+        <br>
+        <button onclick="retreivePlayers()"> Submit </button>
+      </div>
+      <div id='contest-info'>
+        <text> Input Contest Name </text>
+        <br>
+        <input id="contest-name"> </input>
+        <br>
+        <br>
+        <text> Input Division Name </text>
+        <br>
+        <input id="div-name"> </input>
+        <br>
+        <br>
+        <text> Input Round </text>
+        <br>
+        <input id="round"> </input>
+        <br>
+        <br>
+        <text> Input Clicker Judges </text>
+        <br>
+        <textarea id="clicker-judges"> </textarea>
+        <br>
+        <br>
+        <text> Input Eval Judges </text>
+        <br>
+        <textarea id="eval-judges"> </textarea>
+        <br>
+        <br>
+        <button onclick="enterInfo()"> Submit </button>
+        <br>
+        <br>
+      </div>
+      <div id='player-info'>
+        <text> Input Player List </text>
+        <br>
+        <textarea id="player-list"> </textarea>
+        <br>
+        <br>
+        <button onclick="enterPlayer()"> Submit </button>
+      </div>
+      <div id='click-input'>
+        <text id="click-player-name">  </text>
+        <br>
+        <br>
+        <text> Input Clicker Score </text>
+        <br>
+        <br>
+        <text> Positive </text>
+        <br>
+        <input id="positive"> </input>
+        <br>
+        <br>
+        <text> Negative </text>
+        <br>
+        <input id="negative"> </input>
+        <br>
+        <br>
+        <button onclick="storeClick()"> Submit </button>
+      </div>
+      <div id='eval-input'>
+        <text id="eval-player-name">  </text>
+        <br>
+        <br>
+        <text> Input Eval Score </text>
+        <br>
+        <br>
+        <text> Control </text>
+        <br>
+        <input id="control"> </input>
+        <br>
+        <br>
+        <text> Execution </text>
+        <br>
+        <input id="execution"> </input>
+        <br>
+        <br>
+        <text> Variation </text>
+        <br>
+        <input id="variation"> </input>
+        <br>
+        <br>
+        <text> Choreography </text>
+        <br>
+        <input id="choreography"> </input>
+        <br>
+        <br>
+        <text> Construction </text>
+        <br>
+        <input id="construction"> </input>
+        <br>
+        <br>
+        <text> Space Use </text>
+        <br>
+        <input id="space-use"> </input>
+        <br>
+        <br>
+        <text> Body Control </text>
+        <br>
+        <input id="body-control"> </input>
+        <br>
+        <br>
+        <text> Showmanship </text>
+        <br>
+        <input id="showmanship"> </input>
+        <br>
+        <br>
+        <button onclick="storeEval()"> Submit </button>
+      </div>
+      <script src="headJudge.js"> </script>
+      <script src="clickerJudge.js"> </script>
+      <script src="evalJudge.js"> </script>
+    </body>
+  </div>
+
+  <script type="text/javascript">
+  $(function() {
+    $("#login").hide();
+    $("#contest-info").hide();
+    $("#player-info").hide();
+    $("#click-input").hide();
+    $("#eval-input").hide();
+  });
+  </script>
+
+<script type="text/javascript">
+  var contest_name;
+  var div_name;
+  var round;
+  var clicker_judges = [];
+  var eval_judges = [];
+  var players;
+  var index = 0;
+  var positives = [];
+  var negatives = [];
+  var controlList = [];
+  var executionList = [];
+  var variationList = [];
+  var spaceUseList = [];
+  var bodyControlList = [];
+  var choreographyList = [];
+  var constructionList = [];
+  var showmanshipList = [];
+  var playerList = [];
+  var p1;
+  var judgename;
+  var clickjudgerange;
+  var evaljudgerange;
+  var clicks;
+  var evals;
+
+  function initClient() {
+    var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";  // TODO: Update placeholder with desired API key.
+    var CLIENT_ID = "174011806378-ruu4bj26124mrbejev4btf1v4v8kslrb.apps.googleusercontent.com";  // TODO: Update placeholder with desired client ID.
+    var SCOPE = "https://www.googleapis.com/auth/spreadsheets";
+
+    gapi.client.init({
+      "apiKey": API_KEY,
+      "clientId": CLIENT_ID,
+      "scope": SCOPE,
+      "discoveryDocs": ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+    }).then(function() {
+      gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
+      updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+    });
+
+  }
+
+  function handleClientLoad() {
+  gapi.load("client:auth2", initClient);
+  }
+
+  function updateSignInStatus(isSignedIn) {
+    if (isSignedIn) {
+      $("#login").show();
+    }
+  }
+
+  function handleSignInClick(event) {
+    gapi.auth2.getAuthInstance().signIn();
+  }
+
+  function handleSignOutClick(event) {
+    gapi.auth2.getAuthInstance().signOut();
+  }
+
+  function retreivePlayers() {
+    gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+    range: "PLAYER!B4:B103"
+    }).then((response) => {
+    var result = response.result;
+    players = result.values;
+    for (x in players)
+    {
+      playerList.push(players[x][0]);
+    }
+    $('#click-player-name').text(playerList[0]);
+    $('#eval-player-name').text(playerList[0]);
+    $('#positive').val('0');
+    $('#negative').val('0');
+    }, function(reason) {
+    console.error("error: " + reason.result.error.message);
+    alert("Error.");
+    });
+    processType();
+  }
+
+  function processType() {
+    gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+    range: "SET-UP!F3:F8"
+    }).then((response) => {
+    var clickjudgeresult = response.result;
+    clicks = clickjudgeresult.values;
+    for (var i=0;i<clicks.length;i++)
+    {
+      clicker_judges.push(clicks[i][0]);
+    }
+    }, function(reason) {
+    console.error("error: " + reason.result.error.message);
+    alert("Error.");
+    });
+    gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+    range: "SET-UP!F16:F21"
+    }).then((response) => {
+    var evaljudgeresult = response.result;
+    evals = evaljudgeresult.values;
+    for (var i=0;i<evals.length;i++)
+    {
+      eval_judges.push(evals[i][0]);
+    }
+    }, function(reason) {
+    console.error("error: " + reason.result.error.message);
+    alert("Error.");
+    });
+    var optionchoice = document.getElementById("judge-selection");
+    var judgetype = optionchoice.options[optionchoice.selectedIndex].value;
+    judgename = $('#judge-name').val();
+    console.log(clicker_judges.length);
+    if (judgetype == "head")
+    {
+      $("#login").hide();
+      $('#contest-info').show();
+      $('#contest-info').show();
+    }
+    else if (judgetype == "clicker")
+    {
+      for (var i=0; i<clicker_judges.length; i++)
+      {
+        console.log("ok");
+        if (clicker_judges[i] == judgename)
+        {
+          var judgenum = i;
+          if (judgenum == 0)
+          {
+            clickjudgerange = "RAW-TEx!F4:G103";
+          }
+          else if (judgenum == 1)
+          {
+            clickjudgerange = "RAW-TEx!H4:I103";
+          }
+          else if (judgenum == 2)
+          {
+            clickjudgerange = "RAW-TEx!J4:K103";
+          }
+          else
+          {
+            continue;
+          }
+        }
+        else
+        {
+          continue;
+        }
+      }
+      $("#login").hide();
+      $('#click-input').show();
+      console.log(clicker_judges);
+      console.log(clickjudgerange);
+    }
+    else if (judgetype == "eval")
+    {
+      $("#login").hide();
+      $('#eval-input').show();
+    }
+    else
+    {
+      alert("Error.");
+    }
+
+  }
+</script>
+
+<script async defer src="https://apis.google.com/js/api.js"
+onload="this.onload=function(){};handleClientLoad()"
+onreadystatechange="if (this.readyState === "complete") this.onload()">
+</script>
+
+
+
+</html>
