@@ -9,7 +9,7 @@ function storeEval() {
   choreographyList.push(parseInt($('#choreography').val()));
   constructionList.push(parseInt($('#construction').val()));
   index += 1;
-  if (index <= (players.length))
+  if (index < (players.length))
   {
     $('#eval-player-name').text(players[index]);
     $('#control').val("");

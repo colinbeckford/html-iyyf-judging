@@ -192,6 +192,8 @@
   var perfevalScores = [];
   var techeval = 0;
   var perfeval = 0;
+  var major = 0;
+  var majorScores = [];
 
 
   function initClient() {
@@ -242,8 +244,8 @@
     }
     $('#click-player-name').text(playerList[0]);
     $('#eval-player-name').text(playerList[0]);
-    $('#positive').val('0');
-    $('#negative').val('0');
+    $('#positive').val('');
+    $('#negative').val('');
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
@@ -283,8 +285,8 @@
 
   }
 
-
   function processType(list, type) {
+    var judgeverified = false;
     if (type == "head")
     {
       $("#login").hide();
@@ -322,14 +324,24 @@
             range = "RAW-TEx!P4:Q104";
           }
         }
-        else
+      }
+      for (var i=0; i<list.length; i++)
+      {
+        if (list[i][0] == judgename)
         {
-          alert("Name entered is not registered to judge this event.");
-          window.location.reload()
+          judgeverified = true;
         }
       }
-      $("#login").hide();
-      $('#click-input').show();
+      if (judgeverified == false)
+      {
+        alert("Name entered is not registered to judge this event.");
+        window.location.reload();
+      }
+      else
+      {
+        $("#login").hide();
+        $('#click-input').show();
+      }
     }
     else if (type == "eval")
     {
@@ -362,19 +374,26 @@
             range = "RAW-TEvPEv!AQ4:AX104";
           }
         }
-        else
+      }
+      for (var i=0; i<list.length; i++)
+      {
+        if (list[i][0] == judgename)
         {
-          alert("Name entered is not registered to judge this event.");
-          window.location.reload();
+          judgeverified = true;
         }
       }
-      $("#login").hide();
-      $('#eval-input').show();
+      if (judgeverified == false)
+      {
+        alert("Name entered is not registered to judge this event.");
+        window.location.reload();
+      }
+      else
+      {
+        $("#login").hide();
+        $('#eval-input').show();
+      }
     }
-    else
-    {
-      alert("Error.");
-    }
+    console.log(playerList);
   }
 
 

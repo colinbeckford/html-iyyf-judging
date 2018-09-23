@@ -1,14 +1,13 @@
 
 function storeClick() {
-  var index = 0;
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
   index += 1;
   if (index < (players.length))
   {
     $('#click-player-name').text(players[index]);
-    $('#positive').val('0');
-    $('#negative').val('0');
+    $('#positive').val('');
+    $('#negative').val('');
   }
   else
   {

@@ -14,7 +14,7 @@ function loadEval(input) {
     {
       if (j < 3)
       {
-      techeval += parseFloat(input[i][j]);
+        techeval += parseFloat(input[i][j]);
       }
       else
       {
@@ -25,6 +25,19 @@ function loadEval(input) {
     perfevalScores.push(perfeval);
     techeval = 0;
     perfeval = 0;
+  }
+}
+
+function loadMD(input) {
+  for (var i=0; i<input.length; i++)
+  {
+    for (var j=0; j<3; j++)
+    {
+      major += Math.abs(parseInt(input[i][j]));
+    }
+
+    majorScores.push(-Math.abs(major));
+    major = 0;
   }
 }
 
@@ -39,8 +52,12 @@ function getResults() {
   range: "RESULT!I3:P50"
   }).then((response) => {
   loadEval(response.result.values);
-  console.log(techevalScores);
-  console.log(perfevalScores);
+  gapi.client.sheets.spreadsheets.values.get({
+  spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+  range: "RESULT!S3:U50"
+  }).then((response) => {
+  loadMD(response.result.values);
+  //majors have not been addressed
   setupChart(techScores, techevalScores, perfevalScores);
   }, function(reason) {
   console.error("error: " + reason.result.error.message);
@@ -50,7 +67,9 @@ function getResults() {
   console.error("error: " + reason.result.error.message);
   alert("Error.");
   });
-
+  });
+  console.log(techScores);
+  console.log(majorScores);
 }
 
   function setupChart(tech, te, pe) {
@@ -102,7 +121,7 @@ function getResults() {
             }
         },
         series: [{
-            name: 'Tech',
+            name: 'Tech Execution',
             data: tech
         }, {
             name: 'Tech Eval',
@@ -110,8 +129,7 @@ function getResults() {
         }, {
             name: 'Perf Eval',
             data: pe
-        },
-        ]
+        }]
     });
     $('#finish').hide();
     $('#final-chart').show();
