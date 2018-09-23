@@ -136,9 +136,20 @@
         <br>
         <button onclick="storeEval()"> Submit </button>
       </div>
+      <div id="final-chart">
+      </div>
+      <div id="finish">
+        <button onclick="getResults()"> Show Graph </button>
+        <button onclick="window.location.reload()"> Go Home </button>
+      </div>
       <script src="headJudge.js"> </script>
       <script src="clickerJudge.js"> </script>
       <script src="evalJudge.js"> </script>
+      <script src="compile.js"> </script>
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/series-label.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
     </body>
   </div>
 
@@ -149,6 +160,8 @@
     $("#player-info").hide();
     $("#click-input").hide();
     $("#eval-input").hide();
+    $("#final-chart").hide();
+    $("#finish").hide();
   });
   </script>
 
@@ -174,6 +187,8 @@
   var p1;
   var judgename;
   var range;
+  var techScores = [];
+  var evalScores = [];
 
 
 
@@ -348,8 +363,13 @@
     {
       alert("Error.");
     }
-
   }
+
+
+
+
+
+
 </script>
 
 <script async defer src="https://apis.google.com/js/api.js"

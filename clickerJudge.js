@@ -39,4 +39,7 @@ function appendClick(range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
+  $('#finish').show();
+
+
 }
