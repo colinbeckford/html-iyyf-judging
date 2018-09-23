@@ -40,6 +40,7 @@ function appendClick(range) {
     alert("Error.");
   });
   $('#finish').show();
+  $("#click-input").hide();
 
 
 }
