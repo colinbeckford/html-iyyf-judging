@@ -24,7 +24,7 @@ function storeEval() {
   else
   {
     alert("All player eval scores have been recorded.");
-    appendEval();
+    appendEval(range);
   }
 
 }
@@ -32,12 +32,12 @@ function storeEval() {
 function appendEval(range) {
   var evalinputParams = {
     spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",  // TODO: Update placeholder value.
-    range: "RAW-TEvPEv!C4:J103",
+    range: range,
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
   var evalinputRangeBody = {
-    "range": "RAW-TEvPEv!C4:J103",  //Set this to cell want to add content to
+    "range": range,  //Set this to cell want to add content to
     "majorDimension": "COLUMNS", //Rows or columns
     "values": [executionList, controlList, variationList, spaceUseList, choreographyList, constructionList, bodyControlList, showmanshipList],
   };
