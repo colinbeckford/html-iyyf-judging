@@ -1,7 +1,6 @@
-var index = 0;
-var players;
 
 function storeClick() {
+  var index = 0;
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
   index += 1;

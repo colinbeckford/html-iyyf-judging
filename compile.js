@@ -1,33 +1,47 @@
 
 
-function loadArray(input, name) {
+function loadTech(input) {
   for (var i=0; i<input.length; i++)
   {
-    if (name == "tech")
-    {
     techScores.push(parseFloat(input[i]));
-    }
-    else if (name == "eval")
-    {
-    evalScores.push(parseFloat(input[i]));
-    }
   }
+}
 
+function loadEval(input) {
+  for (var i=0; i<input.length; i++)
+  {
+    for (var j=0; j<8; j++)
+    {
+      if (j < 3)
+      {
+      techeval += parseFloat(input[i][j]);
+      }
+      else
+      {
+        perfeval += parseFloat(input[i][j]);
+      }
+    }
+    techevalScores.push(techeval);
+    perfevalScores.push(perfeval);
+    techeval = 0;
+    perfeval = 0;
+  }
 }
 
 function getResults() {
   gapi.client.sheets.spreadsheets.values.get({
   spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
-  range: "RESULT!H3:H15"
+  range: "RESULT!H3:H50"
   }).then((response) => {
-  loadArray(response.result.values, "tech");
+  loadTech(response.result.values, "tech");
   gapi.client.sheets.spreadsheets.values.get({
   spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
-  range: "RESULT!Q3:Q15"
+  range: "RESULT!I3:P50"
   }).then((response) => {
-  loadArray(response.result.values, "eval");
-  setupChart(techScores, evalScores);
-  console.log(techScores, evalScores);
+  loadEval(response.result.values);
+  console.log(techevalScores);
+  console.log(perfevalScores);
+  setupChart(techScores, techevalScores, perfevalScores);
   }, function(reason) {
   console.error("error: " + reason.result.error.message);
   alert("Error.");
@@ -39,7 +53,7 @@ function getResults() {
 
 }
 
-  function setupChart(tech, eval) {
+  function setupChart(tech, te, pe) {
     Highcharts.chart('final-chart', {
         chart: {
             type: 'column'
@@ -91,8 +105,11 @@ function getResults() {
             name: 'Tech',
             data: tech
         }, {
-            name: 'Eval',
-            data: eval
+            name: 'Tech Eval',
+            data: te
+        }, {
+            name: 'Perf Eval',
+            data: pe
         },
         ]
     });

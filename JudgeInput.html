@@ -188,8 +188,10 @@
   var judgename;
   var range;
   var techScores = [];
-  var evalScores = [];
-
+  var techevalScores = [];
+  var perfevalScores = [];
+  var techeval = 0;
+  var perfeval = 0;
 
 
   function initClient() {
@@ -320,6 +322,11 @@
             range = "RAW-TEx!P4:Q104";
           }
         }
+        else
+        {
+          alert("Name entered is not registered to judge this event.");
+          window.location.reload()
+        }
       }
       $("#login").hide();
       $('#click-input').show();
@@ -354,6 +361,11 @@
           {
             range = "RAW-TEvPEv!AQ4:AX104";
           }
+        }
+        else
+        {
+          alert("Name entered is not registered to judge this event.");
+          window.location.reload();
         }
       }
       $("#login").hide();

@@ -9,17 +9,17 @@ function storeEval() {
   choreographyList.push(parseInt($('#choreography').val()));
   constructionList.push(parseInt($('#construction').val()));
   index += 1;
-  if (index < (players.length))
+  if (index <= (players.length))
   {
     $('#eval-player-name').text(players[index]);
-    $('#control').val(0);
-    $('#execution').val(0);
-    $('#variation').val(0);
-    $('#spaceUse').val(0);
-    $('#choreography').val(0);
-    $('#construction').val(0);
-    $('#bodyControl').val(0);
-    $('#showmanship').val(0);
+    $('#control').val("");
+    $('#execution').val("");
+    $('#variation').val("");
+    $('#space-use').val("");
+    $('#choreography').val("");
+    $('#construction').val("");
+    $('#body-control').val("");
+    $('#showmanship').val("");
   }
   else
   {
@@ -49,4 +49,6 @@ function appendEval(range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
+  $('#finish').show();
+  $("#click-input").hide();
 }
