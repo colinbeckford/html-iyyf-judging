@@ -70,7 +70,7 @@ function getResults() {
   });
   gapi.client.sheets.spreadsheets.values.get({
   spreadsheetId: spreadsheet,
-  range: "RESULT!H3:H50"
+  range: "RESULT!B3:B50"
   }).then((response) => {
   order = response.result.values;
   }, function(reason) {
