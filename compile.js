@@ -28,18 +28,18 @@ function loadEval(input) {
   }
 }
 
-function loadMD(input) {
-  for (var i=0; i<input.length; i++)
-  {
-    for (var j=0; j<3; j++)
-    {
-      major += Math.abs(parseInt(input[i][j]));
-    }
-
-    majorScores.push(-Math.abs(major));
-    major = 0;
-  }
-}
+// function loadMD(input) {
+//   for (var i=0; i<input.length; i++)
+//   {
+//     for (var j=0; j<3; j++)
+//     {
+//       major += Math.abs(parseInt(input[i][j]));
+//     }
+//
+//     majorScores.push(-Math.abs(major));
+//     major = 0;
+//   }
+// }
 
 function getResults() {
   gapi.client.sheets.spreadsheets.values.get({
