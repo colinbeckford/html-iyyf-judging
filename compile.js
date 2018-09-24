@@ -43,17 +43,17 @@ function loadMD(input) {
 
 function getResults() {
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+  spreadsheetId: spreadsheet,
   range: "RESULT!H3:H50"
   }).then((response) => {
   loadTech(response.result.values, "tech");
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+  spreadsheetId: spreadsheet,
   range: "RESULT!I3:P50"
   }).then((response) => {
   loadEval(response.result.values);
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+  spreadsheetId: spreadsheet,
   range: "RESULT!S3:U50"
   }).then((response) => {
   loadMD(response.result.values);
