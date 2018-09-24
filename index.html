@@ -291,19 +291,18 @@
     console.error("error: " + reason.result.error.message);
     alert("Error.");
     });
+    else if (judgetype = "head")
+    {
+    $("#login").hide();
+    $('#contest-info').show();
+    });
+
     }
 
   }
 
   function processType(list, type) {
     var judgeverified = false;
-    if (type == "head")
-    {
-      console.log(type);
-      judgeverified = true;
-      $("#login").hide();
-      $('#contest-info').show();
-    }
     else if (type == "clicker")
     {
       for (var i=0; i<list.length; i++)
