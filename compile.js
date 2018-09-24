@@ -46,7 +46,7 @@ function getResults() {
   spreadsheetId: spreadsheet,
   range: "RESULT!H3:H50"
   }).then((response) => {
-  loadTech(response.result.values, "tech");
+  loadTech(response.result.values);
   gapi.client.sheets.spreadsheets.values.get({
   spreadsheetId: spreadsheet,
   range: "RESULT!I3:P50"
