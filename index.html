@@ -302,7 +302,6 @@
       judgeverified = true;
       $("#login").hide();
       $('#contest-info').show();
-      $('#contest-info').show();
     }
     else if (type == "clicker")
     {
@@ -339,6 +338,10 @@
       for (var i=0; i<list.length; i++)
       {
         if (list[i][0] == judgename)
+        {
+          judgeverified = true;
+        }
+        else if (type == "head")
         {
           judgeverified = true;
         }
@@ -392,6 +395,10 @@
         {
           judgeverified = true;
         }
+        else if (type == head)
+        {
+          judgeverified = true;
+        }
       }
       if (judgeverified == false)
       {
@@ -404,7 +411,6 @@
         $('#eval-input').show();
       }
     }
-    console.log(playerList);
   }
 </script>
 
