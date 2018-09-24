@@ -56,7 +56,7 @@ function getResults() {
   spreadsheetId: spreadsheet,
   range: "RESULT!S3:U50"
   }).then((response) => {
-  loadMD(response.result.values);
+  //loadMD(response.result.values);
   //majors have not been addressed
   setupChart(techScores, techevalScores, perfevalScores);
   }, function(reason) {
@@ -72,7 +72,7 @@ function getResults() {
   spreadsheetId: spreadsheet,
   range: "RESULT!H3:H50"
   }).then((response) => {
-  order = esponse.result.values;
+  order = response.result.values;
   }, function(reason) {
   console.error("error: " + reason.result.error.message);
   alert("Error.");
