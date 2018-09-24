@@ -18,7 +18,7 @@ function storeClick() {
 
 function appendClick(range) {
   var clickinputParams = {
-    spreadsheetId: spreadsheet  // TODO: Update placeholder value.
+    spreadsheetId: spreadsheet, // TODO: Update placeholder value.
     range: range,
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
