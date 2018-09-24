@@ -28,6 +28,12 @@
         <input id="judge-name"> </input>
         <br>
         <br>
+        <text> Input Spreadsheet ID Here </text>
+        <br>
+        <br>
+        <input id="spreadsheet-id"> </input>
+        <br>
+        <br>
         <button onclick="retreivePlayers()"> Submit </button>
       </div>
       <div id='contest-info'>
@@ -166,6 +172,7 @@
   </script>
 
 <script type="text/javascript">
+  var spreadsheet;
   var contest_name;
   var div_name;
   var round;
@@ -232,8 +239,9 @@
   }
 
   function retreivePlayers() {
+    spreadsheet = $('#spreadsheet-id').val();
     gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+    spreadsheetId: spreadsheet,
     range: "PLAYER!B4:B103"
     }).then((response) => {
     var result = response.result;
@@ -259,7 +267,7 @@
     if (judgetype == "clicker")
     {
     gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+    spreadsheetId: spreadsheet,
     range: "SET-UP!F3:F8"
     }).then((response) => {
     clicker_judges = response.result.values;
@@ -272,7 +280,7 @@
     else if (judgetype = "eval")
     {
     gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",
+    spreadsheetId: spreadsheet,
     range: "SET-UP!F16:F21"
     }).then((response) => {
     eval_judges = response.result.values;
@@ -395,12 +403,6 @@
     }
     console.log(playerList);
   }
-
-
-
-
-
-
 </script>
 
 <script async defer src="https://apis.google.com/js/api.js"
