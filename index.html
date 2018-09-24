@@ -1,4 +1,5 @@
 <html>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
   <div id="head">
     <head style="text-align: center;">
       <h1> Contest Judging Entry </h1>
@@ -7,7 +8,8 @@
 
   <div id="body">
     <body style="text-align: center;">
-      <script src="jquery/dist/jquery.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <button onclick="handleSignInClick()"> Press to sign in to verify access to Google Spreadsheets. </button>
       <br>
       <br>
@@ -172,6 +174,7 @@
   </script>
 
 <script type="text/javascript">
+  var $ = jQuery;
   var spreadsheet;
   var contest_name;
   var div_name;
