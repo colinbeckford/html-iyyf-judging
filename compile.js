@@ -68,8 +68,15 @@ function getResults() {
   alert("Error.");
   });
   });
-  console.log(techScores);
-  console.log(majorScores);
+  gapi.client.sheets.spreadsheets.values.get({
+  spreadsheetId: spreadsheet,
+  range: "RESULT!H3:H50"
+  }).then((response) => {
+  order = esponse.result.values;
+  }, function(reason) {
+  console.error("error: " + reason.result.error.message);
+  alert("Error.");
+  });
 }
 
   function setupChart(tech, te, pe) {
@@ -81,7 +88,7 @@ function getResults() {
             text: 'Final Results'
         },
         xAxis: {
-            categories: playerList
+            categories: order
         },
         yAxis: {
             min: 0,
