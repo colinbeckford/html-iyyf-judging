@@ -84,8 +84,8 @@ function texComp() {
   spreadsheetId: spreadsheet,
   range: "TEx-COMP!C3:H50"
   }).then((response) => {
-  comp = response.result.values;
-  console.log(comp);
+  compList = response.result.values;
+  console.log(compList);
   }, function(reason) {
   console.error("error: " + reason.result.error.message);
   alert("Error.");
