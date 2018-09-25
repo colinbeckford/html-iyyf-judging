@@ -101,6 +101,7 @@ function texComp() {
 // }
 
   function setupChart(tech, te, pe) {
+    texComp();
     Highcharts.chart('final-chart', {
         chart: {
             type: 'column'
