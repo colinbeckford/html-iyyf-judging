@@ -102,6 +102,12 @@ function texComp() {
 }
 
 function loadComp(input) {
+  var spaceOne = 0;
+  var spaceTwo = 1;
+  var spaceThree = 2;
+  var spaceFour = 3;
+  var spaceFive = 4;
+  var spaceSix = 5;
   for (var i=0;i<input.length;i++)
   {
     for (var j=0;j<input[i].length;j++)
@@ -113,57 +119,58 @@ function loadComp(input) {
   {
     for (var a=0;a<input.length;a++)
     {
-        oneJ.push(input[i][0]);
+
+        oneJ.push(input[i][spaceOne]);
     }
   }
   else if (clicker_judges.length == 2)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[i][0]);
-      twoJ.push(input[i][1]);
+      oneJ.push(input[i][spaceOne]);
+      twoJ.push(input[i][spaceTwo]);
     }
   }
   else if (clicker_judges.length == 3)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[i][0]);
-      twoJ.push(input[i][1]);
-      threeJ.push(input[i][2]);
+      oneJ.push(input[i][spaceOne]);
+      twoJ.push(input[i][spaceTwo]);
+      threeJ.push(input[i][spaceThree]);
     }
   }
   else if (clicker_judges.length == 4)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[i][0]);
-      twoJ.push(input[i][1]);
-      threeJ.push(input[i][2]);
-      fourJ.push(input[i][3]);
+      oneJ.push(input[i][spaceOne]);
+      twoJ.push(input[i][spaceTwo]);
+      threeJ.push(input[i][spaceThree]);
+      fourJ.push(input[i][spaceFour]);
     }
   }
   else if (clicker_judges.length == 5)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[i][0]);
-      twoJ.push(input[i][1]);
-      threeJ.push(input[i][2]);
-      fourJ.push(input[i][3]);
-      fiveJ.push(input[i][4]);
+      oneJ.push(input[i][spaceOne]);
+      twoJ.push(input[i][spaceTwo]);
+      threeJ.push(input[i][spaceThree]);
+      fourJ.push(input[i][spaceFour]);
+      fiveJ.push(input[i][spaceFive]);
     }
   }
   else if (clicker_judges.length == 6)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[i][0]);
-      twoJ.push(input[i][1]);
-      threeJ.push(input[i][2]);
-      fourJ.push(input[i][3]);
-      fiveJ.push(input[i][4]);
-      sixJ.push(input[i][5]);
+      oneJ.push(input[i][spaceOne]);
+      twoJ.push(input[i][spaceTwo]);
+      threeJ.push(input[i][spaceThree]);
+      fourJ.push(input[i][spaceFour]);
+      fiveJ.push(input[i][spaceFive]);
+      sixJ.push(input[i][spaceSix]);
     }
   }
     setupTexCompChart(oneJ, twoJ, threeJ, fourJ, fiveJ, sixJ);
