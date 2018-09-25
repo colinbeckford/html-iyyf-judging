@@ -119,58 +119,57 @@ function loadComp(input) {
   {
     for (var a=0;a<input.length;a++)
     {
-
-        oneJ.push(input[a][spaceOne]);
+      oneJ.push(input[a][spaceOne]);
     }
   }
   else if (clicker_judges.length == 2)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[a][spaceOne]);
-      twoJ.push(input[a][spaceTwo]);
+      oneJ.push((input[a][spaceOne])/2);
+      twoJ.push((input[a][spaceTwo])/2);
     }
   }
   else if (clicker_judges.length == 3)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[a][spaceOne]);
-      twoJ.push(input[a][spaceTwo]);
-      threeJ.push(input[a][spaceThree]);
+      oneJ.push((input[a][spaceOne])/3);
+      twoJ.push((input[a][spaceTwo])/3);
+      threeJ.push((input[a][spaceThree])/3);
     }
   }
   else if (clicker_judges.length == 4)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[a][spaceOne]);
-      twoJ.push(input[a][spaceTwo]);
-      threeJ.push(input[a][spaceThree]);
-      fourJ.push(input[a][spaceFour]);
+      oneJ.push((input[a][spaceOne])/4);
+      twoJ.push((input[a][spaceTwo])/4);
+      threeJ.push((input[a][spaceThree])/4);
+      fourJ.push((input[a][spaceFour])/4);
     }
   }
   else if (clicker_judges.length == 5)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[a][spaceOne]);
-      twoJ.push(input[a][spaceTwo]);
-      threeJ.push(input[a][spaceThree]);
-      fourJ.push(input[a][spaceFour]);
-      fiveJ.push(input[a][spaceFive]);
+      oneJ.push((input[a][spaceOne])/5);
+      twoJ.push((input[a][spaceTwo])/5);
+      threeJ.push((input[a][spaceThree])/5);
+      fourJ.push((input[a][spaceFour])/5);
+      fiveJ.push((input[a][spaceFive])/5);
     }
   }
   else if (clicker_judges.length == 6)
   {
     for (var a=0;a<input.length;a++)
     {
-      oneJ.push(input[a][spaceOne]);
-      twoJ.push(input[a][spaceTwo]);
-      threeJ.push(input[a][spaceThree]);
-      fourJ.push(input[a][spaceFour]);
-      fiveJ.push(input[a][spaceFive]);
-      sixJ.push(input[a][spaceSix]);
+      oneJ.push((input[a][spaceOne])/6);
+      twoJ.push((input[a][spaceTwo])/6);
+      threeJ.push((input[a][spaceThree])/6);
+      fourJ.push((input[a][spaceFour])/6);
+      fiveJ.push((input[a][spaceFive])/6);
+      sixJ.push((input[a][spaceSix])/6);
     }
   }
     setupTexCompChart(oneJ, twoJ, threeJ, fourJ, fiveJ, sixJ);
