@@ -156,7 +156,6 @@ function setupTexCompChart(input, judges) {
           name: judges,
           data: input
       },
-      {
       ]
   });
   $('#finish').hide();
