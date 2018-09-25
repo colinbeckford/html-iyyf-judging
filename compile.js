@@ -114,7 +114,7 @@ function loadComp(input) {
   }
 
 function setupTexCompChart(input, judges) {
-
+  console.log(order);
   Highcharts.chart('texcomp-chart', {
       chart: {
           type: 'column'
@@ -163,10 +163,15 @@ function setupTexCompChart(input, judges) {
           }
       },
       series: [{
-          name: judges,
-          data: input
-      },
-      ]
+          name: 'Andre',
+          data: input[][0]
+      }, {
+          name: 'Colin',
+          data: input[][1]
+      }, {
+          name: 'Steve',
+          data: input[][2]
+      }]
   });
   $('#finish').hide();
   $('#texcomp-chart').show();
