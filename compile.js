@@ -77,9 +77,19 @@ function getResults() {
   console.error("error: " + reason.result.error.message);
   alert("Error.");
   });
+
 }
 
 function texComp() {
+  gapi.client.sheets.spreadsheets.values.get({
+  spreadsheetId: spreadsheet,
+  range: "RESULT!B3:B50"
+  }).then((response) => {
+  order = response.result.values;
+  }, function(reason) {
+  console.error("error: " + reason.result.error.message);
+  alert("Error.");
+  });
   gapi.client.sheets.spreadsheets.values.get({
   spreadsheetId: spreadsheet,
   range: "TEx-COMP!C3:H50"
