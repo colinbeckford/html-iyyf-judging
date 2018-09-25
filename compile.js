@@ -102,7 +102,6 @@ function texComp() {
 }
 
 function loadComp(input) {
-  var techSum = 0;
   for (var i=0;i<input.length;i++)
   {
     for (var j=0;j<input[i].length;j++)
@@ -110,69 +109,465 @@ function loadComp(input) {
       input[i][j] = parseInt(input[i][j]);
     }
   }
-  setupTexCompChart(input, clicker_judges);
+  if (clicker_judges.length == 1)
+  {
+    for (var a=0;a<input.length;a++)
+    {
+        oneJ.push(input[i][0]);
+    }
+  }
+  else if (clicker_judges.length == 2)
+  {
+    for (var a=0;a<input.length;a++)
+    {
+      oneJ.push(input[i][0]);
+      twoJ.push(input[i][1]);
+    }
+  }
+  else if (clicker_judges.length == 3)
+  {
+    for (var a=0;a<input.length;a++)
+    {
+      oneJ.push(input[i][0]);
+      twoJ.push(input[i][1]);
+      threeJ.push(input[i][2]);
+    }
+  }
+  else if (clicker_judges.length == 4)
+  {
+    for (var a=0;a<input.length;a++)
+    {
+      oneJ.push(input[i][0]);
+      twoJ.push(input[i][1]);
+      threeJ.push(input[i][2]);
+      fourJ.push(input[i][3]);
+    }
+  }
+  else if (clicker_judges.length == 5)
+  {
+    for (var a=0;a<input.length;a++)
+    {
+      oneJ.push(input[i][0]);
+      twoJ.push(input[i][1]);
+      threeJ.push(input[i][2]);
+      fourJ.push(input[i][3]);
+      fiveJ.push(input[i][4]);
+    }
+  }
+  else if (clicker_judges.length == 6)
+  {
+    for (var a=0;a<input.length;a++)
+    {
+      oneJ.push(input[i][0]);
+      twoJ.push(input[i][1]);
+      threeJ.push(input[i][2]);
+      fourJ.push(input[i][3]);
+      fiveJ.push(input[i][4]);
+      sixJ.push(input[i][5]);
+    }
+  }
+    setupTexCompChart(oneJ, twoJ, threeJ, fourJ, fiveJ, sixJ);
   }
 
-function setupTexCompChart(input, judges) {
+function setupTexCompChart(l1, l2, l3, l4, l5, l6) {
   console.log(order);
-  Highcharts.chart('texcomp-chart', {
-      chart: {
-          type: 'column'
-      },
-      title: {
-          text: 'TEx Comp'
-      },
-      xAxis: {
-          categories: order
-      },
-      yAxis: {
-          min: 0,
-          title: {
-              text: 'Score Breakdown'
-          },
-          stackLabels: {
-              enabled: true,
-              style: {
-                  fontWeight: 'bold',
-                  color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
-              }
-          }
-      },
-      legend: {
-          align: 'right',
-          x: -30,
-          verticalAlign: 'top',
-          y: 100,
-          floating: true,
-          backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
-          borderColor: '#CCC',
-          borderWidth: 1,
-          shadow: false
-      },
-      tooltip: {
-          headerFormat: '<b>{point.x}</b><br/>',
-          pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
-      },
-      plotOptions: {
-          column: {
-              stacking: 'normal',
-              dataLabels: {
-                  enabled: true,
-                  color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
-              }
-          }
-      },
-      series: [{
-          name: 'Andre',
-          data: input[0]
-      }, {
-          name: 'Colin',
-          data: input[1]
-      }, {
-          name: 'Steve',
-          data: input[2]
-      }]
-  });
+  if (clicker_judges.length == 1)
+  {
+    Highcharts.chart('texcomp-chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'TEx Comp'
+        },
+        xAxis: {
+            categories: order
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Score Breakdown'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series:
+        [{
+            name: clicker_judges[0],
+            data: l1
+        }]
+    });
+  }
+  else if (clicker_judges.length == 2)
+  {
+    Highcharts.chart('texcomp-chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'TEx Comp'
+        },
+        xAxis: {
+            categories: order
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Score Breakdown'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series:
+        [{
+            name: clicker_judges[0],
+            data: l1
+        },
+        {
+          name: clicker_judges[1],
+          data: l2
+        }]
+    });
+  }
+  else if (clicker_judges.length == 3)
+  {
+    Highcharts.chart('texcomp-chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'TEx Comp'
+        },
+        xAxis: {
+            categories: order
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Score Breakdown'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series:
+        [{
+            name: clicker_judges[0],
+            data: l1
+        },
+        {
+          name: clicker_judges[1],
+          data: l2
+        },
+        {
+          name: clicker_judges[2],
+          data: l3
+        }]
+    });
+  }
+  else if (clicker_judges.length == 4)
+  {
+    Highcharts.chart('texcomp-chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'TEx Comp'
+        },
+        xAxis: {
+            categories: order
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Score Breakdown'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series:
+        [{
+            name: clicker_judges[0],
+            data: l1
+        },
+        {
+          name: clicker_judges[1],
+          data: l2
+        },
+        {
+          name: clicker_judges[2],
+          data: l3
+        },
+        {
+          name: clicker_judges[3],
+          data: l4
+        }]
+    });
+  }
+  else if (clicker_judges.length == 5)
+  {
+    Highcharts.chart('texcomp-chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'TEx Comp'
+        },
+        xAxis: {
+            categories: order
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Score Breakdown'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series:
+        [{
+            name: clicker_judges[0],
+            data: l1
+        },
+        {
+          name: clicker_judges[1],
+          data: l2
+        },
+        {
+          name: clicker_judges[2],
+          data: l3
+        },
+        {
+          name: clicker_judges[3],
+          data: l4
+        },
+        {
+          name: clicker_judges[4],
+          data: l5
+        }]
+    });
+  }
+  else if (clicker_judges.length == 6)
+  {
+    Highcharts.chart('texcomp-chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'TEx Comp'
+        },
+        xAxis: {
+            categories: order
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Score Breakdown'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series:
+        [{
+            name: clicker_judges[0],
+            data: l1
+        },
+        {
+          name: clicker_judges[1],
+          data: l2
+        },
+        {
+          name: clicker_judges[2],
+          data: l3
+        },
+        {
+          name: clicker_judges[3],
+          data: l4
+        },
+        {
+          name: clicker_judges[4],
+          data: l5
+        },
+        {
+          name: clicker_judges[5],
+          data: l6
+        }]
+    });
+  }
+
   $('#finish').hide();
   $('#texcomp-chart').show();
 }
@@ -228,7 +623,8 @@ function setupTexCompChart(input, judges) {
                 }
             }
         },
-        series: [{
+        series:
+        [{
             name: 'Tech Execution',
             data: tech
         }, {
