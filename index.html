@@ -143,10 +143,15 @@
         <br>
         <button onclick="storeEval()"> Submit </button>
       </div>
-      <div id="final-chart">
+      <div id="results-chart">
+      </div>
+      <div id="texcomp-chart">
       </div>
       <div id="finish">
-        <button onclick="getResults()"> Show Graph </button>
+        <button onclick="getResults()"> Show Results Graph </button>
+        <br>
+        <button onclick="texComp()"> Show Graph </button>
+        <br>
         <button onclick="window.location.reload()"> Go Home </button>
       </div>
       <script src="headJudge.js"> </script>
@@ -167,7 +172,8 @@
     $("#player-info").hide();
     $("#click-input").hide();
     $("#eval-input").hide();
-    $("#final-chart").hide();
+    $("#results-chart").hide();
+    $("#texcomp-chart").hide();
     $("#finish").hide();
   });
   </script>

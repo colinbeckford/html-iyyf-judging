@@ -58,7 +58,7 @@ function getResults() {
   }).then((response) => {
   //loadMD(response.result.values);
   //majors have not been addressed
-  setupChart(techScores, techevalScores, perfevalScores);
+  setupResultChart(techScores, techevalScores, perfevalScores);
   }, function(reason) {
   console.error("error: " + reason.result.error.message);
   alert("Error.");
@@ -100,16 +100,74 @@ function loadComp(input) {
       input[i][j] = parseInt(input[i][j]);
     }
   }
-  console.log(input);
+  setupTexCompChart(input, clicker_judges);
+  }
+
+function setupTexCompChart(input, judges) {
+
+  Highcharts.chart('texcomp-chart', {
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'TEx Comp'
+      },
+      xAxis: {
+          categories: order
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Score Breakdown'
+          },
+          stackLabels: {
+              enabled: true,
+              style: {
+                  fontWeight: 'bold',
+                  color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+              }
+          }
+      },
+      legend: {
+          align: 'right',
+          x: -30,
+          verticalAlign: 'top',
+          y: 100,
+          floating: true,
+          backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+          borderColor: '#CCC',
+          borderWidth: 1,
+          shadow: false
+      },
+      tooltip: {
+          headerFormat: '<b>{point.x}</b><br/>',
+          pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+      },
+      plotOptions: {
+          column: {
+              stacking: 'normal',
+              dataLabels: {
+                  enabled: true,
+                  color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+              }
+          }
+      },
+      series: [{
+          name: judges,
+          data: input
+      },
+      {
+      ]
+  });
+  $('#finish').hide();
+  $('#texcomp-chart').show();
 }
 
 
 
-
-
-  function setupChart(tech, te, pe) {
+  function setupResultChart(tech, te, pe) {
     texComp();
-    Highcharts.chart('final-chart', {
+    Highcharts.chart('result-chart', {
         chart: {
             type: 'column'
         },
