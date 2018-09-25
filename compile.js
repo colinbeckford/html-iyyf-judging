@@ -85,7 +85,8 @@ function texComp() {
   spreadsheetId: spreadsheet,
   range: "RESULT!B3:B50"
   }).then((response) => {
-  order = response.result.values;
+  results_order = response.result.values;
+  console.log(results_order);
   }, function(reason) {
   console.error("error: " + reason.result.error.message);
   alert("Error.");
@@ -187,7 +188,7 @@ function setupTexCompChart(l1, l2, l3, l4, l5, l6) {
             text: 'TEx Comp'
         },
         xAxis: {
-            categories: order
+            categories: results_order
         },
         yAxis: {
             min: 0,
@@ -243,7 +244,7 @@ function setupTexCompChart(l1, l2, l3, l4, l5, l6) {
             text: 'TEx Comp'
         },
         xAxis: {
-            categories: order
+            categories: results_order
         },
         yAxis: {
             min: 0,
@@ -303,7 +304,7 @@ function setupTexCompChart(l1, l2, l3, l4, l5, l6) {
             text: 'TEx Comp'
         },
         xAxis: {
-            categories: order
+            categories: results_order
         },
         yAxis: {
             min: 0,
@@ -367,7 +368,7 @@ function setupTexCompChart(l1, l2, l3, l4, l5, l6) {
             text: 'TEx Comp'
         },
         xAxis: {
-            categories: order
+            categories: results_order
         },
         yAxis: {
             min: 0,
@@ -435,7 +436,7 @@ function setupTexCompChart(l1, l2, l3, l4, l5, l6) {
             text: 'TEx Comp'
         },
         xAxis: {
-            categories: order
+            categories: results_order
         },
         yAxis: {
             min: 0,
@@ -507,7 +508,7 @@ function setupTexCompChart(l1, l2, l3, l4, l5, l6) {
             text: 'TEx Comp'
         },
         xAxis: {
-            categories: order
+            categories: results_order
         },
         yAxis: {
             min: 0,
