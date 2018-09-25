@@ -89,13 +89,14 @@ function texComp() {
 });
 }
 
-function loadComp(input) {
+// function loadComp(input) {
+//
+//
+//
+//
+//
+// }
 
-
-
-
-
-}
   function setupChart(tech, te, pe) {
     Highcharts.chart('final-chart', {
         chart: {
