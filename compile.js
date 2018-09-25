@@ -3,7 +3,7 @@
 function loadTech(input) {
   for (var i=0; i<input.length; i++)
   {
-    techScores.push(parseInt(parseFloat(input[i]));
+    techScores.push(parseFloat(input[i]));
   }
 }
 
@@ -21,8 +21,8 @@ function loadEval(input) {
         perfeval += parseFloat(input[i][j]);
       }
     }
-    techevalScores.push(parseInt(techeval);
-    perfevalScores.push(parseInt(perfeval);
+    techevalScores.push(parseInt(techeval));
+    perfevalScores.push(parseInt(perfeval));
     techeval = 0;
     perfeval = 0;
   }
