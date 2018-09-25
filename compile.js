@@ -86,7 +86,7 @@ function texComp() {
   }).then((response) => {
   //loadComp(response.result.values);
   console.log(response.result.values);
-  }
+});
 }
 
 function loadComp(input) {
