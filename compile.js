@@ -106,7 +106,6 @@ function loadComp(input) {
 
 
 
-}
 
   function setupChart(tech, te, pe) {
     texComp();
