@@ -84,21 +84,29 @@ function texComp() {
   spreadsheetId: spreadsheet,
   range: "TEx-COMP!C3:H50"
   }).then((response) => {
-  var compList = response.result.values;
-  console.log(compList);
+  loadComp(response.result.values);
   }, function(reason) {
   console.error("error: " + reason.result.error.message);
   alert("Error.");
 });
 }
 
-// function loadComp(input) {
-//
-//
-//
-//
-//
-// }
+function loadComp(input) {
+  var techSum = 0;
+  for (var i=0;i<input.length;i++)
+  {
+    for (var j=0;j<input[i].length;j++)
+    {
+      input[i][j] = parseInt(input[i][j]);
+    }
+  }
+  console.log(input);
+}
+
+
+
+
+}
 
   function setupChart(tech, te, pe) {
     texComp();
