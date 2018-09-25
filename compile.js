@@ -164,13 +164,13 @@ function setupTexCompChart(input, judges) {
       },
       series: [{
           name: 'Andre',
-          data: input[][0]
+          data: input[0]
       }, {
           name: 'Colin',
-          data: input[][1]
+          data: input[1]
       }, {
           name: 'Steve',
-          data: input[][2]
+          data: input[2]
       }]
   });
   $('#finish').hide();
