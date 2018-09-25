@@ -79,6 +79,23 @@ function getResults() {
   });
 }
 
+function texComp() {
+  gapi.client.sheets.spreadsheets.values.get({
+  spreadsheetId: spreadsheet,
+  range: "TEx-COMP!C3:H50"
+  }).then((response) => {
+  //loadComp(response.result.values);
+  console.log(response.result.values);
+  }
+}
+
+function loadComp(input) {
+
+
+
+
+
+}
   function setupChart(tech, te, pe) {
     Highcharts.chart('final-chart', {
         chart: {
