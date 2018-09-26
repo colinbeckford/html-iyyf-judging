@@ -4,7 +4,8 @@ function storeClick() {
   negatives.push($('#negative').val());
   var currentPlayer = playerList[index];
   var rawScore = ($('#positive').val()-$('#negative').val());
-  liveScores.push({currentPlayer, rawScore})
+  liveScores.push({currentPlayer, rawScore});
+  liveScores.sort(compare);
   console.log(liveScores);
   index += 1;
   if (index < (players.length))
@@ -19,6 +20,24 @@ function storeClick() {
     appendClick(range);
   }
 }
+
+
+function compare(a, b) {
+  const scoreA = a.rawScore;
+  const scorerB = b.rawScore;
+  let comparison = 0;
+  if (playerA > playerB)
+  {
+    comparison = 1;
+  }
+  else if (playerA < playerB)
+  {
+    comparison = -1;
+  }
+    return comparison;
+  }
+
+
 
 function appendClick(range) {
   var clickinputParams = {
