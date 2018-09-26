@@ -45,9 +45,11 @@ function liveDisplay(list)
     for (var i=0; i<list.length; i++)
     {
       scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].negative;
-      scoresDisplay += '\n';
+      var list = document.getElementById("rank-list");
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(scoresDisplay));
+      list.appendChild(li);
     }
-    $('#liveClickUpdate').text(scoresDisplay);
   }
 
 
