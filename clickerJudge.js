@@ -24,7 +24,7 @@ function storeClick() {
 
 function compare(a, b) {
   const scoreA = a.rawScore;
-  const scorerB = b.rawScore;
+  const scoreB = b.rawScore;
   let comparison = 0;
   if (scoreA > scoreB)
   {
