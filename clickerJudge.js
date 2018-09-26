@@ -41,7 +41,7 @@ function compare(a, b) {
 
 function liveDisplay(list)
   {
-    scoresDisplay = "";
+    var scoresDisplay = "";
     for (var i=0; i<list.length; i++)
     {
       scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].negative;
