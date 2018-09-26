@@ -34,7 +34,7 @@ function compare(a, b) {
   {
     comparison = -1;
   }
-    return comparison;
+    return comparison * -1;
   }
 
 
