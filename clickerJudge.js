@@ -2,6 +2,8 @@
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
+  liveScores.push({players[index],($('#positive').val()-$('#negative').val())})
+  console.log(liveScores);
   index += 1;
   if (index < (players.length))
   {
