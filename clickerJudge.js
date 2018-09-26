@@ -44,7 +44,7 @@ function liveDisplay(list)
     scoresDisplay = "";
     for (var i=0; i<list.length; i++)
     {
-      scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].positive + '\n';
+      scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].negative + '\r';
       $('#liveClickUpdate').text(scoresDisplay);
     }
   }
