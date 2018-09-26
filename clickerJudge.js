@@ -26,11 +26,11 @@ function compare(a, b) {
   const scoreA = a.rawScore;
   const scorerB = b.rawScore;
   let comparison = 0;
-  if (playerA > playerB)
+  if (scoreA > scoreB)
   {
     comparison = 1;
   }
-  else if (playerA < playerB)
+  else if (scoreA < scoreB)
   {
     comparison = -1;
   }
