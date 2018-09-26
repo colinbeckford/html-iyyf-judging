@@ -6,7 +6,8 @@ function storeClick() {
   var rawScore = ($('#positive').val()-$('#negative').val());
   liveScores.push({currentPlayer, rawScore});
   liveScores.sort(compare);
-  console.log(liveScores);
+  liveDisplay(liveScores);
+
   index += 1;
   if (index < (players.length))
   {
@@ -37,6 +38,15 @@ function compare(a, b) {
     return comparison * -1;
   }
 
+function liveDisplay(list)
+  {
+    scoresDisplay = "";
+    for (var i=0; i<list.length; i++)
+    {
+      scoresDisplay += liveScores[i].currentPlayer + ": " + liveScores[i].rawScore + "\n";
+      $('#liveClickUpdate').text(scoresDisplay);
+    }
+  }
 
 
 function appendClick(range) {
