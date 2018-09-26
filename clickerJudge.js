@@ -2,7 +2,9 @@
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
-  liveScores.push({players[index],($('#positive').val()-$('#negative').val())})
+  var currentPlayer = players[index];
+  var rawScore = ($('#positive').val()-$('#negative').val());
+  liveScores.push({currentPlayer, rawScore})
   console.log(liveScores);
   index += 1;
   if (index < (players.length))
