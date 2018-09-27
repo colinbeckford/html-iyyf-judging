@@ -2,9 +2,12 @@
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
-  var currentPlayer = playerList[index];
-  var positive = $('#positive').val();
-  var negative = $('#negative').val();
+  var currentPlayer = "";
+  currentPlayer = playerList[index];
+  var positive = 0;
+  positive = $('#positive').val();
+  var negative = 0
+  negative = $('#negative').val();
   liveScores.push({currentPlayer, positive, negative});
   currentPlayer = "";
   positive = 0;
