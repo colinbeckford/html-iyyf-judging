@@ -11,8 +11,6 @@ function storeClick() {
   negative = 0;
   liveScores.sort(compare);
   liveDisplay(index);
-  index++;
-  console.log(index);
   index += 1;
   if (index < (players.length))
   {
@@ -45,6 +43,7 @@ function compare(a, b) {
 
 function liveDisplay(i)
   {
+    console.log(liveScores[i].currentPlayer);
     var scoresDisplay = "";
     scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].negative;
     var list = document.getElementById("rank-list");
