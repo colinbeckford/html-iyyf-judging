@@ -11,7 +11,6 @@ function storeClick() {
   negative = 0;
   liveScores.sort(compare);
   liveDisplay(index);
-  index += 1;
   if (index < (players.length))
   {
     $('#click-player-name').text(players[index]);
