@@ -50,7 +50,6 @@ function liveDisplay(i)
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(scoresDisplay));
     list.appendChild(li);
-    }
   }
 
 
