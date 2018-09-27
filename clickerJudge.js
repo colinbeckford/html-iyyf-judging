@@ -6,9 +6,12 @@ function storeClick() {
   var positive = $('#positive').val();
   var negative = $('#negative').val();
   liveScores.push({currentPlayer, positive, negative});
+  currentPlayer = "";
+  positive = 0;
+  negative = 0;
   liveScores.sort(compare);
-  liveDisplay(liveScores);
-
+  liveDisplay(index);
+  console.log(index);
   index += 1;
   if (index < (players.length))
   {
@@ -39,16 +42,14 @@ function compare(a, b) {
     return comparison * -1;
   }
 
-function liveDisplay(list)
+function liveDisplay(i)
   {
     var scoresDisplay = "";
-    for (var i=0; i<list.length; i++)
-    {
-      scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].negative;
-      var list = document.getElementById("rank-list");
-      var li = document.createElement("li");
-      li.appendChild(document.createTextNode(scoresDisplay));
-      list.appendChild(li);
+    scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].negative;
+    var list = document.getElementById("rank-list");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(scoresDisplay));
+    list.appendChild(li);
     }
   }
 
