@@ -13,6 +13,7 @@ function storeClick() {
   liveDisplay(index);
   if (index < (players.length))
   {
+    index+=1;
     $('#click-player-name').text(players[index]);
     $('#positive').val('');
     $('#negative').val('');
