@@ -12,7 +12,6 @@ function storeClick() {
   currentPlayer = "";
   positive = 0;
   negative = 0;
-  liveScores.sort(compare);
   liveDisplay(index);
   if (index < (players.length))
   {
@@ -27,7 +26,6 @@ function storeClick() {
     appendClick(range);
   }
 }
-
 
 function compare(a, b) {
   const scoreA = a.positive-a.negative;
