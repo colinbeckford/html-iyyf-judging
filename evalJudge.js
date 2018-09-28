@@ -8,9 +8,30 @@ function storeEval() {
   bodyControlList.push(parseInt($('#body-control').val()));
   choreographyList.push(parseInt($('#choreography').val()));
   constructionList.push(parseInt($('#construction').val()));
-  index += 1;
+  var currentPlayer = "";
+  currentPlayer = playerList[index];
+  var ctrl = $('#control').val();
+  var exec = $('#execution').val();
+  var vari = $('#variation').val();
+  var spcu = $('#space-use').val();
+  var bdcn = $('#body-control').val();
+  var shwm = $('#showmanship').val();
+  var cons = $('#construction').val();
+  var chor = $('#choreography').val();
+  liveEvals.push({currentPlayer, ctrl, exec, vari, spcu, bdcn, shwm, cons, chor});
+  currentPlayer = "";
+  ctrl = 0;
+  exec = 0;
+  vari = 0;
+  spcu = 9;
+  bdcn = 0;
+  shwm = 0;
+  cons = 0;
+  chor = 0;
+  liveDisplay(index);
   if (index < (players.length))
   {
+    index += 1;
     $('#eval-player-name').text(players[index]);
     $('#control').val("");
     $('#execution').val("");
@@ -28,6 +49,12 @@ function storeEval() {
   }
 
 }
+
+function liveDisplay(i)
+  {
+    console.log(LiveEvals[i].currentPlayer);
+    $('#eval-table').append('<tr><td'liveEvals[i].currentPlayer'</td><td>'liveEval[i].ctrl'</td><td>'liveEval[i].exec'</td><td>'liveEval[i].vari'</td><td>'liveEval[i].spcu'</td><td>'liveEval[i].bdcn'</td><td>'liveEval[i].shwm'</td><td>'liveEval[i].cons'</td><td>'liveEval[i].chor'</td></tr>');
+  }
 
 function appendEval(range) {
   var evalinputParams = {

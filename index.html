@@ -94,7 +94,7 @@
         <button onclick="storeClick()"> Submit </button>
         <br>
         <br>
-        <ol id="rank-list">
+        <ol id="click-list">
         </ol>
       </div>
       <div id='eval-input'>
@@ -145,6 +145,20 @@
         <br>
         <br>
         <button onclick="storeEval()"> Submit </button>
+        <br>
+        <br>
+        <table style="width:100%" id="eval-table">
+          <tr>
+            <td> Name </td>
+            <td> Control </td>
+            <td> Execution </td>
+            <td> Variation </td>
+            <td> Space Use </td>
+            <td> Body Control </td>
+            <td> Showmanship </td>
+            <td> Construction </td>
+            <td> Choreography </td>
+        </table>
       </div>
       <div id="results-chart">
       </div>
@@ -219,7 +233,8 @@
   var fourJ = [];
   var fiveJ = [];
   var sixJ = [];
-  var liveScores = [];
+  var liveClicks  = [];
+  var liveEvals = [];
 
 
   function initClient() {

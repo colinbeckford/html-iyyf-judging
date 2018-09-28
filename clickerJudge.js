@@ -44,10 +44,10 @@ function compare(a, b) {
 
 function liveDisplay(i)
   {
-    console.log(liveScores[i].currentPlayer);
+    console.log(LiveClicks[i].currentPlayer);
     var scoresDisplay = "";
     scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].negative;
-    var list = document.getElementById("rank-list");
+    var list = document.getElementById("click-list");
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(scoresDisplay));
     list.appendChild(li);
