@@ -28,7 +28,7 @@ function storeEval() {
   shwm = 0;
   cons = 0;
   chor = 0;
-  liveDisplay(index);
+  evalDisplay(index);
   if (index < (players.length))
   {
     index += 1;
@@ -50,7 +50,7 @@ function storeEval() {
 
 }
 
-function liveDisplay(i)
+function evalDisplay(i)
   {
     var newRow = '<tr><td>' + liveEvals[i].currentEvalPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
     console.log(newRow);

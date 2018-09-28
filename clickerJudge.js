@@ -12,7 +12,7 @@ function storeClick() {
   currentPlayer = "";
   positive = 0;
   negative = 0;
-  liveDisplay(index);
+  clickDisplay(index);
   if (index < (players.length))
   {
     index+=1;
@@ -42,7 +42,7 @@ function compare(a, b) {
     return comparison * -1;
   }
 
-function liveDisplay(i)
+function clickDisplay(i)
   {
     console.log(LiveClicks[i].currentPlayer);
     var scoresDisplay = "";
