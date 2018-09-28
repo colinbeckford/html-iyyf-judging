@@ -8,7 +8,7 @@ function storeClick() {
   positive = $('#positive').val();
   var negative = 0
   negative = $('#negative').val();
-  liveScores.push({currentPlayer, positive, negative});
+  liveClicks.push({currentPlayer, positive, negative});
   currentPlayer = "";
   positive = 0;
   negative = 0;
