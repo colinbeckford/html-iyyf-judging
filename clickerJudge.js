@@ -44,7 +44,7 @@ function compare(a, b) {
 
 function clickDisplay(i)
   {
-    console.log(LiveClicks[i].currentClickPlayer);
+    console.log(liveClicks[i].currentClickPlayer);
     var scoresDisplay = "";
     scoresDisplay += liveClicks[i].currentClickPlayer + ": +" + liveClicks[i].positive + " -" + liveClicks[i].negative;
     var list = document.getElementById("click-list");
