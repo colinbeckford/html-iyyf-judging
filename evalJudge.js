@@ -52,7 +52,6 @@ function storeEval() {
 
 function liveDisplay(i)
   {
-    console.log(liveEvals[i].currentPlayer);
     var newRow = '<tr><td>' + liveEvals[i].currentPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
     console.log(newRow);
     $('#eval-table').append(newRow);
