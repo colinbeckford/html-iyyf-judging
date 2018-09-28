@@ -23,7 +23,7 @@ function storeEval() {
   ctrl = 0;
   exec = 0;
   vari = 0;
-  spcu = 9;
+  spcu = 0;
   bdcn = 0;
   shwm = 0;
   cons = 0;
@@ -52,8 +52,10 @@ function storeEval() {
 
 function liveDisplay(i)
   {
-    console.log(LiveEvals[i].currentPlayer);
-    $('#eval-table').append('<tr><td>'liveEvals[i].currentPlayer'</td><td>'liveEval[i].ctrl'</td><td>'liveEval[i].exec'</td><td>'liveEval[i].vari'</td><td>'liveEval[i].spcu'</td><td>'liveEval[i].bdcn'</td><td>'liveEval[i].shwm'</td><td>'liveEval[i].cons'</td><td>'liveEval[i].chor'</td></tr>');
+    console.log(liveEvals[i].currentPlayer);
+    var newRow = '<tr><td>' + liveEvals[i].currentPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
+    console.log(newRow);
+    $('#eval-table').append(newRow);
   }
 
 function appendEval(range) {
