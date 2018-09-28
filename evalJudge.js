@@ -8,8 +8,8 @@ function storeEval() {
   bodyControlList.push(parseInt($('#body-control').val()));
   choreographyList.push(parseInt($('#choreography').val()));
   constructionList.push(parseInt($('#construction').val()));
-  var currentPlayer = "";
-  currentPlayer = playerList[index];
+  var currentEvalPlayer = "";
+  currentEvalPlayer = playerList[index];
   var ctrl = $('#control').val();
   var exec = $('#execution').val();
   var vari = $('#variation').val();
@@ -18,8 +18,8 @@ function storeEval() {
   var shwm = $('#showmanship').val();
   var cons = $('#construction').val();
   var chor = $('#choreography').val();
-  liveEvals.push({currentPlayer, ctrl, exec, vari, spcu, bdcn, shwm, cons, chor});
-  currentPlayer = "";
+  liveEvals.push({currentEvalPlayer, ctrl, exec, vari, spcu, bdcn, shwm, cons, chor});
+  currentEvalPlayer = "";
   ctrl = 0;
   exec = 0;
   vari = 0;
@@ -52,7 +52,7 @@ function storeEval() {
 
 function liveDisplay(i)
   {
-    var newRow = '<tr><td>' + liveEvals[i].currentPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
+    var newRow = '<tr><td>' + liveEvals[i].currentEvalPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
     console.log(newRow);
     $('#eval-table').append(newRow);
   }
