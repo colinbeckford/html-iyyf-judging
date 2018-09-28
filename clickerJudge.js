@@ -2,14 +2,14 @@
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
-  var currentPlayer = "";
-  currentPlayer = playerList[index];
+  var currentClickPlayer = "";
+  currentClickPlayer = playerList[index];
   var positive = 0;
   positive = $('#positive').val();
   var negative = 0
   negative = $('#negative').val();
-  liveClicks.push({currentPlayer, positive, negative});
-  currentPlayer = "";
+  liveClicks.push({currentClickPlayer, positive, negative});
+  currentClickPlayer = "";
   positive = 0;
   negative = 0;
   clickDisplay(index);
@@ -44,9 +44,9 @@ function compare(a, b) {
 
 function clickDisplay(i)
   {
-    console.log(LiveClicks[i].currentPlayer);
+    console.log(LiveClicks[i].currentClickPlayer);
     var scoresDisplay = "";
-    scoresDisplay += liveScores[i].currentPlayer + ": +" + liveScores[i].positive + " -" + liveScores[i].negative;
+    scoresDisplay += liveClicks[i].currentClickPlayer + ": +" + liveClicks[i].positive + " -" + liveClicks[i].negative;
     var list = document.getElementById("click-list");
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(scoresDisplay));
