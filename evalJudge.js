@@ -53,7 +53,7 @@ function storeEval() {
 function liveDisplay(i)
   {
     console.log(LiveEvals[i].currentPlayer);
-    $('#eval-table').append('<tr><td'liveEvals[i].currentPlayer'</td><td>'liveEval[i].ctrl'</td><td>'liveEval[i].exec'</td><td>'liveEval[i].vari'</td><td>'liveEval[i].spcu'</td><td>'liveEval[i].bdcn'</td><td>'liveEval[i].shwm'</td><td>'liveEval[i].cons'</td><td>'liveEval[i].chor'</td></tr>');
+    $('#eval-table').append('<tr><td>'liveEvals[i].currentPlayer'</td><td>'liveEval[i].ctrl'</td><td>'liveEval[i].exec'</td><td>'liveEval[i].vari'</td><td>'liveEval[i].spcu'</td><td>'liveEval[i].bdcn'</td><td>'liveEval[i].shwm'</td><td>'liveEval[i].cons'</td><td>'liveEval[i].chor'</td></tr>');
   }
 
 function appendEval(range) {
