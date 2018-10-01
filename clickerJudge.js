@@ -81,6 +81,13 @@ function appendClick(range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
+  appendMajor();
+  $('#finish').show();
+  $("#click-input").hide();
+}
+
+function appendMajor()
+{
   var majorinputParams = {
     spreadsheetId: spreadsheetId,
     range: "RAW-TEx!C4:E105",
@@ -100,8 +107,4 @@ function appendClick(range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  $('#finish').show();
-  $("#click-input").hide();
-
-
 }
