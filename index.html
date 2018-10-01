@@ -279,8 +279,7 @@
     spreadsheetId: spreadsheet,
     range: "PLAYER!B4:B103"
     }).then((response) => {
-    var result = response.result;
-    players = result.values;
+    players = response.result.values;
     for (x in players)
     {
       playerList.push(players[x][0]);
