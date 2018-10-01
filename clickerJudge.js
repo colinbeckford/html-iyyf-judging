@@ -19,8 +19,6 @@ function storeClick() {
   detach = $('#detach').val();
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
   currentClickPlayer = "";
-  positive = 0;
-  negative = 0;
   clickDisplay(index);
   if (index < (players.length)-1)
   {
@@ -89,6 +87,9 @@ function appendClick(range) {
 function appendMajor()
 {
   console.log("Function appendmajor is being called");
+  console.log(restarts);
+  console.log(discards);
+  console.log(detaches);
   var majorinputParams = {
     spreadsheetId: spreadsheetId,
     range: "RAW-TEx!C4:E105",
