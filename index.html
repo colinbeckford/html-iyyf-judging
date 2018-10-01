@@ -296,6 +296,7 @@
     var beginId = spreadsheet.indexOf("d/") + 3;
     var endId = spreadsheet.indexOf("/e") + 1;
     spreadsheetId = spreadsheet.slice(beginId, endId);
+    console.log(spreadsheetId);
     var optionchoice = document.getElementById("judge-selection");
     judgename = $('#judge-name').val();
     judgetype = optionchoice.options[optionchoice.selectedIndex].value;
