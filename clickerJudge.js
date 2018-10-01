@@ -53,8 +53,8 @@ function compare(a, b) {
 
 function clickDisplay(i)
   {
-    var newRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td>' + liveClicks[i].positive + '</td><td>' + liveEvals[i].negative + '</td><td>' + liveEvals[i].restart + '</td><td>' + liveEvals[i].discard + '</td><td>' + liveEvals[i].detach + '</td></tr>';
-    $('#click-table').append(newRow);
+    var clickRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td>' + liveClicks[i].positive + '</td><td>' + liveClicks[i].negative + '</td><td>' + liveClicks[i].restart + '</td><td>' + liveClicks[i].discard + '</td><td>' + liveClicks[i].detach + '</td></tr>';
+    $('#click-table').append(clickRow);
   }
 
 
@@ -71,8 +71,8 @@ function appendClick(range) {
     "values": [positives,
     negatives],
   };
-  var request5 = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
-  request5.then(function(response) {
+  var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
+  clickRequest.then(function(response) {
     alert("Scores have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
@@ -90,8 +90,8 @@ function appendClick(range) {
     "values": [restarts,
     discards, detaches],
   };
-  var request6 = gapi.client.sheets.spreadsheets.values.append(majorinputParams, majorinputRangeBody);
-  request6.then(function(response) {
+  var majorRequest = gapi.client.sheets.spreadsheets.values.append(majorinputParams, majorinputRangeBody);
+  majorRequest.then(function(response) {
     alert("Scores have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);

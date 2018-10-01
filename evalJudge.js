@@ -51,8 +51,8 @@ function storeEval() {
 
 function evalDisplay(i)
   {
-    var newRow = '<tr><td>' + liveEvals[i].currentEvalPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
-    $('#eval-table').append(newRow);
+    var evalRow = '<tr><td>' + liveEvals[i].currentEvalPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
+    $('#eval-table').append(evalRow);
   }
 
 function appendEval(range) {
@@ -67,8 +67,8 @@ function appendEval(range) {
     "majorDimension": "COLUMNS", //Rows or columns
     "values": [executionList, controlList, variationList, spaceUseList, choreographyList, constructionList, bodyControlList, showmanshipList],
   };
-  var request6 = gapi.client.sheets.spreadsheets.values.append(evalinputParams, evalinputRangeBody);
-  request6.then(function(response) {
+  var evalRequest = gapi.client.sheets.spreadsheets.values.append(evalinputParams, evalinputRangeBody);
+  evalRequest.then(function(response) {
     alert("Scores have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
