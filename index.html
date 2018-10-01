@@ -91,11 +91,33 @@
         <input id="negative"> </input>
         <br>
         <br>
+        <text> Restart </text>
+        <br>
+        <input id="restart"> </input>
+        <br>
+        <br>
+        <text> Discard </text>
+        <br>
+        <input id="discard"> </input>
+        <br>
+        <br>
+        <text> Detach </text>
+        <br>
+        <input id="detach"> </input>
+        <br>
+        <br>
         <button onclick="storeClick()"> Submit </button>
         <br>
         <br>
-        <ol id="click-list">
-        </ol>
+        <table style="width:100%" id="click-table">
+          <tr>
+            <td> Name </td>
+            <td> + </td>
+            <td> - </td>
+            <td> Restart </td>
+            <td> Discard </td>
+            <td> Detach </td>
+        </table>
       </div>
       <div id='eval-input'>
         <text id="eval-player-name">  </text>
@@ -206,6 +228,9 @@
   var index = 0;
   var positives = [];
   var negatives = [];
+  var restarts = [];
+  var discards = [];
+  var detaches = [];
   var controlList = [];
   var executionList = [];
   var variationList = [];
@@ -296,11 +321,9 @@
     var beginId = spreadsheet.indexOf("d/") + 2;
     var endId = spreadsheet.indexOf("/e");
     spreadsheetId = spreadsheet.slice(beginId, endId);
-    console.log(spreadsheetId);
     var optionchoice = document.getElementById("judge-selection");
     judgename = $('#judge-name').val();
     judgetype = optionchoice.options[optionchoice.selectedIndex].value;
-    console.log(judgetype);
     if (judgetype == "head")
     {
     $("#login").hide();

@@ -15,14 +15,14 @@ function enterInfo() {
 }
 function appendInfo() {
   var contestParams = {
-    spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
+    spreadsheetId: spreadsheetId,
     range: "SET-UP!B3:B6",
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
   var contestRangeBody = {
-    "range": "SET-UP!B3:B6",  //Set this to cell want to add content to
-    "majorDimension": "COLUMNS", //Rows or columns
+    "range": "SET-UP!B3:B6",
+    "majorDimension": "COLUMNS",
     "values": [
       [contest_name,
       "",
@@ -31,25 +31,25 @@ function appendInfo() {
     ],
   };
   var clickerjudgeParams = {
-    spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
+    spreadsheetId: spreadsheetId,
     range: "SET-UP!F3:F8",
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
   var clickerjudgeRangeBody = {
-    "range": "SET-UP!F3:F8",  //Set this to cell want to add content to
-    "majorDimension": "COLUMNS", //Rows or columns
+    "range": "SET-UP!F3:F8",
+    "majorDimension": "COLUMNS",
     "values": [clicker_judges],
   };
   var evaljudgeParams = {
-    spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
+    spreadsheetId: spreadsheetId,
     range: "SET-UP!F16:F21",
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
   var evaljudgeRangeBody = {
-    "range": "SET-UP!F16:F21",  //Set this to cell want to add content to
-    "majorDimension": "COLUMNS", //Rows or columns
+    "range": "SET-UP!F16:F21",
+    "majorDimension": "COLUMNS",
     "values": [eval_judges],
   };
   var request1 = gapi.client.sheets.spreadsheets.values.append(contestParams, contestRangeBody);
@@ -81,14 +81,14 @@ function appendInfo() {
   }
   function appendPlayer() {
     var playerParams = {
-      spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
+      spreadsheetId: spreadsheetId,
       range: "PLAYER!B4:B103",
       valueInputOption: "RAW",
       insertDataOption: "OVERWRITE",
     };
     var playerRangeBody = {
-      "range": "PLAYER!B4:B103",  //Set this to cell want to add content to
-      "majorDimension": "COLUMNS", //Rows or columns
+      "range": "PLAYER!B4:B103",
+      "majorDimension": "COLUMNS", 
       "values": [players],
     };
     var request4 = gapi.client.sheets.spreadsheets.values.append(playerParams, playerRangeBody);

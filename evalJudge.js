@@ -1,5 +1,4 @@
 function storeEval() {
-  console.log($('#control').val());
   controlList.push(parseInt($('#control').val()));
   executionList.push(parseInt($('#execution').val()));
   variationList.push(parseInt($('#variation').val()));
@@ -29,7 +28,7 @@ function storeEval() {
   cons = 0;
   chor = 0;
   evalDisplay(index);
-  if (index < (players.length))
+  if (index < (players.length)-1)
   {
     index += 1;
     $('#eval-player-name').text(players[index]);
@@ -53,7 +52,6 @@ function storeEval() {
 function evalDisplay(i)
   {
     var newRow = '<tr><td>' + liveEvals[i].currentEvalPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
-    console.log(newRow);
     $('#eval-table').append(newRow);
   }
 
@@ -71,7 +69,6 @@ function appendEval(range) {
   };
   var request6 = gapi.client.sheets.spreadsheets.values.append(evalinputParams, evalinputRangeBody);
   request6.then(function(response) {
-    console.log(response.result);
     alert("Scores have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
