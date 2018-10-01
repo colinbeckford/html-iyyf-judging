@@ -36,6 +36,7 @@ function storeClick() {
   {
     alert("All player click scores have been recorded.");
     appendClick(range);
+    appendMajor();
   }
 }
 
@@ -81,13 +82,13 @@ function appendClick(range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  appendMajor();
   $('#finish').show();
   $("#click-input").hide();
 }
 
 function appendMajor()
 {
+  console.log("Function appendmajor is being called");
   var majorinputParams = {
     spreadsheetId: spreadsheetId,
     range: "RAW-TEx!C4:E105",
