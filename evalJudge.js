@@ -57,14 +57,14 @@ function evalDisplay(i)
 
 function appendEval(range) {
   var evalinputParams = {
-    spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
+    spreadsheetId: spreadsheetId,
     range: range,
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
   var evalinputRangeBody = {
-    "range": range,  //Set this to cell want to add content to
-    "majorDimension": "COLUMNS", //Rows or columns
+    "range": range,
+    "majorDimension": "COLUMNS",
     "values": [executionList, controlList, variationList, spaceUseList, choreographyList, constructionList, bodyControlList, showmanshipList],
   };
   var evalRequest = gapi.client.sheets.spreadsheets.values.append(evalinputParams, evalinputRangeBody);

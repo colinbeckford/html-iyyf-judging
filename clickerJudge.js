@@ -28,6 +28,9 @@ function storeClick() {
     $('#click-player-name').text(players[index]);
     $('#positive').val('');
     $('#negative').val('');
+    $('#restart').val('');
+    $('#discard').val('');
+    $('#detach').val('');
   }
   else
   {
