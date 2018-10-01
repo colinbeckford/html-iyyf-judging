@@ -293,8 +293,8 @@
   }
   function getJudge() {
     spreadsheet = $('#spreadsheet-id').val();
-    var beginId = spreadsheet.indexOf("d/") + 3;
-    var endId = spreadsheet.indexOf("/e") + 1;
+    var beginId = spreadsheet.indexOf("d/") + 2;
+    var endId = spreadsheet.indexOf("/e");
     spreadsheetId = spreadsheet.slice(beginId, endId);
     console.log(spreadsheetId);
     var optionchoice = document.getElementById("judge-selection");
