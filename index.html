@@ -28,7 +28,7 @@
         <input id="judge-name"> </input>
         <br>
         <br>
-        <text> Input Spreadsheet ID Here </text>
+        <text> Input Spreadsheet Link Here </text>
         <br>
         <br>
         <input id="spreadsheet-id"> </input>
@@ -274,7 +274,7 @@
 
   function retrievePlayers() {
     gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheet,
+    spreadsheetId: spreadsheetId,
     range: "PLAYER!B4:B103"
     }).then((response) => {
     players = response.result.values;
@@ -293,6 +293,9 @@
   }
   function getJudge() {
     spreadsheet = $('#spreadsheet-id').val();
+    var beginId = spreadsheet.indexOf("d/") + 3;
+    var endId = spreadsheet.indexOf("/e") + 1;
+    spreadsheetId = spreadsheet.slice(beginId, endId);
     var optionchoice = document.getElementById("judge-selection");
     judgename = $('#judge-name').val();
     judgetype = optionchoice.options[optionchoice.selectedIndex].value;
@@ -305,7 +308,7 @@
     else if (judgetype == "clicker")
     {
     gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheet,
+    spreadsheetId: spreadsheetId,
     range: "SET-UP!F3:F8"
     }).then((response) => {
     clicker_judges = response.result.values;
@@ -318,7 +321,7 @@
     else if (judgetype = "eval")
     {
     gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheet,
+    spreadsheetId: spreadsheetId,
     range: "SET-UP!F16:F21"
     }).then((response) => {
     eval_judges = response.result.values;

@@ -15,7 +15,7 @@ function enterInfo() {
 }
 function appendInfo() {
   var contestParams = {
-    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",  // TODO: Update placeholder value.
+    spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
     range: "SET-UP!B3:B6",
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
@@ -31,7 +31,7 @@ function appendInfo() {
     ],
   };
   var clickerjudgeParams = {
-    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",  // TODO: Update placeholder value.
+    spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
     range: "SET-UP!F3:F8",
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
@@ -42,7 +42,7 @@ function appendInfo() {
     "values": [clicker_judges],
   };
   var evaljudgeParams = {
-    spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",  // TODO: Update placeholder value.
+    spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
     range: "SET-UP!F16:F21",
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
@@ -81,7 +81,7 @@ function appendInfo() {
   }
   function appendPlayer() {
     var playerParams = {
-      spreadsheetId: "1OYeK4_TvSn4kvPD5082SSs5oaN-ugzISIjf0g5TLcxM",  // TODO: Update placeholder value.
+      spreadsheetId: spreadsheetId,  // TODO: Update placeholder value.
       range: "PLAYER!B4:B103",
       valueInputOption: "RAW",
       insertDataOption: "OVERWRITE",

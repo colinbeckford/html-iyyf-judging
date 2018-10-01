@@ -43,17 +43,17 @@ function loadEval(input) {
 
 function getResults() {
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: spreadsheet,
+  spreadsheetId: spreadsheetId,
   range: "RESULT!H3:H50"
   }).then((response) => {
   loadTech(response.result.values);
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: spreadsheet,
+  spreadsheetId: spreadsheetId,
   range: "RESULT!I3:P50"
   }).then((response) => {
   loadEval(response.result.values);
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: spreadsheet,
+  spreadsheetId: spreadsheetId,
   range: "RESULT!S3:U50"
   }).then((response) => {
   //loadMD(response.result.values);
@@ -69,7 +69,7 @@ function getResults() {
   });
   });
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: spreadsheet,
+  spreadsheetId: spreadsheetId,
   range: "RESULT!B3:B50"
   }).then((response) => {
   results_order = response.result.values;
@@ -82,7 +82,7 @@ function getResults() {
 
 function texComp() {
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: spreadsheet,
+  spreadsheetId: spreadsheetId,
   range: "RESULT!B3:B50"
   }).then((response) => {
   results_order = response.result.values;
@@ -92,7 +92,7 @@ function texComp() {
   alert("Error.");
   });
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: spreadsheet,
+  spreadsheetId: spreadsheetId,
   range: "TEx-COMP!C3:H50"
   }).then((response) => {
   loadComp(response.result.values);
