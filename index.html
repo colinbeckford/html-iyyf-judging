@@ -293,7 +293,7 @@
     });
   }
   function getJudge() {
-    var optionchoice = $("#judge-selection");
+    var optionchoice = document.getElementById("judge-selection");
     judgename = $('#judge-name').val();
     judgetype = optionchoice.options[optionchoice.selectedIndex].value;
     console.log(judgetype);
