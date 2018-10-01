@@ -2,9 +2,9 @@
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
-  restarts.push($('#restarts').val());
-  discards.push($('#discards').val());
-  detaches.push($('#detaches').val());
+  restarts.push($('#restart').val());
+  discards.push($('#discard').val());
+  detaches.push($('#detach').val());
   var currentClickPlayer = "";
   currentClickPlayer = playerList[index];
   var positive = 0;
@@ -86,10 +86,6 @@ function appendClick(range) {
 
 function appendMajor()
 {
-  console.log("Function appendmajor is being called");
-  console.log(restarts);
-  console.log(discards);
-  console.log(detaches);
   var majorinputParams = {
     spreadsheetId: spreadsheetId,
     range: "RAW-TEx!C4:E105",
