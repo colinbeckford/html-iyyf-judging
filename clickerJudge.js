@@ -101,6 +101,8 @@ function appendMajor()
   var majorRequest = gapi.client.sheets.spreadsheets.values.append(majorinputParams, majorinputRangeBody);
   majorRequest.then(function(response) {
     alert("Major deducts have been entered into the spreadsheet.");
+    $("#click-input").hide();
+    $('#finish').show();
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");

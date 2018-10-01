@@ -74,6 +74,6 @@ function appendEval(range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
+  $("#eval-input").hide();
   $('#finish').show();
-  $("#click-input").hide();
 }
