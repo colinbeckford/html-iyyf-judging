@@ -75,7 +75,7 @@ function appendClick(range) {
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
-    alert("Scores have been entered into the spreadsheet.");
+    alert("Your clicks have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
@@ -100,7 +100,7 @@ function appendMajor()
   };
   var majorRequest = gapi.client.sheets.spreadsheets.values.append(majorinputParams, majorinputRangeBody);
   majorRequest.then(function(response) {
-    alert("Scores have been entered into the spreadsheet.");
+    alert("Major deducts have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");

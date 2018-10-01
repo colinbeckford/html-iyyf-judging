@@ -88,7 +88,7 @@ function appendInfo() {
     };
     var playerRangeBody = {
       "range": "PLAYER!B4:B103",
-      "majorDimension": "COLUMNS", 
+      "majorDimension": "COLUMNS",
       "values": [players],
     };
     var request4 = gapi.client.sheets.spreadsheets.values.append(playerParams, playerRangeBody);
