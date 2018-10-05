@@ -1,5 +1,6 @@
 
 $("#click-input").ready(function() {
+  retrievePlayers();
   console.log("Function being called");
   console.log(playerList.length);
   for (var i=0;i<playerList.length;i++)
