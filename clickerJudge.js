@@ -1,5 +1,5 @@
 
-function loadTable(numPlayers) {
+function loadClickTable(numPlayers) {
   for (var i=0;i<numPlayers;i++)
   {
     var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input" + '</td><td>' + "<input id="+i+"negative </input" + '</td><td>' + "<input id="+i+"restart </input" + '</td><td>' + "<input id="+i+"discard </input" + '</td><td>' + "<input id="+i+"positive </input" + '</td></tr>';
@@ -13,20 +13,13 @@ function storeClick() {
   restarts.push($('#restart').val());
   discards.push($('#discard').val());
   detaches.push($('#detach').val());
-  var currentClickPlayer = "";
-  currentClickPlayer = playerList[index];
-  var positive = 0;
-  positive = $('#positive').val();
-  var negative = 0
-  negative = $('#negative').val();
-  var restart = 0
-  restart = $('#restart').val();
-  var discard = 0
-  discard = $('#discard').val();
-  var detach = 0
-  detach = $('#detach').val();
+  var currentClickPlayer = playerList[index];
+  var positive = $('#positive').val();
+  var negative = $('#negative').val();
+  var restart = $('#restart').val();
+  var discard = $('#discard').val();
+  var detach = $('#detach').val();
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
-  currentClickPlayer = "";
   clickDisplay(index);
   if (index < (players.length)-1)
   {

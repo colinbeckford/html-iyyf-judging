@@ -1,3 +1,12 @@
+function loadEvalTable(numPlayers) {
+  for (var i=0;i<numPlayers;i++)
+  {
+    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"control </input>" + '</td><td>' + "<input id="+i+"execution </input>" + '</td><td>' + "<input id="+i+"variation </input>" + '</td><td>' + "<input id="+i+"space-use </input>" + '</td><td>' + "<input id="+i+"showmanship </input>" + '</td><td>' + "<input id="+i+"body-control </input>" + '</td><td>' + "<input id="+i+"choreography </input>" + '</td><td>' + "<input id="+i+"construction </input>" + '</td></tr>';
+    $('#eval-table').append(evalRow);
+  }
+}
+
+
 function storeEval() {
   controlList.push(parseInt($('#control').val()));
   executionList.push(parseInt($('#execution').val()));
@@ -50,10 +59,16 @@ function storeEval() {
 }
 
 function evalDisplay(i)
-  {
-    var evalRow = '<tr><td>' + liveEvals[i].currentEvalPlayer + '</td><td>' + liveEvals[i].ctrl + '</td><td>' + liveEvals[i].exec + '</td><td>' + liveEvals[i].vari + '</td><td>' + liveEvals[i].spcu + '</td><td>' + liveEvals[i].bdcn + '</td><td>' + liveEvals[i].shwm + '</td><td>' + liveEvals[i].cons + '</td><td>' + liveEvals[i].chor + '</td></tr>';
-    $('#eval-table').append(evalRow);
-  }
+{
+  $('#'+i+"control").val(liveEvals[i].ctrl);
+  $('#'+i+"execution").val(liveEvals[i].exec);
+  $('#'+i+"variation").val(liveEvals[i].vari);
+  $('#'+i+"space-use").val(liveEvals[i].spcu);
+  $('#'+i+"choreography").val(liveEvals[i].chor);
+  $('#'+i+"construction").val(liveEvals[i].cons);
+  $('#'+i+"body-control").val(liveEvals[i].bdcn);
+  $('#'+i+"showmanship").val(liveEvals[i].shwm);
+}
 
 function appendEval(range) {
   var evalinputParams = {

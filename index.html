@@ -299,7 +299,8 @@
     {
       playerList.push(players[x][0]);
     }
-    loadTable(playerList.length);
+    loadClickTable(playerList.length);
+    loadEvalTable(playerList.length);
     $('#click-player-name').text(playerList[0]);
     $('#eval-player-name').text(playerList[0]);
     $('#positive').val('');
