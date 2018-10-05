@@ -1,5 +1,5 @@
 
-document.getElementById("clickInput").onload = function() {loadTable()};
+$("#click-input").onload = function() {loadTable()};
 
 function loadTable()
 {
