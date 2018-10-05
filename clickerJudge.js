@@ -48,11 +48,11 @@ function storeClick() {
 
 function clickDisplay(i)
   {
-    $('#'+i+"positive").val(liveClicks.positive);
-    $('#'+i+"negative").val(liveClicks.negative);
-    $('#'+i+"restart").val(liveClicks.restart);
-    $('#'+i+"discard").val(liveClicks.discard);
-    $('#'+i+"detach").val(liveClicks.detach);
+    $('#'+i+"positive").val(liveClicks[i].positive);
+    $('#'+i+"negative").val(liveClicks[i].negative);
+    $('#'+i+"restart").val(liveClicks[i].restart);
+    $('#'+i+"discard").val(liveClicks[i].discard);
+    $('#'+i+"detach").val(liveClicks[i].detach);
   }
 
 
