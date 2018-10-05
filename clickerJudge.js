@@ -1,6 +1,14 @@
 
+document.getElementById("clickInput").onload = function() {loadTable()};
 
-
+function loadTable()
+{
+  for (var i=0;i<playerList.length;i++)
+  {
+    var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input" + '</td><td>' + "<input id="+i+"negative </input" + '</td><td>' + "<input id="+i+"restart </input" + '</td><td>' + "<input id="+i+"discard </input" + '</td><td>' + "<input id="+i+"positive </input" + '</td></tr>';
+    $('#click-table').append(clickRow);
+  }
+}
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
@@ -57,14 +65,7 @@ function compare(a, b) {
 
 function clickDisplay(i)
   {
-    var clickRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td> <input id=' + i +'positive>' + "" + '</td><td> <input id=' + i +'negative>' + "" + '</td><td> <input id=' + i +'restart>' + "" + '</td><td> <input id=' + i +'discard>' + "" + '</td><td> <input id=' + i +'detach>' + "" + '</input></td></tr>';
-    var positiveInput = i + "positive";
-    var negativeInput = i + "negative";
-    var restartInput = i + "restart";
-    var discardInput = i + "discard";
-    var detachInput = i + "detach";
-    $("#" + positiveInput).val(liveClicks[i].positive);
-    $("#" + negativeInput).val(liveClicks[i].negative);
+    var clickRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td>' + liveClicks[i].positive + '</td><td>' + liveClicks[i].negative + '</td><td>' + liveClicks[i].restart + '</td><td>' + liveClicks[i].discard + '</td><td>' + liveClicks[i].detach + '</td></tr>';
     $('#click-table').append(clickRow);
   }
 
