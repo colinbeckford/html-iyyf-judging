@@ -328,6 +328,7 @@
     range: "SET-UP!F3:F8"
     }).then((response) => {
     clicker_judges = response.result.values;
+    retrievePlayers();
     processType(clicker_judges, judgetype);
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
@@ -341,13 +342,14 @@
     range: "SET-UP!F16:F21"
     }).then((response) => {
     eval_judges = response.result.values;
+    retrievePlayers();
     processType(eval_judges, judgetype);
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
     });
     }
-    retrievePlayers();
+
   }
 
   function processType(list, type) {
