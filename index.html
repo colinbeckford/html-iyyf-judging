@@ -299,7 +299,7 @@
     {
       playerList.push(players[x][0]);
     }
-    console.log(playerList.length);
+    loadTable(playerList.length);
     $('#click-player-name').text(playerList[0]);
     $('#eval-player-name').text(playerList[0]);
     $('#positive').val('');
@@ -354,7 +354,6 @@
   function processType(list, type) {
     var judgeverified = false;
     retrievePlayers();
-    loadTable();
     if (type == "clicker")
     {
       for (var i=0; i<list.length; i++)
