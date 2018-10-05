@@ -48,8 +48,11 @@ function storeClick() {
 
 function clickDisplay(i)
   {
-    var clickRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td>' + liveClicks[i].positive + '</td><td>' + liveClicks[i].negative + '</td><td>' + liveClicks[i].restart + '</td><td>' + liveClicks[i].discard + '</td><td>' + liveClicks[i].detach + '</td></tr>';
-    $('#click-table').append(clickRow);
+    $('#'+i+"positive").val(liveClicks.positive);
+    $('#'+i+"negative").val(liveClicks.negative);
+    $('#'+i+"restart").val(liveClicks.restart);
+    $('#'+i+"discard").val(liveClicks.discard);
+    $('#'+i+"detach").val(liveClicks.detach);
   }
 
 
