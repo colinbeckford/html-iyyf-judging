@@ -1,9 +1,7 @@
 
 function loadTable() {
-  console.log(playerList.length);
-  console.log("Function being called");
-  console.log(playerList.length);
-  for (var i=0;i<playerList.length;i++)
+  console.log(numCompetitors);
+  for (var i=0;i<numCompetitors;i++)
   {
     var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input" + '</td><td>' + "<input id="+i+"negative </input" + '</td><td>' + "<input id="+i+"restart </input" + '</td><td>' + "<input id="+i+"discard </input" + '</td><td>' + "<input id="+i+"positive </input" + '</td></tr>';
     $('#click-table').append(clickRow);

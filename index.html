@@ -252,6 +252,7 @@
   var liveClicks  = [];
   var liveEvals = [];
   var judgetype = "";
+  var numCompetitors = 0;
 
 
   function initClient() {
@@ -299,7 +300,7 @@
     {
       playerList.push(players[x][0]);
     }
-    console.log(playerList.length);
+    numCompetitors = playerList.length;
     $('#click-player-name').text(playerList[0]);
     $('#eval-player-name').text(playerList[0]);
     $('#positive').val('');
