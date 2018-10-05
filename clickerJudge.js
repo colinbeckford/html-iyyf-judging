@@ -57,7 +57,14 @@ function compare(a, b) {
 
 function clickDisplay(i)
   {
-    var clickRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td> <input>' + liveClicks[i].positive + '</input></td><td><input>' + liveClicks[i].negative + '</input></td><td><input>' + liveClicks[i].restart + '</input></td><td><input>' + liveClicks[i].discard + '</input></td><td><input>' + liveClicks[i].detach + '</input></td></tr>';
+    var clickRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td> <input id=' + i +'positive>' + "" + '</td><td> <input id=' + i +'negative>' + "" + '</td><td> <input id=' + i +'restart>' + "" + '</td><td> <input id=' + i +'discard>' + "" + '</td><td> <input id=' + i +'detach>' + "" + '</input></td></tr>';
+    var positiveInput = i + "positive";
+    var negativeInput = i + "negative";
+    var restartInput = i + "restart";
+    var discardInput = i + "discard";
+    var detachInput = i + "detach";
+    $("#" + positiveInput).val(liveClicks[i].positive);
+    $("#" + negativeInput).val(liveClicks[i].negative);
     $('#click-table').append(clickRow);
   }
 
