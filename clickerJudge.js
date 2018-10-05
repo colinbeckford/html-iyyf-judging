@@ -1,15 +1,4 @@
 
-function loadTable()
-{
-  console.log("Function being called");
-  console.log(playerList.length);
-  for (var i=0;i<playerList.length;i++)
-  {
-    var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input" + '</td><td>' + "<input id="+i+"negative </input" + '</td><td>' + "<input id="+i+"restart </input" + '</td><td>' + "<input id="+i+"discard </input" + '</td><td>' + "<input id="+i+"positive </input" + '</td></tr>';
-    $('#click-table').append(clickRow);
-  }
-}
-
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());

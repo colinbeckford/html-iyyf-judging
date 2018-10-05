@@ -347,11 +347,10 @@
     alert("Error.");
     });
     }
-
+    retrievePlayers();
   }
 
   function processType(list, type) {
-    retrievePlayers();
     var judgeverified = false;
     if (type == "clicker")
     {
@@ -400,7 +399,6 @@
       else
       {
         $("#login").hide();
-        loadTable();
         $('#click-input').show();
       }
     }
