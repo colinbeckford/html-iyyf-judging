@@ -1,4 +1,8 @@
 
+function loadTable() {
+  console.log(playerList.length);
+}
+
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
@@ -37,21 +41,6 @@ function storeClick() {
     appendMajor();
   }
 }
-
-function compare(a, b) {
-  const scoreA = a.positive-a.negative;
-  const scoreB = b.positive-b.negative;
-  let comparison = 0;
-  if (scoreA > scoreB)
-  {
-    comparison = 1;
-  }
-  else if (scoreA < scoreB)
-  {
-    comparison = -1;
-  }
-    return comparison * -1;
-  }
 
 function clickDisplay(i)
   {
