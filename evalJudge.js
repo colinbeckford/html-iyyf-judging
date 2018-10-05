@@ -69,7 +69,7 @@ function appendEval(range) {
   };
   var evalRequest = gapi.client.sheets.spreadsheets.values.append(evalinputParams, evalinputRangeBody);
   evalRequest.then(function(response) {
-    alert("Your evaluation scores have been entered into the spreadsheet.");
+    alert("Your evaluation scores ihave been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");

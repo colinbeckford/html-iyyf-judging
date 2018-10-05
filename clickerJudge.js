@@ -1,4 +1,6 @@
 
+
+
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
@@ -55,7 +57,7 @@ function compare(a, b) {
 
 function clickDisplay(i)
   {
-    var clickRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td>' + liveClicks[i].positive + '</td><td>' + liveClicks[i].negative + '</td><td>' + liveClicks[i].restart + '</td><td>' + liveClicks[i].discard + '</td><td>' + liveClicks[i].detach + '</td></tr>';
+    var clickRow = '<tr><td>' + liveClicks[i].currentClickPlayer + '</td><td> <input>' + liveClicks[i].positive + '</input></td><td><input>' + liveClicks[i].negative + '</input></td><td><input>' + liveClicks[i].restart + '</input></td><td><input>' + liveClicks[i].discard + '</input></td><td><input>' + liveClicks[i].detach + '</input></td></tr>';
     $('#click-table').append(clickRow);
   }
 

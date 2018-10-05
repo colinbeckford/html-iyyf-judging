@@ -43,12 +43,12 @@ function loadEval(input) {
 
 function getResults() {
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: spreadsheetId,
+  spreadsheetId: spreadsheet,
   range: "RESULT!H3:H50"
   }).then((response) => {
   loadTech(response.result.values);
   gapi.client.sheets.spreadsheets.values.get({
-  spreadsheetId: spreadsheetId,
+  spreadsheetId: spreadsheet,
   range: "RESULT!I3:P50"
   }).then((response) => {
   loadEval(response.result.values);
