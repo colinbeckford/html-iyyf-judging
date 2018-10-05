@@ -316,6 +316,7 @@
     var optionchoice = document.getElementById("judge-selection");
     judgename = $('#judge-name').val();
     judgetype = optionchoice.options[optionchoice.selectedIndex].value;
+    retrievePlayers();
     if (judgetype == "head")
     {
     $("#login").hide();
@@ -347,7 +348,7 @@
     alert("Error.");
     });
     }
-    retrievePlayers();
+
   }
 
   function processType(list, type) {
