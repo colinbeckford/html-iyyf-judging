@@ -21,6 +21,7 @@ function storeClick() {
   var detach = $('#detach').val();
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
   clickDisplay(index);
+  appendClick(range, index);
   if (index < (players.length)-1)
   {
     index+=1;
@@ -49,7 +50,26 @@ function clickDisplay(i)
   }
 
 
-function appendClick(range) {
+function appendClick(range, i) {
+  // var clickinputParams = {
+  //   spreadsheetId: spreadsheetId,
+  //   range: range,
+  //   valueInputOption: "RAW",
+  //   insertDataOption: "OVERWRITE",
+  // };
+  // var clickinputRangeBody = {
+  //   "range": range,
+  //   "majorDimension": "COLUMNS",
+  //   "values": [positives,
+  //   negatives],
+  // };
+  // var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
+  // clickRequest.then(function(response) {
+  //   alert("Your clicks have been entered into the spreadsheet.");
+  // }, function(reason) {
+  //   console.error("error: " + reason.result.error.message);
+  //   alert("Error.");
+  // });
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
@@ -58,9 +78,8 @@ function appendClick(range) {
   };
   var clickinputRangeBody = {
     "range": range,
-    "majorDimension": "COLUMNS",
-    "values": [positives,
-    negatives],
+    "majorDimension": "ROW",
+    "values": [liveClicks[i].positive, liveClicks[i].negative],
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
