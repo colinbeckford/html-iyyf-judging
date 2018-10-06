@@ -1,7 +1,7 @@
 function loadEvalTable(numPlayers) {
   for (var i=0;i<numPlayers;i++)
   {
-    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"control </input>" + '</td><td>' + "<input id="+i+"execution </input>" + '</td><td>' + "<input id="+i+"variation </input>" + '</td><td>' + "<input id="+i+"space-use </input>" + '</td><td>' + "<input id="+i+"showmanship </input>" + '</td><td>' + "<input id="+i+"body-control </input>" + '</td><td>' + "<input id="+i+"choreography </input>" + '</td><td>' + "<input id="+i+"construction </input>" + '</td><td> <button id=" + i + "edit </button></td></tr>';
+    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"control </input>" + '</td><td>' + "<input id="+i+"execution </input>" + '</td><td>' + "<input id="+i+"variation </input>" + '</td><td>' + "<input id="+i+"space-use </input>" + '</td><td>' + "<input id="+i+"showmanship </input>" + '</td><td>' + "<input id="+i+"body-control </input>" + '</td><td>' + "<input id="+i+"choreography </input>" + '</td><td>' + "<input id="+i+"construction </input>" + '</td><td> <button id=" + i + "edit Edit </button></td></tr>';
     $('#eval-table').append(evalRow);
   }
 }
