@@ -70,6 +70,7 @@ function appendClick(range, i) {
   //   console.error("error: " + reason.result.error.message);
   //   alert("Error.");
   // });
+  console.log([liveClicks[i].positive, liveClicks[i].negative]);
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
@@ -88,8 +89,8 @@ function appendClick(range, i) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  $('#finish').show();
-  $("#click-input").hide();
+  // $('#finish').show();
+  // $("#click-input").hide();
 }
 
 function appendMajor()
