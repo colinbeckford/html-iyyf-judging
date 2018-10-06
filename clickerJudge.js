@@ -70,7 +70,6 @@ function appendClick(range, i) {
   //   console.error("error: " + reason.result.error.message);
   //   alert("Error.");
   // });
-  console.log([liveClicks[i].positive, liveClicks[i].negative]);
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
@@ -80,7 +79,7 @@ function appendClick(range, i) {
   var clickinputRangeBody = {
     "range": range,
     "majorDimension": "ROW",
-    "values": [liveClicks[i].positive, liveClicks[i].negative],
+    "values": [positives[i], negative[i]],
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
