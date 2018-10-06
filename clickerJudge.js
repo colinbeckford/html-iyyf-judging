@@ -78,7 +78,7 @@ function appendClick(range, i) {
   };
   var clickinputRangeBody = {
     "range": range,
-    "majorDimension": "ROW",
+    "majorDimension": "ROWS",
     "values": [[positives[i]], [negative[i]]],
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
