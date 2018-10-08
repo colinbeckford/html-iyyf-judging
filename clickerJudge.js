@@ -7,6 +7,17 @@ function loadClickTable(numPlayers) {
   }
 }
 
+function updateEntry() {
+  for (var i=0;i<numPlayers;i++)
+  {
+    positives[i] = $('#'+i+"positive").val();
+    negatives[i] = $('#'+i+"negative").val();
+    restarts[i] =  $('#'+i+"restart").val();
+    discards[i] =  $('#'+i+"discard").val();
+    detaches[i] =  $('#'+i+"detaches").val();
+  }
+}
+
 function storeClick() {
   positives.push($('#positive').val());
   negatives.push($('#negative').val());
@@ -34,6 +45,7 @@ function storeClick() {
   else
   {
     alert("All player click scores have been recorded.");
+    updateEntry();
     appendClick(range);
     appendMajor();
   }
