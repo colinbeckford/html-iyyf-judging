@@ -75,11 +75,11 @@ function appendClick(range,index) {
   //   "values": [positives,
   //   negatives],
   // };
+  var rawScore = [positives[index], negatives[index]];
   var clickinputRangeBody = {
     "range": range,
-    "majorDimension": "COLUMNS",
-    "values": [positives[index],
-    negatives[index]],
+    "majorDimension": "ROWS",
+    "values": [rawScore],
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
