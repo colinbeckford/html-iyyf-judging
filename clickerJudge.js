@@ -7,7 +7,7 @@ function loadClickTable(numPlayers) {
   }
 }
 
-function updateEntry() {
+function updateEntry(numPlayers) {
   for (var i=0;i<numPlayers;i++)
   {
     positives[i] = $('#'+i+"positive").val();
@@ -45,7 +45,7 @@ function storeClick() {
   else
   {
     alert("All player click scores have been recorded.");
-    updateEntry();
+    updateEntry(numPlayers);
     appendClick(range);
     appendMajor();
   }

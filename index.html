@@ -254,6 +254,7 @@
   var liveClicks  = [];
   var liveEvals = [];
   var judgetype = "";
+  var numPlayers = 0;
 
 
   function initClient() {
@@ -301,7 +302,9 @@
     {
       playerList.push(players[x][0]);
     }
-    loadClickTable(playerList.length);
+    // loadClickTable(playerList.length);
+    numPlayers = playerList.length;
+    loadClickTable(numPlayers);
     loadEvalTable(playerList.length);
     $('#click-player-name').text(playerList[0]);
     $('#eval-player-name').text(playerList[0]);
