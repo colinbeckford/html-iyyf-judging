@@ -34,6 +34,7 @@ function storeClick() {
   clickDisplay(index);
   if (index < (players.length)-1)
   {
+    appendClick(range,index);
     index+=1;
     $('#click-player-name').text(players[index]);
     $('#positive').val('');
@@ -46,7 +47,7 @@ function storeClick() {
   {
     alert("All player click scores have been recorded.");
     updateClickEntry(numPlayers);
-    appendClick(range);
+    // appendClick(range);
     appendMajor();
   }
 }
@@ -61,18 +62,24 @@ function clickDisplay(i)
   }
 
 
-function appendClick(range) {
+function appendClick(range,index) {
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
+  // var clickinputRangeBody = {
+  //   "range": range,
+  //   "majorDimension": "COLUMNS",
+  //   "values": [positives,
+  //   negatives],
+  // };
   var clickinputRangeBody = {
     "range": range,
     "majorDimension": "COLUMNS",
-    "values": [positives,
-    negatives],
+    "values": [positives[index],
+    negatives[index]],
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
