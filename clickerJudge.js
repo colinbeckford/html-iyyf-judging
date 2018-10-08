@@ -72,13 +72,13 @@ function clickDisplay(i)
 function appendClick(range) {
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
-    range: range,
+    range: "RAW-TEx!F4:G4",
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
   var rawScore = [positives[index], negatives[index]];
   var clickinputRangeBody = {
-    "range": range,
+    "range": "RAW-TEx!F4:G4",
     "majorDimension": "ROWS",
     "values": [rawScore],
   };
