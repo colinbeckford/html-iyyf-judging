@@ -11,6 +11,7 @@ function loadClickTable(numPlayers) {
 function changeRange(index) {
   var startRange = 4;
   var currentRange = "RAW-TEx!F"+(startRange+index)+":G104";
+  console.log(currentRange);
 }
 function updateClickEntry(numPlayers) {
   for (var i=0;i<numPlayers;i++)
