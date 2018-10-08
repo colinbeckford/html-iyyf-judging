@@ -6,6 +6,19 @@ function loadEvalTable(numPlayers) {
   }
 }
 
+function updateEvalEntry(numPlayers) {
+  for (var i=0;i<numPlayers;i++)
+  {
+    controlList[i] = $('#'+i+"control").val();
+    executionList[i] = $('#'+i+"execution").val();
+    variationList[i] =  $('#'+i+"variation").val();
+    spaceUseList[i] =  $('#'+i+"space-use").val();
+    showmanshipList[i] =  $('#'+i+"showmanship").val();
+    bodyControlList[i] =  $('#'+i+"body-control").val();
+    choreographyList[i] =  $('#'+i+"choreography").val();
+    constructionList[i] =  $('#'+i+"construction").val();
+  }
+}
 
 function storeEval() {
   controlList.push(parseInt($('#control').val()));
@@ -53,6 +66,7 @@ function storeEval() {
   else
   {
     alert("All player eval scores have been recorded.");
+    updateEvalEntry();
     appendEval(range);
   }
 
