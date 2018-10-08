@@ -83,14 +83,15 @@ function appendClick(range,index) {
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
-    alert("Your clicks have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-
+  if (index == (numPlayers-1))
+  {
   $('#finish').show();
   $("#click-input").hide();
+  }
 }
 
 function appendMajor()
