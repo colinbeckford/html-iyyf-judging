@@ -1,3 +1,4 @@
+var currentRange = "";
 
 function loadClickTable(numPlayers) {
   for (var i=0;i<numPlayers;i++)
@@ -7,6 +8,10 @@ function loadClickTable(numPlayers) {
   }
 }
 
+function changeRange(index) {
+  var startRange = 4;
+  var currentRange = "RAW-TEx!F"+(startRange+index)+":G104";
+}
 function updateClickEntry(numPlayers) {
   for (var i=0;i<numPlayers;i++)
   {
@@ -34,7 +39,8 @@ function storeClick() {
   clickDisplay(index);
   if (index < (players.length)-1)
   {
-    appendClick(range,index);
+    changeRange(index);
+    appendClick(currentRange);
     index+=1;
     $('#click-player-name').text(players[index]);
     $('#positive').val('');
@@ -47,7 +53,7 @@ function storeClick() {
   {
     alert("All player click scores have been recorded.");
     updateClickEntry(numPlayers);
-    // appendClick(range);
+    appendClick(range);
     appendMajor();
   }
 }
@@ -62,19 +68,13 @@ function clickDisplay(i)
   }
 
 
-function appendClick(range,index) {
+function appendClick(range) {
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
-  // var clickinputRangeBody = {
-  //   "range": range,
-  //   "majorDimension": "COLUMNS",
-  //   "values": [positives,
-  //   negatives],
-  // };
   var rawScore = [positives[index], negatives[index]];
   var clickinputRangeBody = {
     "range": range,
