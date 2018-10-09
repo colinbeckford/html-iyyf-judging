@@ -125,7 +125,7 @@
         </table>
       </div>
       <div id='eval-final-input'>
-        <text id="eval-player-name">  </text>
+        <text id="eval-player-name-final">  </text>
         <br>
         <br>
         <text> Input Eval Score </text>
@@ -188,7 +188,7 @@
         </table>
       </div>
       <div id='eval-qualifying-input'>
-        <text id="eval-player-name">  </text>
+        <text id="eval-player-name-qualifying">  </text>
         <br>
         <br>
         <text> Input Eval Score </text>
@@ -353,7 +353,8 @@
     loadClickTable(numPlayers);
     loadEvalTable(playerList.length);
     $('#click-player-name').text(playerList[0]);
-    $('#eval-player-name').text(playerList[0]);
+    $('#eval-player-name-final').text(playerList[0]);
+    $('#eval-player-name-qualifying').text(playerList[0]);
     $('#positive').val('');
     $('#negative').val('');
     }, function(reason) {

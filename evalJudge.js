@@ -96,7 +96,8 @@ function storeEval() {
   if (index < (players.length)-1)
   {
     index += 1;
-    $('#eval-player-name').text(players[index]);
+    $('#eval-player-name-qualifying').text(players[index]);
+    $('#eval-player-name-final').text(players[index]);
     if (roundType == "final")
     {
       $('#control').val("");
