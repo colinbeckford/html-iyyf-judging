@@ -8,11 +8,6 @@ function loadClickTable(numPlayers) {
   }
 }
 
-function changeRange(index) {
-  var startRange = 4;
-  var currentRange = "RAW-TEx!F"+(startRange+index)+":G"+(startRange+index);
-  console.log(currentRange);
-}
 function updateClickEntry(numPlayers) {
   for (var i=0;i<numPlayers;i++)
   {
@@ -40,8 +35,7 @@ function storeClick() {
   clickDisplay(index);
   if (index < (players.length)-1)
   {
-    changeRange(index);
-    appendClick(currentRange);
+    appendClick(range);
     index+=1;
     $('#click-player-name').text(players[index]);
     $('#positive').val('');
@@ -72,15 +66,14 @@ function clickDisplay(i)
 function appendClick(range) {
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
-    range: "RAW-TEx!F4:G4",
+    range: range,
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
-  var rawScore = [positives[index], negatives[index]];
   var clickinputRangeBody = {
-    "range": "RAW-TEx!F4:G4",
-    "majorDimension": "ROWS",
-    "values": [rawScore],
+    "range": range,
+    "majorDimension": "COLUMNS",
+    "values": [positives, negatives],
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
@@ -99,12 +92,12 @@ function appendMajor()
 {
   var majorinputParams = {
     spreadsheetId: spreadsheetId,
-    range: "RAW-TEx!C4:E105",
+    range: range,
     valueInputOption: "RAW",
     insertDataOption: "OVERWRITE",
   };
   var majorinputRangeBody = {
-    "range": "RAW-TEx!C4:E105",
+    "range": range,
     "majorDimension": "COLUMNS",
     "values": [restarts,
     discards, detaches],
