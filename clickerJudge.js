@@ -69,11 +69,11 @@ function appendClick() {
     spreadsheetId: spreadsheetId,
     range: range,
     valueInputOption: "RAW",
-    insertDataOption: "OVERWRITE",
+    insertDataOption: enum("OVERWRITE"),
   };
   var clickinputRangeBody = {
     "range": range,
-    "majorDimension": enum("COLUMNS"),
+    "majorDimension": "COLUMNS",
     "values": [positives, negatives],
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
