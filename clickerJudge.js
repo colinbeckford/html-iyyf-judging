@@ -69,7 +69,7 @@ function appendClick() {
     spreadsheetId: spreadsheetId,
     range: range,
     valueInputOption: "RAW",
-    insertDataOption: enum("OVERWRITE"),
+    insertDataOption: "OVERWRITE",
   };
   var clickinputRangeBody = {
     "range": range,
@@ -95,7 +95,7 @@ function appendMajor()
     spreadsheetId: spreadsheetId,
     range: range,
     valueInputOption: "RAW",
-    insertDataOption: enum("OVERWRITE"),
+    insertDataOption: "OVERWRITE",
   };
   var majorinputRangeBody = {
     "range": range,
