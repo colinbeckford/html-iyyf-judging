@@ -124,7 +124,7 @@
             <td> Edit Scores </td>
         </table>
       </div>
-      <div id='eval-input'>
+      <div id='eval-final-input'>
         <text id="eval-player-name">  </text>
         <br>
         <br>
@@ -186,6 +186,37 @@
             <td> Construction </td>
             <td> Choreography </td>
         </table>
+      </div>
+      <div id='eval-qualifying-input'>
+        <text id="eval-player-name">  </text>
+        <br>
+        <br>
+        <text> Input Eval Score </text>
+        <br>
+        <br>
+        <text> Control </text>
+        <br>
+        <input id="control"> </input>
+        <br>
+        <br>
+        <text> Execution </text>
+        <br>
+        <input id="execution"> </input>
+        <br>
+        <br>
+        <text> Choreography </text>
+        <br>
+        <input id="choreography"> </input>
+        <br>
+        <br>
+        <text> Body Control </text>
+        <br>
+        <input id="body-control"> </input>
+        <br>
+        <br>
+        <button onclick="storeEval()"> Submit </button>
+        <br>
+        <br>
         <table style="width:100%" id="eval-qualifying-table">
           <tr>
             <td> Name </td>
@@ -215,12 +246,14 @@
     $("#contest-info").hide();
     $("#player-info").hide();
     $("#click-input").hide();
-    $("#eval-input").hide();
+    $("#eval-final-input").hide();
+    $("#eval-qualifying-input").hide();
     $("#results-chart").hide();
     $("#texcomp-chart").hide();
     $("#finish").hide();
     $("#eval-qualifying-table").hide();
     $("#eval-final-table").hide();
+
   });
   </script>
 
@@ -429,6 +462,7 @@
     else if (type == "eval" && roundType == "final")
     {
       $('#eval-final-table').show();
+      $('#eval-final-input').show();
       for (var i=0; i<list.length; i++)
       {
         if (list[i] == judgename)
@@ -479,6 +513,7 @@
     }
     else if (type == "eval" && roundType == "qualifying")
     {
+      $('#eval-qualifying-input').show();
       $('#eval-qualifying-table').show();
       for (var i=0; i<list.length; i++)
       {
