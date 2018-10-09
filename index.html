@@ -28,6 +28,15 @@
         <input id="judge-name"> </input>
         <br>
         <br>
+        <text> What round are you judging? </text>
+        <br>
+        <br>
+        <select id="round-selection">
+        <option value="qualifying">Prelim/Semi-Final (4 evaluations)</option>
+        <option value="final">Final (8 evaluations)</option>
+        </select>
+        <br>
+        <br>
         <text> Input Spreadsheet Link Here </text>
         <br>
         <br>
@@ -45,11 +54,6 @@
         <text> Input Division Name </text>
         <br>
         <input id="div-name"> </input>
-        <br>
-        <br>
-        <text> Input Round </text>
-        <br>
-        <input id="round"> </input>
         <br>
         <br>
         <text> Input Clicker Judges </text>
@@ -253,8 +257,9 @@
   var sixJ = [];
   var liveClicks  = [];
   var liveEvals = [];
-  var judgetype = "";
+  var judgeType = "";
   var numPlayers = 0;
+  var roundType = "";
 
 
   function initClient() {
@@ -315,40 +320,41 @@
     alert("Error.");
     });
   }
+
   function getJudge() {
     spreadsheet = $('#spreadsheet-id').val();
     var beginId = spreadsheet.indexOf("d/") + 2;
     var endId = spreadsheet.indexOf("/e");
     spreadsheetId = spreadsheet.slice(beginId, endId);
-    var optionchoice = document.getElementById("judge-selection");
+    var judgeChoice = document.getElementById("judge-selection");
     judgename = $('#judge-name').val();
-    judgetype = optionchoice.options[optionchoice.selectedIndex].value;
-    if (judgetype == "head")
+    judgeType = judgeChoice.options[judgeChoice.selectedIndex].value;
+    if (judgeType == "head")
     {
     $("#login").hide();
     $('#contest-info').show();
     }
-    else if (judgetype == "clicker")
+    else if (judgeType == "clicker")
     {
     gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
     range: "SET-UP!F3:F8"
     }).then((response) => {
     clicker_judges = response.result.values;
-    processType(clicker_judges, judgetype);
+    processType(clicker_judges, judgeType);
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
     });
     }
-    else if (judgetype = "eval")
+    else if (judgeType = "eval")
     {
     gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
     range: "SET-UP!F16:F21"
     }).then((response) => {
     eval_judges = response.result.values;
-    processType(eval_judges, judgetype);
+    processType(eval_judges, judgeType);
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
@@ -360,6 +366,8 @@
   function processType(list, type) {
     var judgeverified = false;
     retrievePlayers();
+    var roundChoice = document.getElementById("round-selection");
+    var roundType = judgeChoice.options[judgeChoice.selectedIndex].value;
     if (type == "clicker")
     {
       for (var i=0; i<list.length; i++)
@@ -410,7 +418,7 @@
         $('#click-input').show();
       }
     }
-    else if (type == "eval")
+    else if (type == "eval" && roundType == "final")
     {
       for (var i=0; i<list.length; i++)
       {
@@ -439,6 +447,56 @@
           else if (i == 5)
           {
             range = "RAW-TEvPEv!AQ4:AX104";
+          }
+        }
+      }
+      for (var i=0; i<list.length; i++)
+      {
+        if (list[i][0] == judgename)
+        {
+          judgeverified = true;
+        }
+      }
+      if (judgeverified == false)
+      {
+        alert("Name entered is not registered to judge this event.");
+        window.location.reload();
+      }
+      else
+      {
+        $("#login").hide();
+        $('#eval-input').show();
+      }
+    }
+    else if (type == "eval" && roundType == "qualifying")
+    {
+      for (var i=0; i<list.length; i++)
+      {
+        if (list[i] == judgename)
+        {
+          if (i == 0)
+          {
+            range = "RAW-TEvPEv!C4:F104";
+          }
+          else if (i == 1)
+          {
+            range = "RAW-TEvPEv!G4:J104";
+          }
+          else if (i == 2)
+          {
+            range = "RAW-TEvPEv!K4:N104";
+          }
+          else if (i == 3)
+          {
+            range = "RAW-TEvPEv!O4:R104";
+          }
+          else if (i == 4)
+          {
+            range = "RAW-TEvPEv!S4:V104";
+          }
+          else if (i == 5)
+          {
+            range = "RAW-TEvPEv!W4:Z104";
           }
         }
       }
