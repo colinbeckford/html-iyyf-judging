@@ -219,6 +219,8 @@
     $("#results-chart").hide();
     $("#texcomp-chart").hide();
     $("#finish").hide();
+    $("#eval-qualifying-table").hide();
+    $("#eval-final-table").hide();
   });
   </script>
 
@@ -268,10 +270,6 @@
   var numPlayers = 0;
   var roundType = "";
 
-  $(document).ready(function() {
-    $('#eval-qualfying-table').hide();
-    $('eval-final-table').hide();
-  });
 
   function initClient() {
     var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";  // TODO: Update placeholder with desired API key.
