@@ -174,7 +174,7 @@
         <button onclick="storeEval()"> Submit </button>
         <br>
         <br>
-        <table style="width:100%" id="eval-table">
+        <table style="width:100%" id="eval-final-table">
           <tr>
             <td> Name </td>
             <td> Control </td>
@@ -185,7 +185,14 @@
             <td> Showmanship </td>
             <td> Construction </td>
             <td> Choreography </td>
-            <td> Edit Scores </td>
+        </table>
+        <table style="width:100%" id="eval-qualifying-table">
+          <tr>
+            <td> Name </td>
+            <td> Control </td>
+            <td> Execution </td>
+            <td> Body Control </td>
+            <td> Choreography </td>
         </table>
       </div>
       <div id="results-chart">
@@ -261,6 +268,10 @@
   var numPlayers = 0;
   var roundType = "";
 
+  $(document).ready(function() {
+    $('#eval-qualfying-table').hide();
+    $('eval-final-table').hide();
+  });
 
   function initClient() {
     var API_KEY = "AIzaSyBL78U6X04LeYMJ2h-35dPoPnXduUx_opo";  // TODO: Update placeholder with desired API key.
@@ -307,7 +318,6 @@
     {
       playerList.push(players[x][0]);
     }
-    // loadClickTable(playerList.length);
     numPlayers = playerList.length;
     loadClickTable(numPlayers);
     loadEvalTable(playerList.length);
@@ -367,7 +377,7 @@
     var judgeverified = false;
     retrievePlayers();
     var roundChoice = document.getElementById("round-selection");
-    var roundType = judgeChoice.options[judgeChoice.selectedIndex].value;
+    roundType = roundChoice.options[roundChoice.selectedIndex].value;
     if (type == "clicker")
     {
       for (var i=0; i<list.length; i++)
@@ -420,6 +430,7 @@
     }
     else if (type == "eval" && roundType == "final")
     {
+      $('#eval-final-table').show();
       for (var i=0; i<list.length; i++)
       {
         if (list[i] == judgename)
@@ -470,6 +481,7 @@
     }
     else if (type == "eval" && roundType == "qualifying")
     {
+      $('#eval-qualifying-table').show();
       for (var i=0; i<list.length; i++)
       {
         if (list[i] == judgename)
