@@ -15,7 +15,7 @@ function updateClickEntry(numPlayers) {
     negatives[i] = $('#'+i+"negative").val();
     restarts[i] =  $('#'+i+"restart").val();
     discards[i] =  $('#'+i+"discard").val();
-    detaches[i] =  $('#'+i+"detaches").val();
+    detaches[i] =  $('#'+i+"detach").val();
   }
 }
 
