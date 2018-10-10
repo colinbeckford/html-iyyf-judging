@@ -1,5 +1,13 @@
 var numEvalPlayers = 0;
 var currentEvalPlayer = "";
+var ctrl = "";
+var exec = "";
+var vari = "";
+var spcu = "";
+var bdcn = "";
+var shwm = "";
+var cons = "";
+var chor = "";
 
 function loadEvalTable(num) {
   if (roundType == "final")
@@ -42,31 +50,39 @@ function loadEvalScores() {
          {
            index+=1;
            currentEvalPlayer = playerList[i];
-           $('#'+i+"control-f").val(evaloutput[i][1]);
-           $('#'+i+"execution-f").val(evaloutput[i][0]);
-           $('#'+i+"variation-f").val(evaloutput[i][2]);
-           $('#'+i+"space-use-f").val(evaloutput[i][3]);
-           $('#'+i+"showmanship-f").val(evaloutput[i][7]);
-           $('#'+i+"body-control-f").val(evaloutput[i][6]);
-           $('#'+i+"choreography-f").val(evaloutput[i][4]);
-           $('#'+i+"construction-f").val(evaloutput[i][5]);
-           controlList.push(evaloutput[i][1]);
-           executionList.push(evaloutput[i][0]);
-           variationList.push(evaloutput[i][2]);
-           spaceUseList.push(evaloutput[i][3]);
-           showmanshipList.push(evaloutput[i][7]);
-           bodyControlList.push(evaloutput[i][6]);
-           choreographyList.push(evaloutput[i][4]);
-           constructionList.push(evaloutput[i][5]);
-           liveEvals.push({currentEvalPlayer, evaloutput[i][1], evaloutput[i][0], evaloutput[i][2], evaloutput[i][3], evaloutput[i][6], evaloutput[i][7], evaloutput[i][5], evaloutput[i][4]});
+           ctrl = evaloutput[i][1];
+           exec = evaloutput[i][0];
+           vari = evaloutput[i][2];
+           spcu = evaloutput[i][3];
+           bdcn = evaloutput[i][6];
+           shwm = evaloutput[i][7];
+           cons = evaloutput[i][5];
+           chor = evaloutput[i][4];
+           $('#'+i+"control-f").val(ctrl);
+           $('#'+i+"execution-f").val(exec);
+           $('#'+i+"variation-f").val(vari);
+           $('#'+i+"space-use-f").val(spcu);
+           $('#'+i+"showmanship-f").val(shwm);
+           $('#'+i+"body-control-f").val(cons);
+           $('#'+i+"choreography-f").val(chor);
+           $('#'+i+"construction-f").val(cons);
+           controlList.push(ctrl);
+           executionList.push(exec));
+           variationList.push(vari);
+           spaceUseList.push(spcu);
+           showmanshipList.push(shwm);
+           bodyControlList.push(bdcn);
+           choreographyList.push(chor);
+           constructionList.push(cons);
+           liveEvals.push({currentEvalPlayer, ctrl, exec, vari, spcu, bdcn, shwm, cons, chor});
          }
          else if (roundType == "qualifying")
          {
            index+=1;
-           $('#'+i+"control-f").val(evaloutput[i][1]);
-           $('#'+i+"execution-f").val(evaloutput[i][0]);
-           $('#'+i+"body-control-f").val(evaloutput[i][6]);
-           $('#'+i+"choreography-f").val(evaloutput[i][4]);
+           $('#'+i+"control-q").val(evaloutput[i][1]);
+           $('#'+i+"execution-q").val(evaloutput[i][0]);
+           $('#'+i+"body-control-q").val(evaloutput[i][2]);
+           $('#'+i+"choreography-q").val(evaloutput[i][3]);
          }
        }
      }
@@ -115,24 +131,15 @@ function storeEval() {
   constructionList.push(parseInt($('#construction-f').val()));
   var currentEvalPlayer = "";
   currentEvalPlayer = playerList[index];
-  var ctrl = $('#control-f').val();
-  var exec = $('#execution-f').val();
-  var vari = $('#variation-f').val();
-  var spcu = $('#space-use-f').val();
-  var bdcn = $('#body-control-f').val();
-  var shwm = $('#showmanship-f').val();
-  var cons = $('#construction-f').val();
-  var chor = $('#choreography-f').val();
+  ctrl = $('#control-f').val();
+  exec = $('#execution-f').val();
+  vari = $('#variation-f').val();
+  spcu = $('#space-use-f').val();
+  bdcn = $('#body-control-f').val();
+  shwm = $('#showmanship-f').val();
+  cons = $('#construction-f').val();
+  chor = $('#choreography-f').val();
   liveEvals.push({currentEvalPlayer, ctrl, exec, vari, spcu, bdcn, shwm, cons, chor});
-  currentEvalPlayer = "";
-  ctrl = 0;
-  exec = 0;
-  vari = 0;
-  spcu = 0;
-  bdcn = 0;
-  shwm = 0;
-  cons = 0;
-  chor = 0;
   }
   else if (roundType == "qualifying")
   {
@@ -147,11 +154,6 @@ function storeEval() {
   var bdcn = $('#body-control-q').val();
   var chor = $('#choreography-q').val();
   liveEvals.push({currentEvalPlayer, ctrl, exec, bdcn, chor});
-  currentEvalPlayer = "";
-  ctrl = 0;
-  exec = 0;
-  bdcn = 0;
-  chor = 0;
   }
   evalDisplay(index);
   if (index <= players.length)
