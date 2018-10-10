@@ -2,6 +2,7 @@ var numClickPlayers = 0;
 
 
 function loadClickTable(num) {
+  console.log(num);
   for (var i=0;i<num;i++)
   {
     numClickPlayers+=1;
@@ -12,6 +13,7 @@ function loadClickTable(num) {
 }
 
 function loadEnteredScores() {
+  console.log("method called");
   var clickoutputparams = {
        spreadsheetId: spreadsheetId,
        ranges: [range, "RAW-TEx!C4:E104"],
