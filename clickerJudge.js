@@ -19,9 +19,6 @@ function loadClickScores() {
      var getclickrequest = gapi.client.sheets.spreadsheets.values.batchGet(clickoutputparams);
      getclickrequest.then(function(response)
      {
-      console.log(jQuery.isEmptyObject(response));
-       if (jQuery.isEmptyObject(response) == false)
-       {
        console.log(response);
        var clickoutput = (response.result.valueRanges[0].values);
        var majoroutput = (response.result.valueRanges[1].values);
@@ -47,13 +44,6 @@ function loadClickScores() {
          detaches.push(majoroutput[i][2]);
          liveClicks.push({currentPlayer, pos, neg, res, dis, det});
        }
-     }
-     else
-     {
-       console.log("This is empty");
-       $('#click-player-name').html(playerList[0]);
-     }
-
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
      });
