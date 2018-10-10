@@ -36,7 +36,7 @@ function storeClick() {
   if (index < (players.length)-1)
   {
     appendClick();
-    appendMajor();
+    setTimeout(appendMajor,500);
     index+=1;
     $('#click-player-name').text(players[index]);
     $('#positive').val('');
@@ -93,21 +93,18 @@ function appendMajor()
 {
   var majorinputParams = {
     spreadsheetId: spreadsheetId,
-    range: range,
+    range: "RAW-TEx!C4:E104",
     valueInputOption: "RAW",
-    insertDataOption: "OVERWRITE",
   };
   var majorinputRangeBody = {
-    "range": range,
+    "range": "RAW-TEx!C4:E104",
     "majorDimension": "COLUMNS",
     "values": [restarts,
     discards, detaches],
   };
-  var majorRequest = gapi.client.sheets.spreadsheets.values.append(majorinputParams, majorinputRangeBody);
+  var majorRequest = gapi.client.sheets.spreadsheets.values.update(majorinputParams, majorinputRangeBody);
   majorRequest.then(function(response) {
     alert("Major deducts have been entered into the spreadsheet.");
-    $("#click-input").hide();
-    $('#finish').show();
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
