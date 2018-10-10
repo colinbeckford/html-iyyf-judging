@@ -44,7 +44,7 @@ function loadClickScores() {
          restarts.push(majoroutput[i][0]);
          discards.push(majoroutput[i][1]);
          detaches.push(majoroutput[i][2]);
-         liveClicks.push({currentPlayer, pos, neg, res, dis, det});
+         liveClicks.push({currentClickPlayer, pos, neg, res, dis, det});
        }
      }
      else
