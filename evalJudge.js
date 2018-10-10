@@ -8,6 +8,7 @@ var bdcn = "";
 var shwm = "";
 var cons = "";
 var chor = "";
+var evalEntered = false;
 
 function loadEvalTable(num) {
   if (roundType == "final")
@@ -41,7 +42,6 @@ function loadEvalScores() {
        if (response.result.valueRanges[0].hasOwnProperty('values') == true)
        {
        var evaloutput = (response.result.valueRanges[0].values);
-       console.log(evaloutput);
        $('#eval-player-name-final').html(playerList[evaloutput.length]);
        $('#eval-player-name-qualifying').html(playerList[evaloutput.length]);
        for (var i=0;i<evaloutput.length;i++)
@@ -119,6 +119,9 @@ function updateEvalEntry(i) {
 }
 
 function storeEval() {
+  if (evalEntered == false)
+  {
+  evalEntered == true;
   if (roundType == "final")
   {
   controlList.push(parseInt($('#control-f').val()));
@@ -200,17 +203,18 @@ function storeEval() {
       $('#choreography-q').val("");
       $('#body-control-q').val("");
     }
+    evalEntered = false;
   }
   else
   {
     updateEvalEntry();
     appendEval(roundType);
   }
-
+}
 }
 
 function evalDisplay(i)
-{
+
   if (roundType == "final")
   {
   $('#'+i+"control-f").val(liveEvals[i].ctrl);
@@ -261,7 +265,7 @@ function appendEval(round) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  if (index == (numClickPlayers))
+  if (index == (numEvalPlayers))
   {
     alert("You've inserted scores for all players! You may still edit past scores.");
   }

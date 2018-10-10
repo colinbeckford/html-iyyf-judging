@@ -1,5 +1,6 @@
 var numClickPlayers = 0;
 var currentClickPlayer = "";
+var clickEntered = false;
 function loadClickTable(num) {
   for (var i=0;i<num;i++)
   {
@@ -77,6 +78,9 @@ function updateClickEntry(i) {
 }
 
 function storeClick(i) {
+  if (clickEntered == false)
+  {
+  clickEntered == true;
   positives[i] = parseInt(($('#positive').val()));
   negatives[i] = parseInt(($('#negative').val()));
   restarts[i] = parseInt(($('#restart').val()));
@@ -111,12 +115,14 @@ function storeClick(i) {
     $('#restart').val('');
     $('#discard').val('');
     $('#detach').val('');
+    clickEntered = false;
   }
   else
   {
     appendClick();
     appendMajor();
   }
+}
 }
 
 function clickDisplay(i)
