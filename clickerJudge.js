@@ -15,8 +15,8 @@ function updateClickEntry(i) {
     restarts[i] =  $('#'+i+"restart").val();
     discards[i] =  $('#'+i+"discard").val();
     detaches[i] =  $('#'+i+"detach").val();
-    appendClick();
-    appendMajor();
+    setTimeout(appendClick,500);
+    setTimeout(appendMajor,500);
 }
 
 function storeClick() {
