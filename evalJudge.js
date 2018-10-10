@@ -33,11 +33,12 @@ function loadEvalScores() {
      var getevalrequest = gapi.client.sheets.spreadsheets.values.batchGet(evaloutputparams);
      getevalrequest.then(function(response) {
        var evaloutput = (response.result.valueRanges[0].values);
+       $('#eval-player-name').val(players[(evaloutput.length)+1]);
        for (var i=0;i<evaloutput.length;i++)
        {
          if (roundType == "final")
          {
-           $('#eval-player-name').val(players[(evaloutput.length)+1])
+
            $('#'+i+"control-f").val(evaloutput[i][1]);
            $('#'+i+"execution-f").val(evaloutput[i][0]);
            $('#'+i+"variation-f").val(evaloutput[i][2]);
@@ -49,7 +50,6 @@ function loadEvalScores() {
          }
          else if (roundType == "qualifying")
          {
-           $('#eval-player-name').val(players[(evaloutput.length)+1])
            $('#'+i+"control-f").val(evaloutput[i][1]);
            $('#'+i+"execution-f").val(evaloutput[i][0]);
            $('#'+i+"body-control-f").val(evaloutput[i][6]);
