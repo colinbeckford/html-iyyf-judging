@@ -121,7 +121,7 @@ function storeEval() {
   else
   {
     updateEvalEntry();
-    appendEval(range, roundType);
+    appendEval(roundType,range);
   }
 
 }
