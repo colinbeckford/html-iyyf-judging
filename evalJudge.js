@@ -30,6 +30,7 @@ function loadEvalScores() {
      };
      var getevalrequest = gapi.client.sheets.spreadsheets.values.batchGet(evaloutputparams);
      getevalrequest.then(function(response) {
+       console.log(response);
        if (response.result.valueRanges.hasOwnProperty('values') == true)
        {
        var evaloutput = (response.result.valueRanges[0].values);
@@ -40,7 +41,7 @@ function loadEvalScores() {
        {
          if (roundType == "final")
          {
-
+           index+=1;
            $('#'+i+"control-f").val(evaloutput[i][1]);
            $('#'+i+"execution-f").val(evaloutput[i][0]);
            $('#'+i+"variation-f").val(evaloutput[i][2]);
@@ -52,6 +53,7 @@ function loadEvalScores() {
          }
          else if (roundType == "qualifying")
          {
+           index+=1;
            $('#'+i+"control-f").val(evaloutput[i][1]);
            $('#'+i+"execution-f").val(evaloutput[i][0]);
            $('#'+i+"body-control-f").val(evaloutput[i][6]);
