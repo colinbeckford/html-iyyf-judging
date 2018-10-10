@@ -350,12 +350,16 @@
       playerList.push(players[x][0]);
     }
     numPlayers = playerList.length;
+    if (judgeType == "clicker")
+    {
     loadClickTable(numPlayers);
     loadClickScores();
+    }
+    else if (judgeType == "eval")
+    {
     loadEvalTable(numPlayers);
     loadEvalScores();
-    $('#positive').val('');
-    $('#negative').val('');
+    }
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
