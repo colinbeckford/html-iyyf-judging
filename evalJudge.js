@@ -25,7 +25,6 @@ function loadEvalTable(num) {
 }
 
 function loadEvalScores() {
-  console.log("Function called");
   var evaloutputparams = {
        spreadsheetId: spreadsheetId,
        ranges: [range],
@@ -38,6 +37,7 @@ function loadEvalScores() {
        {
          if (roundType == "final")
          {
+           $('#eval-player-name').val(players[(evaloutput.length)+1])
            $('#'+i+"control-f").val(evaloutput[i][1]);
            $('#'+i+"execution-f").val(evaloutput[i][0]);
            $('#'+i+"variation-f").val(evaloutput[i][2]);
@@ -49,6 +49,7 @@ function loadEvalScores() {
          }
          else if (roundType == "qualifying")
          {
+           $('#eval-player-name').val(players[(evaloutput.length)+1])
            $('#'+i+"control-f").val(evaloutput[i][1]);
            $('#'+i+"execution-f").val(evaloutput[i][0]);
            $('#'+i+"body-control-f").val(evaloutput[i][6]);

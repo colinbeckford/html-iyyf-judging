@@ -12,7 +12,6 @@ function loadClickTable(num) {
 }
 
 function loadClickScores() {
-  console.log("Function called");
   var clickoutputparams = {
        spreadsheetId: spreadsheetId,
        ranges: [range, "RAW-TEx!C4:E104"],
@@ -25,6 +24,7 @@ function loadClickScores() {
        var majoroutput = (response.result.valueRanges[1].values);
        for (var i=0;i<clickoutput.length;i++)
        {
+         $('#click-player-name').val(players[(clickoutput.length)+1])
          $('#'+i+"positive").val(clickoutput[i][0]);
          $('#'+i+"negative").val(clickoutput[i][1]);
          $('#'+i+"restart").val(majoroutput[i][0]);
