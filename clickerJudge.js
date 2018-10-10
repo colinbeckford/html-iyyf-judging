@@ -20,7 +20,7 @@ function loadClickScores() {
      getclickrequest.then(function(response) {
        var clickoutput = (response.result.valueRanges[0].values);
        var majoroutput = (response.result.valueRanges[1].values);
-       $('#click-player-name').val(playerList[clickoutput.length]);
+       $('#click-player-name').html(playerList[clickoutput.length]);
        for (var i=0;i<clickoutput.length;i++)
        {
          $('#'+i+"positive").val(clickoutput[i][0]);
