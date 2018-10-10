@@ -23,6 +23,12 @@ function loadClickScores() {
        $('#click-player-name').html(playerList[clickoutput.length]);
        for (var i=0;i<clickoutput.length;i++)
        {
+         var pos = clickoutput[i][0];
+         var neg = clickoutput[i][1];
+         var res = majoroutput[i][0];
+         var dis = majoroutput[i][1];
+         var det = majoroutput[i][2];
+         var currentPlayer = playerList[i];
          $('#'+i+"positive").val(clickoutput[i][0]);
          $('#'+i+"negative").val(clickoutput[i][1]);
          $('#'+i+"restart").val(majoroutput[i][0]);
@@ -33,7 +39,7 @@ function loadClickScores() {
          restarts.push(majoroutput[i][0]);
          discards.push(majoroutput[i][1]);
          restarts.push(majoroutput[i][2]);
-         liveClicks.push({players[i][0], clickoutput[i][0], clickoutput[i][1], majoroutput[i][0], majoroutput[i][1], majoroutput[i][2]});
+         liveClicks.push({currentPlayer, pos, neg, res, dis, det});
        }
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
