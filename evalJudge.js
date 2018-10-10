@@ -183,6 +183,5 @@ function appendEval(round, range) {
   if (index == (numEvalPlayers))
   {
   $('#finish-eval').show();
-  $("#eval-input").hide();
   }
 }

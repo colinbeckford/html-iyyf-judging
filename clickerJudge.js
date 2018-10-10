@@ -80,7 +80,6 @@ function appendClick() {
   if (index == (numClickPlayers))
   {
   $('#finish-click').show();
-  $("#click-input").hide();
   }
 }
 
