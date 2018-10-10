@@ -39,7 +39,7 @@ function loadClickScores() {
          negatives.push(clickoutput[i][1]);
          restarts.push(majoroutput[i][0]);
          discards.push(majoroutput[i][1]);
-         restarts.push(majoroutput[i][2]);
+         detaches.push(majoroutput[i][2]);
          liveClicks.push({currentPlayer, pos, neg, res, dis, det});
        }
      }, function(reason) {
