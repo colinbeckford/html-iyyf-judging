@@ -14,6 +14,7 @@ function loadEvalTable(numPlayers) {
   {
   for (var i=0;i<numPlayers;i++)
   {
+    numEvalPlayers+=1;
     var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"control-q </input>" + '</td><td>' + "<input id="+i+"execution-q </input>" + '</td><td>' + "<input id="+i+"body-control-q </input>" + '</td><td>' + "<input id="+i+"choreography-q </input>" + '</td></tr>';
     $('#eval-qualifying-table').append(evalRow);
   }
@@ -179,7 +180,7 @@ function appendEval(round, range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  if (index == numPlayers)
+  if (index == numEvalPlayers)
   {
   $('#finish-eval').show();
   $("#eval-input").hide();
