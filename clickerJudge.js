@@ -79,7 +79,7 @@ function appendClick() {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  if (index == (numPlayers-1))
+  if (index == numPlayers)
   {
   $('#finish').show();
   $("#click-input").hide();
