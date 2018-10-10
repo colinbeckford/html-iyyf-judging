@@ -120,6 +120,11 @@ function appendClick() {
   if (index == (numClickPlayers))
   {
     $('#finish-click').show();
+    console.log(positives);
+    console.log(negatives);
+    console.log(restarts);
+    console.log(discards);
+    console.log(detaches);
   }
 }
 
