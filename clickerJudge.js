@@ -89,7 +89,7 @@ function storeClick(i) {
   var discard = parseInt($('#discard').val());
   var detach = parseInt($('#detach').val());
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
-  $.each(liveClicks, function(key,value)
+  $.each(liveClicks[index], function(key,value)
   {
     if (key != currentClickPlayer)
     {
