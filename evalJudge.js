@@ -30,7 +30,7 @@ function loadEvalScores() {
      };
      var getevalrequest = gapi.client.sheets.spreadsheets.values.batchGet(evaloutputparams);
      getevalrequest.then(function(response) {
-       if (response.result.valueRanges[0].hasOwnProperty('values') == true)
+       if (response.result.valueRanges.hasOwnProperty('values') == true)
        {
        var evaloutput = (response.result.valueRanges[0].values);
        $('#eval-player-name').val(playerList[evaloutput.length]);
