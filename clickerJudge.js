@@ -8,9 +8,10 @@ function loadClickTable(num) {
     var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit onclick=updateClickEntry(" + i + ")> Edit </button> </td></tr>";
     $('#click-table').append(clickRow);
   }
+  loadClickScores();
 }
 
-function loadEnteredScores() {
+function loadClickScores() {
   console.log("Function called");
   var clickoutputparams = {
        spreadsheetId: spreadsheetId,
