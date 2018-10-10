@@ -21,6 +21,7 @@ function loadClickScores() {
      {
        if (jQuery.isEmptyObject(response) == false)
        {
+      console.log(response);
        var clickoutput = (response.result.valueRanges[0].values);
        var majoroutput = (response.result.valueRanges[1].values);
        $('#click-player-name').html(playerList[clickoutput.length]);
@@ -48,6 +49,7 @@ function loadClickScores() {
      }
      else
      {
+       console.log("This is empty");
        $('#click-player-name').html(playerList[0]);
      }
 
