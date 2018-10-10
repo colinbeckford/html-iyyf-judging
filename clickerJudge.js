@@ -11,11 +11,11 @@ function loadClickTable(num) {
 }
 
 function updateClickEntry() {
-    positives[index] = $('#'+i+"positive").val();
-    negatives[index] = $('#'+i+"negative").val();
-    restarts[index] =  $('#'+i+"restart").val();
-    discards[index] =  $('#'+i+"discard").val();
-    detaches[index] =  $('#'+i+"detach").val();
+    positives[index] = $('#'+index+"positive").val();
+    negatives[index] = $('#'+index+"negative").val();
+    restarts[index] =  $('#'+index+"restart").val();
+    discards[index] =  $('#'+index+"discard").val();
+    detaches[index] =  $('#'+index+"detach").val();
 }
 
 function storeClick() {
