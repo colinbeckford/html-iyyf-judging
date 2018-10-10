@@ -33,7 +33,9 @@ function loadEvalScores() {
        if (response.result.valueRanges.hasOwnProperty('values') == true)
        {
        var evaloutput = (response.result.valueRanges[0].values);
-       $('#eval-player-name').val(playerList[evaloutput.length]);
+       console.log(evaloutput);
+       $('#eval-player-name-final').val(playerList[evaloutput.length]);
+       $('#eval-player-name-qualifying').val(playerList[evaloutput.length]);
        for (var i=0;i<evaloutput.length;i++)
        {
          if (roundType == "final")
@@ -59,7 +61,8 @@ function loadEvalScores() {
      }
      else
      {
-       $('#eval-player-name').html(playerList[0]);
+       $('#eval-player-name-final').html(playerList[0]);
+       $('#eval-player-name-qualifying').html(playerList[0]);
      }
     }, function(reason) {
        console.error('error: ' + reason.result.error.message);
