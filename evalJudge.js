@@ -30,7 +30,7 @@ function loadEnteredScores() {
      var getevalrequest = gapi.client.sheets.spreadsheets.values.batchGet(evaloutputparams);
      getevalrequest.then(function(response) {
        var evaloutput = (response.result.valueRanges[0].values);
-       for (var i=0;i<clickoutput.length;i++)
+       for (var i=0;i<evaloutput.length;i++)
        {
          if (roundType == "final")
          {
