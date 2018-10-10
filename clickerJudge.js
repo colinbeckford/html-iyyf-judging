@@ -35,7 +35,7 @@ function storeClick() {
   clickDisplay(index);
   if (index < (players.length)-1)
   {
-    updateScoreEntry();
+    updateClickEntry();
     appendClick();
     setTimeout(appendMajor,500);
     index+=1;
