@@ -32,7 +32,7 @@ function storeClick() {
   var detach = $('#detach').val();
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
   clickDisplay(index);
-  if (index < (players.length)-1)
+  if (index < (players.length))
   {
     setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
