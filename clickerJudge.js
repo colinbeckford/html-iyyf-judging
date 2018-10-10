@@ -5,17 +5,17 @@ function loadClickTable(num) {
   for (var i=0;i<num;i++)
   {
     numClickPlayers+=1;
-    var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit onclick="updateClickEntry(index)"> Edit </button> </td></tr>";
+    var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit onclick="updateClickEntry()"> Edit </button> </td></tr>";
     $('#click-table').append(clickRow);
   }
 }
 
-function updateClickEntry(i) {
-    positives[i] = $('#'+i+"positive").val();
-    negatives[i] = $('#'+i+"negative").val();
-    restarts[i] =  $('#'+i+"restart").val();
-    discards[i] =  $('#'+i+"discard").val();
-    detaches[i] =  $('#'+i+"detach").val();
+function updateClickEntry() {
+    positives[index] = $('#'+i+"positive").val();
+    negatives[index] = $('#'+i+"negative").val();
+    restarts[index] =  $('#'+i+"restart").val();
+    discards[index] =  $('#'+i+"discard").val();
+    detaches[index] =  $('#'+i+"detach").val();
 }
 
 function storeClick() {
