@@ -1,5 +1,6 @@
 var numClickPlayers = 0;
 
+
 function loadClickTable(num) {
   for (var i=0;i<num;i++)
   {
@@ -7,6 +8,22 @@ function loadClickTable(num) {
     var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit onclick=updateClickEntry(" + i + ")> Edit </button> </td></tr>";
     $('#click-table').append(clickRow);
   }
+  loadEnteredScores();
+}
+
+function loadEnteredScores() {
+  var clickoutputparams = {
+       spreadsheetId: spreadsheetId,
+       ranges: [range, "RAW-TEx!C4:E104"],
+       valueRenderOption: 'FORMATTED_VALUE',
+       dateTimeRenderOption: 'FORMATTED_STRING',
+     };
+     var getclickrequest = gapi.client.sheets.spreadsheets.values.batchGet(clickoutputparams);
+     request.then(function(response) {
+       console.log(response.result);
+     }, function(reason) {
+       console.error('error: ' + reason.result.error.message);
+     });
 }
 
 function updateClickEntry(i) {
@@ -81,7 +98,7 @@ function appendClick() {
   });
   if (index == (numClickPlayers))
   {
-  $('#finish-click').show();
+    $('#finish-click').show();
   }
 }
 
