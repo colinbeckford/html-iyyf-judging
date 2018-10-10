@@ -20,9 +20,9 @@ function loadEnteredScores() {
      };
      var getclickrequest = gapi.client.sheets.spreadsheets.values.batchGet(clickoutputparams);
      getclickrequest.then(function(response) {
-       console.log(response.result[0].values);
-       console.log(response.result[1].values);
-       
+       console.log(response.result.values[0]);
+       console.log(response.result.values[1]);
+
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
      });
