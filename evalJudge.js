@@ -241,7 +241,7 @@ function appendEval(round) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  else if (index == (numEvalPlayers))
+  if (index == (numEvalPlayers))
   {
     $('#finish-eval').show();
   }
