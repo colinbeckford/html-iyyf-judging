@@ -1,4 +1,3 @@
-var currentRange = "";
 var numClickPlayers = 0;
 
 function loadClickTable(num) {

@@ -1,9 +1,12 @@
+var numEvalPlayers;
+
 function loadEvalTable(numPlayers) {
   if (roundType == "final")
   {
   for (var i=0;i<numPlayers;i++)
   {
-    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"control-f </input>" + '</td><td>' + "<input id="+i+"execution-f </input>" + '</td><td>' + "<input id="+i+"variation-f </input>" + '</td><td>' + "<input id="+i+"space-use-f </input>" + '</td><td>' + "<input id="+i+"showmanship-f </input>" + '</td><td>' + "<input id="+i+"body-control-f </input>" + '</td><td>' + "<input id="+i+"choreography-f </input>" + '</td><td>' + "<input id="+i+"construction-f </input>" + '</td></tr>';
+    numEvalPlayers+=1;
+    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"control-f </input>" + '</td><td>' + "<input id="+i+"execution-f </input>" + '</td><td>' + "<input id="+i+"variation-f </input>" + '</td><td>' + "<input id="+i+"space-use-f </input>" + '</td><td>' + "<input id="+i+"showmanship-f </input>" + '</td><td>' + "<input id="+i+"body-control-f </input>" + '</td><td>' + "<input id="+i+"choreography-f </input>" + '</td><td>' + "<input id="+i+"construction-f </input> </td><td> <button id=" + i + "edit onclick=updateEvalEntry(" + i + ")> Edit </button> </td></tr>";
     $('#eval-final-table').append(evalRow);
   }
   }
@@ -17,9 +20,7 @@ function loadEvalTable(numPlayers) {
   }
 }
 
-function updateEvalEntry(numPlayers) {
-  for (var i=0;i<numPlayers;i++)
-  {
+function updateEvalEntry(i) {
     if (roundType == "final")
     {
     controlList[i] = $('#'+i+"control-f").val();
@@ -38,7 +39,6 @@ function updateEvalEntry(numPlayers) {
     bodyControlList[i] =  $('#'+i+"body-control-q").val();
     choreographyList[i] =  $('#'+i+"choreography-q").val();
     }
-  }
 }
 
 function storeEval() {
@@ -93,8 +93,9 @@ function storeEval() {
   chor = 0;
   }
   evalDisplay(index);
-  if (index < (players.length)-1)
+  if (index <= players.length)
   {
+    setTimeout(appendEval,500);
     index += 1;
     $('#eval-player-name-qualifying').text(players[index]);
     $('#eval-player-name-final').text(players[index]);
@@ -154,7 +155,6 @@ function appendEval(range, round) {
     spreadsheetId: spreadsheetId,
     range: range,
     valueInputOption: "RAW",
-    insertDataOption: "OVERWRITE",
   };
   if (round == "final")
   {
@@ -172,7 +172,7 @@ function appendEval(range, round) {
     "values": [executionList, controlList, choreographyList, bodyControlList],
   };
   }
-  var evalRequest = gapi.client.sheets.spreadsheets.values.append(evalinputParams, evalinputRangeBody);
+  var evalRequest = gapi.client.sheets.spreadsheets.values.update(evalinputParams, evalinputRangeBody);
   evalRequest.then(function(response) {
     alert("Your evaluation scores have been entered into the spreadsheet.");
   }, function(reason) {
