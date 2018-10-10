@@ -18,7 +18,6 @@ function appendInfo() {
     spreadsheetId: spreadsheetId,
     range: "SET-UP!B3:B6",
     valueInputOption: "RAW",
-    insertDataOption: "OVERWRITE",
   };
   var contestRangeBody = {
     "range": "SET-UP!B3:B6",
@@ -33,8 +32,7 @@ function appendInfo() {
   var clickerjudgeParams = {
     spreadsheetId: spreadsheetId,
     range: "SET-UP!F3:F8",
-    valueInputOption: "RAW",
-    insertDataOption: "OVERWRITE",
+    valueInputOption: "RAW",,
   };
   var clickerjudgeRangeBody = {
     "range": "SET-UP!F3:F8",
@@ -44,17 +42,16 @@ function appendInfo() {
   var evaljudgeParams = {
     spreadsheetId: spreadsheetId,
     range: "SET-UP!F16:F21",
-    valueInputOption: "RAW",
-    insertDataOption: "OVERWRITE",
+    valueInputOption: "RAW",,
   };
   var evaljudgeRangeBody = {
     "range": "SET-UP!F16:F21",
     "majorDimension": "COLUMNS",
     "values": [eval_judges],
   };
-  var request1 = gapi.client.sheets.spreadsheets.values.append(contestParams, contestRangeBody);
-  var request2 = gapi.client.sheets.spreadsheets.values.append(clickerjudgeParams, clickerjudgeRangeBody);
-  var request3 = gapi.client.sheets.spreadsheets.values.append(evaljudgeParams, evaljudgeRangeBody);
+  var request1 = gapi.client.sheets.spreadsheets.values.update(contestParams, contestRangeBody);
+  var request2 = gapi.client.sheets.spreadsheets.values.update(clickerjudgeParams, clickerjudgeRangeBody);
+  var request3 = gapi.client.sheets.spreadsheets.values.update(evaljudgeParams, evaljudgeRangeBody);
   request1.then(function(response) {
     console.log(response.result);
   }, function(reason) {
