@@ -1,5 +1,6 @@
 var numEvalPlayers = 0;
 
+
 function loadEvalTable(numPlayers) {
   if (roundType == "final")
   {
@@ -22,6 +23,8 @@ function loadEvalTable(numPlayers) {
 }
 
 function loadEnteredScores() {
+  $('#eval-player-name-qualifying').text(players[index]);
+  $('#eval-player-name-final').text(players[index]);
   var evaloutputparams = {
        spreadsheetId: spreadsheetId,
        ranges: [range],
@@ -116,7 +119,7 @@ function storeEval() {
   executionList.push(parseInt($('#execution-q').val()));
   bodyControlList.push(parseInt($('#body-control-q').val()));
   choreographyList.push(parseInt($('#choreography-q').val()));
-  var currentEvalPlayer = "";
+
   currentEvalPlayer = playerList[index];
   var ctrl = $('#control-q').val();
   var exec = $('#execution-q').val();
