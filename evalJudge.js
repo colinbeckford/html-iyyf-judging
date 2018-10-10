@@ -236,7 +236,7 @@ function appendEval(round) {
   }
   var evalRequest = gapi.client.sheets.spreadsheets.values.update(evalinputParams, evalinputRangeBody);
   evalRequest.then(function(response) {
-    alert("Your evaluation scores for " + playerList[index] + " have been entered into the spreadsheet.");
+    alert("Evaluation scores have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
