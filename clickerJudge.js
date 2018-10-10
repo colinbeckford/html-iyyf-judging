@@ -19,7 +19,7 @@ function loadEnteredScores() {
        dateTimeRenderOption: 'FORMATTED_STRING',
      };
      var getclickrequest = gapi.client.sheets.spreadsheets.values.batchGet(clickoutputparams);
-     request.then(function(response) {
+     getclickrequest.then(function(response) {
        console.log(response.result);
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
