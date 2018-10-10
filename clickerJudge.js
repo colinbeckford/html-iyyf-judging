@@ -66,7 +66,7 @@ function storeClick() {
     setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
     index+=1;
-    $('#click-player-name').text(players[index]);
+    $('#click-player-name').text(playerList[index]);
     $('#positive').val('');
     $('#negative').val('');
     $('#restart').val('');

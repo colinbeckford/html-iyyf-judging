@@ -33,7 +33,7 @@ function loadEvalScores() {
      var getevalrequest = gapi.client.sheets.spreadsheets.values.batchGet(evaloutputparams);
      getevalrequest.then(function(response) {
        var evaloutput = (response.result.valueRanges[0].values);
-       $('#eval-player-name').val(players[evaloutput.length]);
+       $('#eval-player-name').val(playerList[evaloutput.length]);
        for (var i=0;i<evaloutput.length;i++)
        {
          if (roundType == "final")
