@@ -1,5 +1,8 @@
 var numClickPlayers = 0;
 
+$(document).ready(function() {
+    loadClickScores();
+});
 
 function loadClickTable(num) {
   for (var i=0;i<num;i++)
@@ -8,7 +11,6 @@ function loadClickTable(num) {
     var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit onclick=updateClickEntry(" + i + ")> Edit </button> </td></tr>";
     $('#click-table').append(clickRow);
   }
-  loadClickScores();
 }
 
 function loadClickScores() {
@@ -23,7 +25,6 @@ function loadClickScores() {
        var clickoutput = (response.result.valueRanges[0].values);
        var majoroutput = (response.result.valueRanges[1].values);
        $('#click-player-name').val(playerList[clickoutput.length]);
-       console.log(playerList[clickoutput.length]);
        for (var i=0;i<clickoutput.length;i++)
        {
          $('#'+i+"positive").val(clickoutput[i][0]);
