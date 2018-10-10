@@ -57,27 +57,27 @@ function loadClickScores() {
 }
 
 function updateClickEntry(i) {
-    positives[i] = $('#'+i+"positive").val();
-    negatives[i] = $('#'+i+"negative").val();
-    restarts[i] =  $('#'+i+"restart").val();
-    discards[i] =  $('#'+i+"discard").val();
-    detaches[i] =  $('#'+i+"detach").val();
+    positives[i] = parseInt($('#'+i+"positive").val());
+    negatives[i] = parseInt($('#'+i+"negative").val());
+    restarts[i] =  parseInt($('#'+i+"restart").val());
+    discards[i] =  parseInt($('#'+i+"discard").val());
+    detaches[i] =  parseInt($('#'+i+"detach").val());
     setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
 }
 
 function storeClick(i) {
-  positives[i] = ($('#positive').val());
-  negatives[i] = ($('#negative').val());
-  restarts[i] = ($('#restart').val());
-  discards[i] = ($('#discard').val());
-  detaches[i] = ($('#detach').val());
+  positives[i] = parseInt(($('#positive').val()));
+  negatives[i] = parseInt(($('#negative').val()));
+  restarts[i] = parseInt(($('#restart').val()));
+  discards[i] = parseInt(($('#discard').val()));
+  detaches[i] = parseInt(($('#detach').val()));
   currentClickPlayer = playerList[index];
-  var positive = $('#positive').val();
-  var negative = $('#negative').val();
-  var restart = $('#restart').val();
-  var discard = $('#discard').val();
-  var detach = $('#detach').val();
+  var positive = parseInt($('#positive').val());
+  var negative = parseInt($('#negative').val());
+  var restart = parseInt($('#restart').val());
+  var discard = parseInt($('#discard').val());
+  var detach = parseInt($('#detach').val());
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
   clickDisplay(i);
   if (i <= (players.length))
@@ -129,11 +129,6 @@ function appendClick() {
   if (index == (numClickPlayers))
   {
     $('#finish-click').show();
-    console.log(positives);
-    console.log(negatives);
-    console.log(restarts);
-    console.log(discards);
-    console.log(detaches);
   }
 }
 

@@ -99,21 +99,21 @@ function loadEvalScores() {
 function updateEvalEntry(i) {
     if (roundType == "final")
     {
-    controlList[i] = $('#'+i+"control-f").val();
-    executionList[i] = $('#'+i+"execution-f").val();
-    variationList[i] =  $('#'+i+"variation-f").val();
-    spaceUseList[i] =  $('#'+i+"space-use-f").val();
-    showmanshipList[i] =  $('#'+i+"showmanship-f").val();
-    bodyControlList[i] =  $('#'+i+"body-control-f").val();
-    choreographyList[i] =  $('#'+i+"choreography-f").val();
-    constructionList[i] =  $('#'+i+"construction-f").val();
+    controlList[i] = parseInt($('#'+i+"control-f").val());
+    executionList[i] = parseInt($('#'+i+"execution-f").val());
+    variationList[i] =  parseInt($('#'+i+"variation-f").val());
+    spaceUseList[i] =  parseInt($('#'+i+"space-use-f").val());
+    showmanshipList[i] =  parseInt($('#'+i+"showmanship-f").val());
+    bodyControlList[i] =  parseInt($('#'+i+"body-control-f").val());
+    choreographyList[i] =  parseInt($('#'+i+"choreography-f").val());
+    constructionList[i] =  parseInt($('#'+i+"construction-f").val());
     }
     else if (roundType == "qualifying")
     {
-    controlList[i] = $('#'+i+"control-q").val();
-    executionList[i] = $('#'+i+"execution-q").val();
-    bodyControlList[i] =  $('#'+i+"body-control-q").val();
-    choreographyList[i] =  $('#'+i+"choreography-q").val();
+    controlList[i] = parseInt($('#'+i+"control-q").val());
+    executionList[i] = parseInt($('#'+i+"execution-q").val());
+    bodyControlList[i] =  parseInt($('#'+i+"body-control-q").val());
+    choreographyList[i] =  parseInt($('#'+i+"choreography-q").val());
     }
     appendEval(roundType);
 }
@@ -131,14 +131,14 @@ function storeEval() {
   constructionList.push(parseInt($('#construction-f').val()));
   var currentEvalPlayer = "";
   currentEvalPlayer = playerList[index];
-  ctrl = $('#control-f').val();
-  exec = $('#execution-f').val();
-  vari = $('#variation-f').val();
-  spcu = $('#space-use-f').val();
-  bdcn = $('#body-control-f').val();
-  shwm = $('#showmanship-f').val();
-  cons = $('#construction-f').val();
-  chor = $('#choreography-f').val();
+  ctrl = parseInt($('#control-f').val());
+  exec = parseInt($('#execution-f').val());
+  vari = parseInt($('#variation-f').val());
+  spcu = parseInt($('#space-use-f').val());
+  bdcn = parseInt($('#body-control-f').val());
+  shwm = parseInt($('#showmanship-f').val());
+  cons = parseInt($('#construction-f').val());
+  chor = parseInt($('#choreography-f').val());
   liveEvals.push({currentEvalPlayer, exec, ctrl, vari, spcu, chor, cons, bdcn, shwm});
   }
   else if (roundType == "qualifying")
@@ -149,10 +149,10 @@ function storeEval() {
   choreographyList.push(parseInt($('#choreography-q').val()));
 
   currentEvalPlayer = playerList[index];
-  var ctrl = $('#control-q').val();
-  var exec = $('#execution-q').val();
-  var bdcn = $('#body-control-q').val();
-  var chor = $('#choreography-q').val();
+  var ctrl = parseInt($('#control-q').val());
+  var exec = parseInt($('#execution-q').val());
+  var bdcn = parseInt($('#body-control-q').val());
+  var chor = parseInt($('#choreography-q').val());
   liveEvals.push({currentEvalPlayer, exec, ctrl, chor, bdcn});
   }
   evalDisplay(index);
@@ -241,8 +241,9 @@ function appendEval(round) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  if (index == (numEvalPlayers))
+  else if (index == (numEvalPlayers))
   {
     $('#finish-eval').show();
   }
+
 }
