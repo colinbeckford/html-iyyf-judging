@@ -9,6 +9,7 @@ function loadClickTable(numPlayers) {
 }
 
 function updateClickEntry(numPlayers) {
+  console.log(numPlayers);
   for (var i=0;i<numPlayers;i++)
   {
     positives[i] = $('#'+i+"positive").val();
@@ -36,7 +37,7 @@ function storeClick() {
   if (index < (players.length)-1)
   {
     updateClickEntry();
-    appendClick();
+    setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
     index+=1;
     $('#click-player-name').text(players[index]);
@@ -65,6 +66,7 @@ function clickDisplay(i)
   }
 
 function appendClick() {
+  console.log(positives);
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
@@ -78,7 +80,6 @@ function appendClick() {
   var clickRequest = gapi.client.sheets.spreadsheets.values.update(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
     alert("Clicks have been entered into the spreadsheet.");
-    console.log(index);
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
