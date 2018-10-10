@@ -128,7 +128,7 @@ function appendClick() {
   });
   if (index == (numClickPlayers))
   {
-    $('#finish-click').show();
+    alert("You've inserted scores for all players! You may still edit past scores.");
   }
 }
 

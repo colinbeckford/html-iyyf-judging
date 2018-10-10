@@ -241,9 +241,9 @@ function appendEval(round) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  if (index == (numEvalPlayers))
+  if (index == (numClickPlayers))
   {
-    $('#finish-eval').show();
+    alert("You've inserted scores for all players! You may still edit past scores.");
   }
 
 }
