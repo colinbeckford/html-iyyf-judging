@@ -120,7 +120,6 @@ function storeEval() {
   }
   else
   {
-    alert("All player eval scores have been recorded.");
     updateEvalEntry();
     appendEval(range, roundType);
   }

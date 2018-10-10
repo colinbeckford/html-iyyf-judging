@@ -45,7 +45,6 @@ function storeClick() {
   }
   else
   {
-    alert("All player click scores have been recorded.");
     appendClick();
     appendMajor();
   }
