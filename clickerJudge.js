@@ -21,7 +21,7 @@ function loadEnteredScores() {
      var getclickrequest = gapi.client.sheets.spreadsheets.values.batchGet(clickoutputparams);
      getclickrequest.then(function(response) {
        var clickoutput = (response.result.valueRanges[0].values);
-       var majoroutput = console.log(response.result.valueRanges[1].values);
+       var majoroutput = (response.result.valueRanges[1].values);
        for (var i=0;i<clickoutput.length;i++)
        {
          $('#'+i+"positive").val(clickoutput[i][0]);
