@@ -162,6 +162,13 @@ function appendEval(round, range) {
     "majorDimension": "COLUMNS",
     "values": [executionList, controlList, variationList, spaceUseList, choreographyList, constructionList, bodyControlList, showmanshipList],
   };
+  var evalfinalRequest = gapi.client.sheets.spreadsheets.values.update(evalinputParams, evalinputRangeBody);
+  evalfinalRequest.then(function(response) {
+    alert("Your evaluation scores have been entered into the spreadsheet.");
+  }, function(reason) {
+    console.error("error: " + reason.result.error.message);
+    alert("Error.");
+  });
   }
   if (round == "qualifying")
   {
@@ -170,14 +177,14 @@ function appendEval(round, range) {
     "majorDimension": "COLUMNS",
     "values": [executionList, controlList, choreographyList, bodyControlList],
   };
-  }
-  var evalRequest = gapi.client.sheets.spreadsheets.values.update(evalinputParams, evalinputRangeBody);
-  evalRequest.then(function(response) {
+  var evalqualifyingRequest = gapi.client.sheets.spreadsheets.values.update(evalinputParams, evalinputRangeBody);
+  evalqualifyingRequest.then(function(response) {
     alert("Your evaluation scores have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
+  }
   $("#eval-input").hide();
   $('#finish-eval').show();
 }
