@@ -23,8 +23,8 @@ function loadEvalTable(numPlayers) {
 }
 
 function loadEnteredScores() {
-  $('#eval-player-name-qualifying').text(players[index]);
-  $('#eval-player-name-final').text(players[index]);
+  // $('#eval-player-name-qualifying').text(players[index]);
+  // $('#eval-player-name-final').text(players[index]);
   var evaloutputparams = {
        spreadsheetId: spreadsheetId,
        ranges: [range],

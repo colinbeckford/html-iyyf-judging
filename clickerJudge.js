@@ -12,7 +12,6 @@ function loadClickTable(num) {
 }
 
 function loadEnteredScores() {
-  $('#click-player-name').text(players[index]);
   var clickoutputparams = {
        spreadsheetId: spreadsheetId,
        ranges: [range, "RAW-TEx!C4:E104"],
