@@ -180,7 +180,7 @@ function appendEval(round, range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  if (index == numEvalPlayers)
+  if (index == (numEvalPlayers-1))
   {
   $('#finish-eval').show();
   $("#eval-input").hide();
