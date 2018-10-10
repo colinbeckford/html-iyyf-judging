@@ -24,7 +24,7 @@ function loadEvalTable(num) {
   for (var i=0;i<num;i++)
   {
     numEvalPlayers+=1;
-    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"execution-q </input>" + '</td><td>' + "<input id="+i+"control-q </input>" + '</td><td>' + "<input id="+i+"choreography-q </input>" + '</td><td>' + "<input id="+i+"body-control-q </input>" + '</td></tr>';
+    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"execution-q </input>" + '</td><td>' + "<input id="+i+"control-q </input>" + '</td><td>' + "<input id="+i+"choreography-q </input>" + '</td><td>' + "<input id="+i+"body-control-q </input>" + '<button id=' + i + 'edit onclick=updateEvalEntry(' + i + ')> Edit </button></td></tr>';
     $('#eval-qualifying-table').append(evalRow);
   }
   }
