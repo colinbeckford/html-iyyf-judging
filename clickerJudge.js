@@ -92,12 +92,14 @@ function storeClick(i) {
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
   for (prop in liveClicks)
   {
+    console.log("loop running");
     if (typeof prop == "string")
     {
       continue;
     }
     else if (prop<0)
     {
+      console.log(prop);
       alert("You have input a value that is out of range of scoring (negative number).");
     }
   }
