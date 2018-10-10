@@ -1,9 +1,5 @@
 var numClickPlayers = 0;
 
-$(document).ready(function() {
-    loadClickScores();
-});
-
 function loadClickTable(num) {
   for (var i=0;i<num;i++)
   {
