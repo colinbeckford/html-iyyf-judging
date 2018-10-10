@@ -151,16 +151,16 @@ function evalDisplay(i)
 
 }
 
-function appendEval(round, range) {
+function appendEval(round, sheetrange) {
   var evalinputParams = {
     spreadsheetId: spreadsheetId,
-    range: range,
+    range: sheetrange,
     valueInputOption: "RAW",
   };
   if (round == "final")
   {
   var evalinputRangeBody = {
-    "range": range,
+    "range": sheetrange,
     "majorDimension": "COLUMNS",
     "values": [executionList, controlList, variationList, spaceUseList, choreographyList, constructionList, bodyControlList, showmanshipList],
   };
@@ -168,7 +168,7 @@ function appendEval(round, range) {
   else if (round == "qualifying")
   {
   var evalinputRangeBody = {
-    "range": range,
+    "range": sheetrange,
     "majorDimension": "COLUMNS",
     "values": [executionList, controlList, choreographyList, bodyControlList],
   };
