@@ -22,6 +22,7 @@ function loadClickScores() {
        if (response.result.valueRanges[0].hasOwnProperty('values') == true)
        {
        var clickoutput = (response.result.valueRanges[0].values);
+       console.log(clickoutput);
        var majoroutput = (response.result.valueRanges[1].values);
        $('#click-player-name').html(playerList[clickoutput.length]);
        for (var i=0;i<clickoutput.length;i++)
