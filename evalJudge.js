@@ -21,6 +21,41 @@ function loadEvalTable(numPlayers) {
   }
 }
 
+function loadEnteredScores() {
+  var evaloutputparams = {
+       spreadsheetId: spreadsheetId,
+       ranges: [range],
+       includeGridData: false,
+     };
+     var getevalrequest = gapi.client.sheets.spreadsheets.values.batchGet(evaloutputparams);
+     getevalrequest.then(function(response) {
+       var evaloutput = (response.result.valueRanges[0].values);
+       for (var i=0;i<clickoutput.length;i++)
+       {
+         if (roundType == "final")
+         {
+           $('#'+i+"control-f").val(evaloutput[i][1]);
+           $('#'+i+"execution-f").val(evaloutput[i][0]);
+           $('#'+i+"variation-f").val(evaloutput[i][2]);
+           $('#'+i+"space-use-f").val(evaloutput[i][3]);
+           $('#'+i+"showmanship-f").val(evaloutput[i][7]);
+           $('#'+i+"body-control-f").val(evaloutput[i][6]);
+           $('#'+i+"choreography-f").val(evaloutput[i][4]);;
+           $('#'+i+"construction-f").val(evaloutput[i][5]);;
+         }
+         else if (roundType == "qualifying")
+         {
+           $('#'+i+"control-f").val(evaloutput[i][1]);
+           $('#'+i+"execution-f").val(evaloutput[i][0]);
+           $('#'+i+"body-control-f").val(evaloutput[i][6]);
+           $('#'+i+"choreography-f").val(evaloutput[i][4]);
+         }
+       }
+     }, function(reason) {
+       console.error('error: ' + reason.result.error.message);
+     });
+}
+
 function updateEvalEntry(i) {
     if (roundType == "final")
     {
