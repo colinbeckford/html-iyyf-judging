@@ -1,6 +1,8 @@
 var currentRange = "";
+var numClickPlayers = 0;
 
 function loadClickTable(numPlayers) {
+  numClickPlayers = numPlayers;
   for (var i=0;i<numPlayers;i++)
   {
     var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit> Edit </button> </td></tr>";
@@ -50,7 +52,7 @@ function storeClick() {
   else
   {
     alert("All player click scores have been recorded.");
-    updateClickEntry(numPlayers);
+    updateClickEntry(numClickPlayers);
     appendClick(range);
     appendMajor();
   }
