@@ -40,6 +40,7 @@ function updateEvalEntry(i) {
     bodyControlList[i] =  $('#'+i+"body-control-q").val();
     choreographyList[i] =  $('#'+i+"choreography-q").val();
     }
+    appendEval(roundType,range);
 }
 
 function storeEval() {
