@@ -79,7 +79,7 @@ function appendClick() {
   });
   if (index == numPlayers)
   {
-  $('#finish').show();
+  $('#finish-click').show();
   $("#click-input").hide();
   }
 }

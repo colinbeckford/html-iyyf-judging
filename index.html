@@ -231,8 +231,11 @@
       </div>
       <div id="texcomp-chart">
       </div>
-      <div id="finish">
-        <button onclick="window.location.reload()"> Go Home </button>
+      <div id="finish-eval">
+        <button onclick="appendEval()"> Submit Final Scores </button>
+      </div>
+      <div id="finish-click">
+        <button onclick="appendClick()"> Submit Final Scores </button>
       </div>
       <script src="headJudge.js"> </script>
       <script src="clickerJudge.js"> </script>
@@ -251,7 +254,8 @@
     $("#eval-qualifying-input").hide();
     $("#results-chart").hide();
     $("#texcomp-chart").hide();
-    $("#finish").hide();
+    $("#finish-eval").hide();
+    $("#finish-click").hide();
     $("#eval-qualifying-table").hide();
     $("#eval-final-table").hide();
 

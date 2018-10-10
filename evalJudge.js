@@ -179,5 +179,5 @@ function appendEval(round, range) {
     alert("Error.");
   });
   $("#eval-input").hide();
-  $('#finish').show();
+  $('#finish-eval').show();
 }
