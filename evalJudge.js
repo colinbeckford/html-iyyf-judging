@@ -95,7 +95,7 @@ function storeEval() {
   evalDisplay(index);
   if (index <= players.length)
   {
-    setTimeout(appendEval,500);
+    setTimeout(appendEval(range,round),500);
     index += 1;
     $('#eval-player-name-qualifying').text(players[index]);
     $('#eval-player-name-final').text(players[index]);
@@ -150,7 +150,7 @@ function evalDisplay(i)
 
 }
 
-function appendEval(range, round) {
+function appendEval(round, range) {
   var evalinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
