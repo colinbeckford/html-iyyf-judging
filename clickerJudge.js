@@ -63,7 +63,6 @@ function clickDisplay(i)
     $('#'+i+"detach").val(liveClicks[i].detach);
   }
 
-
 function appendClick() {
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
@@ -76,7 +75,7 @@ function appendClick() {
     "majorDimension": "COLUMNS",
     "values": [positives, negatives],
   };
-  var clickRequest = gapi.client.sheets.spreadsheets.values.append(clickinputParams, clickinputRangeBody);
+  var clickRequest = gapi.client.sheets.spreadsheets.values.update(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
