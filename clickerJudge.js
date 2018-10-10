@@ -5,21 +5,17 @@ function loadClickTable(num) {
   for (var i=0;i<num;i++)
   {
     numClickPlayers+=1;
-    var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit> Edit </button> </td></tr>";
+    var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit onclick="updateClickEntry(index)"> Edit </button> </td></tr>";
     $('#click-table').append(clickRow);
   }
 }
 
-function updateClickEntry(num) {
-  console.log(num);
-  for (var i=0;i<num;i++)
-  {
+function updateClickEntry(i) {
     positives[i] = $('#'+i+"positive").val();
     negatives[i] = $('#'+i+"negative").val();
     restarts[i] =  $('#'+i+"restart").val();
     discards[i] =  $('#'+i+"discard").val();
     detaches[i] =  $('#'+i+"detach").val();
-  }
 }
 
 function storeClick() {
@@ -38,7 +34,6 @@ function storeClick() {
   clickDisplay(index);
   if (index < (players.length)-1)
   {
-    updateClickEntry(numClickPlayers);
     setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
     index+=1;
@@ -52,8 +47,7 @@ function storeClick() {
   else
   {
     alert("All player click scores have been recorded.");
-    updateClickEntry(numClickPlayers);
-    appendClick(range);
+    appendClick());
     appendMajor();
   }
 }
