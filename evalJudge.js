@@ -67,7 +67,7 @@ function loadEvalScores() {
            $('#'+i+"choreography-f").val(chor);
            $('#'+i+"construction-f").val(cons);
            controlList.push(ctrl);
-           executionList.push(exec));
+           executionList.push(exec);
            variationList.push(vari);
            spaceUseList.push(spcu);
            showmanshipList.push(shwm);
