@@ -32,7 +32,7 @@ function storeClick() {
   var detach = $('#detach').val();
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
   clickDisplay(index);
-  if (index < (players.length))
+  if (index <= (players.length))
   {
     setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
@@ -62,7 +62,6 @@ function clickDisplay(i)
   }
 
 function appendClick() {
-  console.log(positives);
   var clickinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
