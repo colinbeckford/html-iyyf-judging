@@ -28,6 +28,12 @@ function loadClickScores() {
          $('#'+i+"restart").val(majoroutput[i][0]);
          $('#'+i+"discard").val(majoroutput[i][1]);
          $('#'+i+"detach").val(majoroutput[i][2]);
+         positives.push(clickoutput[i][0]);
+         negatives.push(clickoutput[i][1]);
+         restarts.push(majoroutput[i][0]);
+         discards.push(majoroutput[i][1]);
+         restarts.push(majoroutput[i][2]);
+         liveClicks.push({playerList[i], clickoutput[i][0], clickoutput[i][1], majoroutput[i][0], majoroutput[i][1], majoroutput[i][2]});
        }
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
