@@ -20,8 +20,16 @@ function loadEnteredScores() {
      };
      var getclickrequest = gapi.client.sheets.spreadsheets.values.batchGet(clickoutputparams);
      getclickrequest.then(function(response) {
-       console.log(response.result.valueRanges[0].values);
-       console.log(response.result.valueRanges[1].values);
+       var clickoutput = (response.result.valueRanges[0].values);
+       var majoroutput = console.log(response.result.valueRanges[1].values);
+       for (var i=0;i<clickoutput.length;i++)
+       {
+         $('#'+i+"positive").val(clickoutput[i][0]);
+         $('#'+i+"negative").val(clickoutput[i][1]);
+         $('#'+i+"restart").val(majoroutput[i][0]);
+         $('#'+i+"discard").val(majoroutput[i][1]);
+         $('#'+i+"detach").val(majoroutput[i][2]);
+       }
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
      });
