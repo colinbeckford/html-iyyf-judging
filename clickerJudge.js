@@ -23,6 +23,7 @@ function loadClickScores() {
        $('#click-player-name').html(playerList[clickoutput.length]);
        for (var i=0;i<clickoutput.length;i++)
        {
+         index+=1;
          var pos = clickoutput[i][0];
          var neg = clickoutput[i][1];
          var res = majoroutput[i][0];
@@ -56,12 +57,12 @@ function updateClickEntry(i) {
     setTimeout(appendMajor,500);
 }
 
-function storeClick() {
-  positives.push($('#positive').val());
-  negatives.push($('#negative').val());
-  restarts.push($('#restart').val());
-  discards.push($('#discard').val());
-  detaches.push($('#detach').val());
+function storeClick(i) {
+  positives[i] = ($('#positive').val());
+  negatives[i] = ($('#negative').val());
+  restarts[i] = ($('#restart').val());
+  discards[i] = ($('#discard').val());
+  detaches[i] = ($('#detach').val());
   var currentClickPlayer = playerList[index];
   var positive = $('#positive').val();
   var negative = $('#negative').val();
@@ -69,8 +70,8 @@ function storeClick() {
   var discard = $('#discard').val();
   var detach = $('#detach').val();
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
-  clickDisplay(index);
-  if (index <= (players.length))
+  clickDisplay(i);
+  if (i <= (players.length))
   {
     setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
