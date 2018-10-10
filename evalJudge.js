@@ -1,4 +1,4 @@
-var numEvalPlayers;
+var numEvalPlayers = 0;
 
 function loadEvalTable(numPlayers) {
   if (roundType == "final")
@@ -152,7 +152,6 @@ function evalDisplay(i)
 }
 
 function appendEval(round, range) {
-  console.log(range);
   var evalinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
@@ -183,6 +182,6 @@ function appendEval(round, range) {
   });
   if (index == (numEvalPlayers))
   {
-  $('#finish-eval').show();
+    $('#finish-eval').show();
   }
 }
