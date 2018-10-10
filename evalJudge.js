@@ -140,6 +140,16 @@ function storeEval() {
   cons = parseInt($('#construction-f').val());
   chor = parseInt($('#choreography-f').val());
   liveEvals.push({currentEvalPlayer, exec, ctrl, vari, spcu, chor, cons, bdcn, shwm});
+  $.each(liveEvals, function(key,value)
+  {
+    if (key != currentEvalPlayer)
+    {
+      if (value < 0 || value > 10)
+      {
+        alert("You have inputted a number outside of the range of 0-10. Please change this by updating the value in the table and pressing edit.");
+      }
+    }
+  });
   for (prop in liveEvals)
   {
     if (typeof prop == "string")
@@ -165,17 +175,16 @@ function storeEval() {
   var bdcn = parseInt($('#body-control-q').val());
   var chor = parseInt($('#choreography-q').val());
   liveEvals.push({currentEvalPlayer, exec, ctrl, chor, bdcn});
-  for (prop in liveEvals)
+  $.each(liveEvals, function(key,value)
   {
-    if (typeof prop == "string")
+    if (key != currentEvalPlayer)
     {
-      continue;
+      if (value < 0 || value > 10)
+      {
+        alert("You have inputted a number outside of the range of 0-10. Please change this by updating the value in the table and pressing edit.");
+      }
     }
-    else if (prop<0 || prop>10)
-    {
-      alert("You have input a value that is out of range of scoring.");
-    }
-  }
+  });
   }
   evalDisplay(index);
   if (index <= players.length)

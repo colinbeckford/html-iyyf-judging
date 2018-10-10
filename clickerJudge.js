@@ -22,7 +22,6 @@ function loadClickScores() {
        if (response.result.valueRanges[0].hasOwnProperty('values') == true)
        {
        var clickoutput = (response.result.valueRanges[0].values);
-       console.log(clickoutput);
        var majoroutput = (response.result.valueRanges[1].values);
        $('#click-player-name').html(playerList[clickoutput.length]);
        for (var i=0;i<clickoutput.length;i++)
@@ -90,19 +89,16 @@ function storeClick(i) {
   var discard = parseInt($('#discard').val());
   var detach = parseInt($('#detach').val());
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
-  for (prop in liveClicks)
+  $.each(liveClicks, function(key,value)
   {
-    console.log("loop running");
-    if (typeof prop == "string")
+    if (key != currentClickPlayer)
     {
-      continue;
+      if (value < 0)
+      {
+        alert("You have inputted a negative number. Please change this by updating the value in the table and pressing edit.");
+      }
     }
-    else if (prop<0)
-    {
-      console.log(prop);
-      alert("You have input a value that is out of range of scoring (negative number).");
-    }
-  }
+  });
   clickDisplay(i);
   if (i <= (players.length))
   {
