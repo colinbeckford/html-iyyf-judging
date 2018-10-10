@@ -1,10 +1,10 @@
 var numEvalPlayers = 0;
 
 
-function loadEvalTable(numPlayers) {
+function loadEvalTable(num) {
   if (roundType == "final")
   {
-  for (var i=0;i<numPlayers;i++)
+  for (var i=0;i<num;i++)
   {
     numEvalPlayers+=1;
     var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"control-f </input>" + '</td><td>' + "<input id="+i+"execution-f </input>" + '</td><td>' + "<input id="+i+"variation-f </input>" + '</td><td>' + "<input id="+i+"space-use-f </input>" + '</td><td>' + "<input id="+i+"showmanship-f </input>" + '</td><td>' + "<input id="+i+"body-control-f </input>" + '</td><td>' + "<input id="+i+"choreography-f </input>" + '</td><td>' + "<input id="+i+"construction-f </input> </td><td> <button id=" + i + "edit onclick=updateEvalEntry(" + i + ")> Edit </button> </td></tr>";
@@ -13,7 +13,7 @@ function loadEvalTable(numPlayers) {
   }
   else if (roundType == "qualifying")
   {
-  for (var i=0;i<numPlayers;i++)
+  for (var i=0;i<num;i++)
   {
     numEvalPlayers+=1;
     var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"control-q </input>" + '</td><td>' + "<input id="+i+"execution-q </input>" + '</td><td>' + "<input id="+i+"body-control-q </input>" + '</td><td>' + "<input id="+i+"choreography-q </input>" + '</td></tr>';
@@ -23,8 +23,7 @@ function loadEvalTable(numPlayers) {
 }
 
 function loadEnteredScores() {
-  // $('#eval-player-name-qualifying').text(players[index]);
-  // $('#eval-player-name-final').text(players[index]);
+  console.log("Function called");
   var evaloutputparams = {
        spreadsheetId: spreadsheetId,
        ranges: [range],

@@ -2,18 +2,16 @@ var numClickPlayers = 0;
 
 
 function loadClickTable(num) {
-  console.log(num);
   for (var i=0;i<num;i++)
   {
     numClickPlayers+=1;
     var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive </input>" + '</td><td>' + "<input id="+i+"negative </input>" + '</td><td>' + "<input id="+i+"restart </input>" + '</td><td>' + "<input id="+i+"discard </input>" + '</td><td>' + "<input id=" + i + "detach </input>" + "</td><td> <button id=" + i + "edit onclick=updateClickEntry(" + i + ")> Edit </button> </td></tr>";
     $('#click-table').append(clickRow);
   }
-  loadEnteredScores();
 }
 
 function loadEnteredScores() {
-  console.log("method called");
+  console.log("Function called");
   var clickoutputparams = {
        spreadsheetId: spreadsheetId,
        ranges: [range, "RAW-TEx!C4:E104"],
