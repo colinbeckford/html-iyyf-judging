@@ -76,7 +76,7 @@ function appendClick() {
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.update(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
-    alert("Clicks for " + liveClicks[i].currentClickPlayer + " have been entered into the spreadsheet.");
+    alert("Clicks for " + liveClicks[index].currentClickPlayer + " have been entered into the spreadsheet.");
     console.log(index);
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
