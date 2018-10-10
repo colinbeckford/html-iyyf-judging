@@ -32,7 +32,7 @@ function appendInfo() {
   var clickerjudgeParams = {
     spreadsheetId: spreadsheetId,
     range: "SET-UP!F3:F8",
-    valueInputOption: "RAW",,
+    valueInputOption: "RAW",
   };
   var clickerjudgeRangeBody = {
     "range": "SET-UP!F3:F8",
@@ -42,7 +42,7 @@ function appendInfo() {
   var evaljudgeParams = {
     spreadsheetId: spreadsheetId,
     range: "SET-UP!F16:F21",
-    valueInputOption: "RAW",,
+    valueInputOption: "RAW",
   };
   var evaljudgeRangeBody = {
     "range": "SET-UP!F16:F21",
