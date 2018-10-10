@@ -33,7 +33,7 @@ function loadClickScores() {
          restarts.push(majoroutput[i][0]);
          discards.push(majoroutput[i][1]);
          restarts.push(majoroutput[i][2]);
-         liveClicks.push({playerList[i], clickoutput[i][0], clickoutput[i][1], majoroutput[i][0], majoroutput[i][1], majoroutput[i][2]});
+         liveClicks.push({players[i][0], clickoutput[i][0], clickoutput[i][1], majoroutput[i][0], majoroutput[i][1], majoroutput[i][2]});
        }
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
