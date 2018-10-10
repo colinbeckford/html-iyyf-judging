@@ -68,7 +68,6 @@ function appendClick() {
     spreadsheetId: spreadsheetId,
     range: range,
     valueInputOption: "RAW",
-    insertDataOption: "OVERWRITE",
   };
   var clickinputRangeBody = {
     "range": range,
