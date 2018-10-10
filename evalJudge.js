@@ -150,6 +150,7 @@ function evalDisplay(i)
 }
 
 function appendEval(round, range) {
+  console.log(range);
   var evalinputParams = {
     spreadsheetId: spreadsheetId,
     range: range,
@@ -178,6 +179,9 @@ function appendEval(round, range) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
   });
-  $("#eval-input").hide();
+  if (index == numPlayers)
+  {
   $('#finish-eval').show();
+  $("#eval-input").hide();
+  }
 }
