@@ -95,7 +95,7 @@ function storeEval() {
   evalDisplay(index);
   if (index <= players.length)
   {
-    setTimeout(appendEval(range,roundType),500);
+    setTimeout(appendEval(roundType,range),500);
     index += 1;
     $('#eval-player-name-qualifying').text(players[index]);
     $('#eval-player-name-final').text(players[index]);
