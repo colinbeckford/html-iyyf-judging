@@ -17,7 +17,10 @@ function loadClickScores() {
        dateTimeRenderOption: 'FORMATTED_STRING',
      };
      var getclickrequest = gapi.client.sheets.spreadsheets.values.batchGet(clickoutputparams);
-     getclickrequest.then(function(response) {
+     getclickrequest.then(function(response)
+     {
+       if (jQuery.isEmptyObject(response))
+       {
        var clickoutput = (response.result.valueRanges[0].values);
        var majoroutput = (response.result.valueRanges[1].values);
        $('#click-player-name').html(playerList[clickoutput.length]);
@@ -42,6 +45,12 @@ function loadClickScores() {
          detaches.push(majoroutput[i][2]);
          liveClicks.push({currentPlayer, pos, neg, res, dis, det});
        }
+     }
+     else
+     {
+       $('#click-player-name').html(playerList[0]);
+     }
+
      }, function(reason) {
        console.error('error: ' + reason.result.error.message);
      });
