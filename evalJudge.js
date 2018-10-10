@@ -40,7 +40,7 @@ function updateEvalEntry(i) {
     bodyControlList[i] =  $('#'+i+"body-control-q").val();
     choreographyList[i] =  $('#'+i+"choreography-q").val();
     }
-    appendEval(roundType,range);
+    appendEval(roundType);
 }
 
 function storeEval() {
@@ -97,7 +97,7 @@ function storeEval() {
   evalDisplay(index);
   if (index <= players.length)
   {
-    setTimeout(appendEval(roundType,range),500);
+    setTimeout(appendEval(roundType),500);
     index += 1;
     $('#eval-player-name-qualifying').text(players[index]);
     $('#eval-player-name-final').text(players[index]);
@@ -123,7 +123,7 @@ function storeEval() {
   else
   {
     updateEvalEntry();
-    appendEval(roundType,range);
+    appendEval(roundType);
   }
 
 }
@@ -151,16 +151,16 @@ function evalDisplay(i)
 
 }
 
-function appendEval(round, sheetrange) {
+function appendEval(round) {
   var evalinputParams = {
     spreadsheetId: spreadsheetId,
-    range: sheetrange,
+    range: range,
     valueInputOption: "RAW",
   };
   if (round == "final")
   {
   var evalinputRangeBody = {
-    "range": sheetrange,
+    "range": range,
     "majorDimension": "COLUMNS",
     "values": [executionList, controlList, variationList, spaceUseList, choreographyList, constructionList, bodyControlList, showmanshipList],
   };
@@ -168,7 +168,7 @@ function appendEval(round, sheetrange) {
   else if (round == "qualifying")
   {
   var evalinputRangeBody = {
-    "range": sheetrange,
+    "range": range,
     "majorDimension": "COLUMNS",
     "values": [executionList, controlList, choreographyList, bodyControlList],
   };
