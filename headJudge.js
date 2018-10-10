@@ -81,14 +81,13 @@ function appendInfo() {
       spreadsheetId: spreadsheetId,
       range: "PLAYER!B4:B103",
       valueInputOption: "RAW",
-      insertDataOption: "OVERWRITE",
     };
     var playerRangeBody = {
       "range": "PLAYER!B4:B103",
       "majorDimension": "COLUMNS",
       "values": [players],
     };
-    var request4 = gapi.client.sheets.spreadsheets.values.append(playerParams, playerRangeBody);
+    var request4 = gapi.client.sheets.spreadsheets.values.update(playerParams, playerRangeBody);
     request4.then(function(response) {
       console.log(response.result);
       $('#player-info').hide();
