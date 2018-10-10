@@ -1,5 +1,5 @@
 var numEvalPlayers = 0;
-
+var currentEvalPlayer = "";
 
 function loadEvalTable(num) {
   if (roundType == "final")
@@ -41,14 +41,24 @@ function loadEvalScores() {
          if (roundType == "final")
          {
            index+=1;
+           currentEvalPlayer = playerList[i];
            $('#'+i+"control-f").val(evaloutput[i][1]);
            $('#'+i+"execution-f").val(evaloutput[i][0]);
            $('#'+i+"variation-f").val(evaloutput[i][2]);
            $('#'+i+"space-use-f").val(evaloutput[i][3]);
            $('#'+i+"showmanship-f").val(evaloutput[i][7]);
            $('#'+i+"body-control-f").val(evaloutput[i][6]);
-           $('#'+i+"choreography-f").val(evaloutput[i][4]);;
-           $('#'+i+"construction-f").val(evaloutput[i][5]);;
+           $('#'+i+"choreography-f").val(evaloutput[i][4]);
+           $('#'+i+"construction-f").val(evaloutput[i][5]);
+           controlList.push(evaloutput[i][1]);
+           executionList.push(evaloutput[i][0]);
+           variationList.push(evaloutput[i][2]);
+           spaceUseList.push(evaloutput[i][3]);
+           showmanshipList.push(evaloutput[i][7]);
+           bodyControlList.push(evaloutput[i][6]);
+           choreographyList.push(evaloutput[i][4]);
+           constructionList.push(evaloutput[i][5]);
+           liveEvals.push({currentEvalPlayer, evaloutput[i][1], evaloutput[i][0], evaloutput[i][2], evaloutput[i][3], evaloutput[i][6], evaloutput[i][7], evaloutput[i][5], evaloutput[i][4]});
          }
          else if (roundType == "qualifying")
          {

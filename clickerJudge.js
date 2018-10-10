@@ -1,5 +1,5 @@
 var numClickPlayers = 0;
-
+var currentClickPlayer = "";
 function loadClickTable(num) {
   for (var i=0;i<num;i++)
   {
@@ -33,7 +33,7 @@ function loadClickScores() {
          var res = majoroutput[i][0];
          var dis = majoroutput[i][1];
          var det = majoroutput[i][2];
-         var currentPlayer = playerList[i];
+         currentClickPlayer = playerList[i];
          $('#'+i+"positive").val(clickoutput[i][0]);
          $('#'+i+"negative").val(clickoutput[i][1]);
          $('#'+i+"restart").val(majoroutput[i][0]);
@@ -72,7 +72,7 @@ function storeClick(i) {
   restarts[i] = ($('#restart').val());
   discards[i] = ($('#discard').val());
   detaches[i] = ($('#detach').val());
-  var currentClickPlayer = playerList[index];
+  currentClickPlayer = playerList[index];
   var positive = $('#positive').val();
   var negative = $('#negative').val();
   var restart = $('#restart').val();
