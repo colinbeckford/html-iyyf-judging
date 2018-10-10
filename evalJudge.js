@@ -34,8 +34,8 @@ function loadEvalScores() {
        {
        var evaloutput = (response.result.valueRanges[0].values);
        console.log(evaloutput);
-       $('#eval-player-name-final').val(playerList[evaloutput.length]);
-       $('#eval-player-name-qualifying').val(playerList[evaloutput.length]);
+       $('#eval-player-name-final').html(playerList[evaloutput.length]);
+       $('#eval-player-name-qualifying').html(playerList[evaloutput.length]);
        for (var i=0;i<evaloutput.length;i++)
        {
          if (roundType == "final")
