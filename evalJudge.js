@@ -140,6 +140,17 @@ function storeEval() {
   cons = parseInt($('#construction-f').val());
   chor = parseInt($('#choreography-f').val());
   liveEvals.push({currentEvalPlayer, exec, ctrl, vari, spcu, chor, cons, bdcn, shwm});
+  for (prop in liveEvals)
+  {
+    if (typeof prop == "string")
+    {
+      continue;
+    }
+    else if (prop<0 || prop>10)
+    {
+      alert("You have input a value that is out of range of scoring.");
+    }
+  }
   }
   else if (roundType == "qualifying")
   {
@@ -154,6 +165,17 @@ function storeEval() {
   var bdcn = parseInt($('#body-control-q').val());
   var chor = parseInt($('#choreography-q').val());
   liveEvals.push({currentEvalPlayer, exec, ctrl, chor, bdcn});
+  for (prop in liveEvals)
+  {
+    if (typeof prop == "string")
+    {
+      continue;
+    }
+    else if (prop<0 || prop>10)
+    {
+      alert("You have input a value that is out of range of scoring.");
+    }
+  }
   }
   evalDisplay(index);
   if (index <= players.length)

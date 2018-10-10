@@ -28,23 +28,34 @@ function loadClickScores() {
        for (var i=0;i<clickoutput.length;i++)
        {
          index+=1;
-         var pos = clickoutput[i][0];
-         var neg = clickoutput[i][1];
-         var res = majoroutput[i][0];
-         var dis = majoroutput[i][1];
-         var det = majoroutput[i][2];
+         var pos = parseInt(clickoutput[i][0]);
+         var neg = parseInt(clickoutput[i][1]);
+         var res = parseInt(majoroutput[i][0]);
+         var dis = parseInt(majoroutput[i][1]);
+         var det = parseInt(majoroutput[i][2]);
          currentClickPlayer = playerList[i];
-         $('#'+i+"positive").val(clickoutput[i][0]);
-         $('#'+i+"negative").val(clickoutput[i][1]);
-         $('#'+i+"restart").val(majoroutput[i][0]);
-         $('#'+i+"discard").val(majoroutput[i][1]);
-         $('#'+i+"detach").val(majoroutput[i][2]);
-         positives.push(clickoutput[i][0]);
-         negatives.push(clickoutput[i][1]);
-         restarts.push(majoroutput[i][0]);
-         discards.push(majoroutput[i][1]);
-         detaches.push(majoroutput[i][2]);
+         $('#'+i+"positive").val(pos);
+         $('#'+i+"negative").val(neg);
+         $('#'+i+"restart").val(res);
+         $('#'+i+"discard").val(dis);
+         $('#'+i+"detach").val(det);
+         positives.push(pos);
+         negatives.push(neg);
+         restarts.push(res);
+         discards.push(dis);
+         detaches.push(det);
          liveClicks.push({currentClickPlayer, pos, neg, res, dis, det});
+         for (prop in liveClicks)
+         {
+           if (typeof prop == "string")
+           {
+             continue;
+           }
+           else if (prop<0)
+           {
+             alert("You have input a value that is out of range of scoring (negative number).");
+           }
+         }
        }
      }
      else
@@ -79,6 +90,17 @@ function storeClick(i) {
   var discard = parseInt($('#discard').val());
   var detach = parseInt($('#detach').val());
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
+  for (prop in liveClicks)
+  {
+    if (typeof prop == "string")
+    {
+      continue;
+    }
+    else if (prop<0)
+    {
+      alert("You have input a value that is out of range of scoring (negative number).");
+    }
+  }
   clickDisplay(i);
   if (i <= (players.length))
   {
