@@ -214,7 +214,7 @@ function storeEval() {
 }
 
 function evalDisplay(i)
-
+{
   if (roundType == "final")
   {
   $('#'+i+"control-f").val(liveEvals[i].ctrl);
