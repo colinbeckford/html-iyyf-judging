@@ -53,7 +53,6 @@ function appendInfo() {
   var request2 = gapi.client.sheets.spreadsheets.values.update(clickerjudgeParams, clickerjudgeRangeBody);
   var request3 = gapi.client.sheets.spreadsheets.values.update(evaljudgeParams, evaljudgeRangeBody);
   request1.then(function(response) {
-    console.log(response.result);
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
   });
@@ -63,7 +62,6 @@ function appendInfo() {
     console.error("error: " + reason.result.error.message);
   });
   request3.then(function(response) {
-    console.log(response.result);
     $('#contest-info').hide();
     alert("Info has been entered.");
     $('#player-info').show();
@@ -89,7 +87,6 @@ function appendInfo() {
     };
     var request4 = gapi.client.sheets.spreadsheets.values.update(playerParams, playerRangeBody);
     request4.then(function(response) {
-      console.log(response.result);
       $('#player-info').hide();
       alert("Player list has been entered.");
   });

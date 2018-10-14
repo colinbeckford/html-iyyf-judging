@@ -16,7 +16,7 @@ function loadEvalTable(num) {
   for (var i=0;i<num;i++)
   {
     numEvalPlayers+=1;
-    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"execution-f </input>" + '</td><td>' + "<input id="+i+"control-f </input>" + '</td><td>' + "<input id="+i+"variation-f </input>" + '</td><td>' + "<input id="+i+"space-use-f </input>" + '</td><td>' + "<input id="+i+"choreography-f </input>" + '</td><td>' + "<input id="+i+"construction-f </input>" + '</td><td>' + "<input id="+i+"body-control-f </input>" + '</td><td>' + "<input id="+i+"showmanship-f </input> </td><td> <button id=" + i + "edit onclick=updateEvalEntry(" + i + ")> Edit </button> </td></tr>";
+    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"execution-f size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"control-f size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"variation-f size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"space-use-f size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"choreography-f size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"construction-f size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"body-control-f size="+'3'+" </input>" + '</td><td>' + "<input id="+i+"showmanship-f size="+'3'+"</input> </td><td> <button id=" + i + "edit onclick=updateEvalEntry(" + i + ")> Edit </button> </td></tr>";
     $('#eval-final-table').append(evalRow);
   }
   }
@@ -25,7 +25,7 @@ function loadEvalTable(num) {
   for (var i=0;i<num;i++)
   {
     numEvalPlayers+=1;
-    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"execution-q </input>" + '</td><td>' + "<input id="+i+"control-q </input>" + '</td><td>' + "<input id="+i+"choreography-q </input>" + '</td><td>' + "<input id="+i+"body-control-q </input>" + '</td> <td> <button id=' + i + 'edit onclick=updateEvalEntry(' + i + ')> Edit </button></td></tr>';
+    var evalRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"execution-q size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"control-q size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"choreography-q size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"body-control-q size="+'3'+"</input>" + '</td> <td> <button id=' + i + 'edit onclick=updateEvalEntry(' + i + ')> Edit </button></td></tr>';
     $('#eval-qualifying-table').append(evalRow);
   }
   }

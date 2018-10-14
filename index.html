@@ -58,12 +58,12 @@
         <br>
         <text> Input Clicker Judges </text>
         <br>
-        <textarea id="clicker-judges"> </textarea>
+        <textarea id="clicker-judges"></textarea>
         <br>
         <br>
         <text> Input Eval Judges </text>
         <br>
-        <textarea id="eval-judges"> </textarea>
+        <textarea id="eval-judges"></textarea>
         <br>
         <br>
         <button onclick="enterInfo()"> Submit </button>
@@ -73,7 +73,7 @@
       <div id='player-info'>
         <text> Input Player List </text>
         <br>
-        <textarea id="player-list"> </textarea>
+        <textarea id="player-list"></textarea>
         <br>
         <br>
         <button onclick="enterPlayer()"> Submit </button>
@@ -95,7 +95,7 @@
         <input id="negative"> </input>
         <br>
         <br>
-        <text> Restart </text>
+        <text> Stop </text>
         <br>
         <input id="restart"> </input>
         <br>
@@ -105,7 +105,7 @@
         <input id="discard"> </input>
         <br>
         <br>
-        <text> Detach </text>
+        <text> Cut </text>
         <br>
         <input id="detach"> </input>
         <br>
@@ -115,13 +115,13 @@
         <br>
         <table style="width:100%" id="click-table">
           <tr>
-            <td> Name </td>
-            <td> + </td>
-            <td> - </td>
-            <td> Restart </td>
-            <td> Discard </td>
-            <td> Detach </td>
-            <td> Edit Scores </td>
+            <td style="width:40%"> Name </td>
+            <td style="width:10%"> + </td>
+            <td style="width:10%"> - </td>
+            <td style="width:10%"> Stop </td>
+            <td style="width:10%"> Discard </td>
+            <td style="width:10%"> Cut </td>
+            <td style="width:10%"> Edit </td>
         </table>
       </div>
       <div id='eval-final-input'>
@@ -176,16 +176,16 @@
         <br>
         <table style="width:100%" id="eval-final-table">
           <tr>
-            <td> Name </td>
-            <td> Execution </td>
-            <td> Control </td>
-            <td> Variation </td>
-            <td> Space Use </td>
-            <td> Choreography </td>
-            <td> Construction </td>
-            <td> Body Control </td>
-            <td> Showmanship </td>
-            <td> Edit Scores </td>
+            <td style="width:20%"> Name </td>
+            <td style="width:8%"> EXE </td>
+            <td style="width:8%"> CTL </td>
+            <td style="width:8%"> TDV </td>
+            <td style="width:8%"> SEM </td>
+            <td style="width:8%"> MU1 </td>
+            <td style="width:8%"> MU2 </td>
+            <td style="width:8%"> BDY </td>
+            <td style="width:8%"> SHW </td>
+            <td style="width:16%"> Edit Scores </td>
         </table>
       </div>
       <div id="finish-click">
@@ -223,12 +223,12 @@
         <br>
         <table style="width:100%" id="eval-qualifying-table">
           <tr>
-            <td> Name </td>
-            <td> Execution </td>
-            <td> Control </td>
-            <td> Choreography </td>
-            <td> Body Control </td>
-            <td> Edit Scores </td>
+            <td style="width:40%"> Name </td>
+            <td style="width:10%"> EXE </td>
+            <td style="width:10%"> CTL </td>
+            <td style="width:10%"> MU1 </td>
+            <td style="width:10%"> BDY </td>
+            <td style="width:20%"> Edit Scores </td>
         </table>
       </div>
       <div id="finish-eval">
@@ -349,7 +349,7 @@
     {
       playerList.push(players[i][0]);
     }
-    numPlayers = playerList.length;
+    numPlayers = players.length;
     if (judgeType == "clicker")
     {
     loadClickTable(numPlayers);
