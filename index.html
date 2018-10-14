@@ -345,9 +345,9 @@
     range: "PLAYER!B4:B103"
     }).then((response) => {
     players = response.result.values;
-    for (x in players)
+    for (var i=0;i<players.length;i++)
     {
-      playerList.push(players[x][0]);
+      playerList.push(players[i][0]);
     }
     numPlayers = playerList.length;
     if (judgeType == "clicker")
