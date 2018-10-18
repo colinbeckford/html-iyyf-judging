@@ -154,7 +154,6 @@ function appendClick() {
   });
   if (index == (numClickPlayers))
   {
-    $('#click-input').hide();
     alert("You've inserted scores for all players! You may still edit past scores.");
   }
 }
