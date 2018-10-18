@@ -155,6 +155,12 @@ function appendClick() {
   if (index == (numClickPlayers))
   {
     alert("You've inserted scores for all players! You may still edit past scores.");
+    $('#click-player-name').text("");
+    $('#positive').val('');
+    $('#negative').val('');
+    $('#restart').val('');
+    $('#discard').val('');
+    $('#detach').val('');
   }
 }
 

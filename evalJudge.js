@@ -267,8 +267,21 @@ function appendEval(round) {
   });
   if (index == (numEvalPlayers))
   {
-    $('#eval-qualifying-input').hide();
-    $('#eval-final-input').hide();
+    $('#eval-player-name-qualifying').text("");
+    $('#eval-player-name-final').text("");
+    $('#control-q').val("");
+    $('#execution-q').val("");
+    $('#choreography-q').val("");
+    $('#body-control-q').val("");
+    $('#control-f').val("");
+    $('#execution-f').val("");
+    $('#variation-f').val("");
+    $('#space-use-f').val("");
+    $('#choreography-f').val("");
+    $('#construction-f').val("");
+    $('#body-control-f').val("");
+    $('#showmanship-f').val("");
+
     alert("You've inserted scores for all players! You may still edit past scores.");
   }
 
