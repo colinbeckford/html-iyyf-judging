@@ -267,6 +267,8 @@ function appendEval(round) {
   });
   if (index == (numEvalPlayers))
   {
+    $('#eval-qualifying-input').hide();
+    $('#eval-final-input').hide();
     alert("You've inserted scores for all players! You may still edit past scores.");
   }
 
