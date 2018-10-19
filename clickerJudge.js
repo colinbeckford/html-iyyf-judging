@@ -70,30 +70,9 @@ function loadClickScores() {
 function updateClickEntry(i) {
     positives[i] = parseInt($('#'+i+"positive").val());
     negatives[i] = parseInt($('#'+i+"negative").val());
-    if ($('#'+i+"restart").val() == "")
-    {
-      restarts[i] = 0;
-    }
-    else
-    {
-      restarts[i] =  parseInt($('#'+i+"restart").val());
-    }
-    if ($('#'+i+"discard").val() == "")
-    {
-      discards[i] = 0;
-    }
-    else
-    {
-      discards[i] =  parseInt($('#'+i+"discard").val());
-    }
-    if ($('#'+i+"detach").val() == "")
-    {
-      detaches[i] = 0;
-    }
-    else
-    {
-      detaches[i] =  parseInt($('#'+i+"detach").val());
-    }
+    restarts[i] =  parseInt($('#'+i+"restart").val());
+    discards[i] =  parseInt($('#'+i+"discard").val());
+    detaches[i] =  parseInt($('#'+i+"detach").val());
     setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
 }
@@ -104,17 +83,17 @@ function storeClick(i) {
   clickEntered == true;
   positives[i] = parseInt(($('#positive').val()));
   negatives[i] = parseInt(($('#negative').val()));
-  restarts[i] =  parseInt($('#'+i+"restart").val());
+  restarts[i] =  parseInt($("#restart").val());
   if (restarts[i] == "")
   {
     restarts[i] = 0;
   }
-  discards[i] =  parseInt($('#'+i+"discard").val());
+  discards[i] =  parseInt($("#discard").val());
   if (discards[i] == "")
   {
     discards[i] = 0;
   }
-  detaches[i] =  parseInt($('#'+i+"detach").val());
+  detaches[i] =  parseInt($("#detach").val());
   if (detaches[i] == "")
   {
     detaches[i] = 0;
