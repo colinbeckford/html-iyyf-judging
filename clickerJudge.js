@@ -83,20 +83,29 @@ function storeClick(i) {
   clickEntered == true;
   positives[i] = parseInt(($('#positive').val()));
   negatives[i] = parseInt(($('#negative').val()));
-  restarts[i] =  parseInt($("#restart").val());
-  if (restarts[i] == "")
+  if ($("#restart").val() == "")
   {
     restarts[i] = 0;
   }
-  discards[i] =  parseInt($("#discard").val());
-  if (discards[i] == "")
+  else
+  {
+    restarts[i] =  parseInt($("#restart").val());
+  }
+  if ($("#discard").val() == "")
   {
     discards[i] = 0;
   }
-  detaches[i] =  parseInt($("#detach").val());
-  if (detaches[i] == "")
+  else
+  {
+    discards[i] =  parseInt($("#discard").val());
+  }
+  if ($("#detach").val() == "")
   {
     detaches[i] = 0;
+  }
+  else
+  {
+    detaches[i] =  parseInt($("#detach").val());
   }
   currentClickPlayer = playerList[index];
   var positive = parseInt($('#positive').val());
