@@ -192,6 +192,7 @@ function clickDisplay(i)
   {
     $('#'+i+"positive").val(liveClicks[i].positive);
     $('#'+i+"negative").val(liveClicks[i].negative);
+    console.log(liveClicks[i].restart);
     $('#'+i+"restart").val(liveClicks[i].restart);
     $('#'+i+"discard").val(liveClicks[i].discard);
     $('#'+i+"detach").val(liveClicks[i].detach);
