@@ -70,9 +70,30 @@ function loadClickScores() {
 function updateClickEntry(i) {
     positives[i] = parseInt($('#'+i+"positive").val());
     negatives[i] = parseInt($('#'+i+"negative").val());
-    restarts[i] =  parseInt($('#'+i+"restart").val());
-    discards[i] =  parseInt($('#'+i+"discard").val());
-    detaches[i] =  parseInt($('#'+i+"detach").val());
+    if ($('#'+i+"restart").val() == "")
+    {
+      restarts[i] = 0;
+    }
+    else
+    {
+      restarts[i] =  parseInt($('#'+i+"restart").val());
+    }
+    if ($('#'+i+"discard").val() == "")
+    {
+      discards[i] = 0;
+    }
+    else
+    {
+      discards[i] =  parseInt($('#'+i+"discard").val());
+    }
+    if ($('#'+i+"detach").val() == "")
+    {
+      detaches[i] = 0;
+    }
+    else
+    {
+      detaches[i] =  parseInt($('#'+i+"detach").val());
+    }
     setTimeout(appendClick,500);
     setTimeout(appendMajor,500);
 }
@@ -83,15 +104,57 @@ function storeClick(i) {
   clickEntered == true;
   positives[i] = parseInt(($('#positive').val()));
   negatives[i] = parseInt(($('#negative').val()));
-  restarts[i] = parseInt(($('#restart').val()));
-  discards[i] = parseInt(($('#discard').val()));
-  detaches[i] = parseInt(($('#detach').val()));
+  if ($('#'+i+"restart").val() == "")
+  {
+    restarts[i] = 0;
+  }
+  else
+  {
+    restarts[i] =  parseInt($('#'+i+"restart").val());
+  }
+  if ($('#'+i+"discard").val() == "")
+  {
+    discards[i] = 0;
+  }
+  else
+  {
+    discards[i] =  parseInt($('#'+i+"discard").val());
+  }
+  if ($('#'+i+"detach").val() == "")
+  {
+    detaches[i] = 0;
+  }
+  else
+  {
+    detaches[i] =  parseInt($('#'+i+"detach").val());
+  }
   currentClickPlayer = playerList[index];
   var positive = parseInt($('#positive').val());
   var negative = parseInt($('#negative').val());
-  var restart = parseInt($('#restart').val());
-  var discard = parseInt($('#discard').val());
-  var detach = parseInt($('#detach').val());
+  if ($('#'+i+"restart").val() == "")
+  {
+    restarts[i] = 0;
+  }
+  else
+  {
+    restarts[i] =  parseInt($('#'+i+"restart").val());
+  }
+  if ($('#'+i+"discard").val() == "")
+  {
+    discards[i] = 0;
+  }
+  else
+  {
+    discards[i] =  parseInt($('#'+i+"discard").val());
+  }
+  if ($('#'+i+"detach").val() == "")
+  {
+    detaches[i] = 0;
+  }
+  else
+  {
+    detaches[i] =  parseInt($('#'+i+"detach").val());
+  }
   liveClicks.push({currentClickPlayer, positive, negative, restart, discard, detach});
   $.each(liveClicks[index], function(key,value)
   {
