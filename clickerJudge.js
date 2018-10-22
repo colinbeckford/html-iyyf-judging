@@ -150,7 +150,6 @@ function clickDisplay(i)
   {
     $('#'+i+"positive").val(liveClicks[i].positive);
     $('#'+i+"negative").val(liveClicks[i].negative);
-    console.log(liveClicks[i].restart);
     $('#'+i+"restart").val(liveClicks[i].restart);
     $('#'+i+"discard").val(liveClicks[i].discard);
     $('#'+i+"detach").val(liveClicks[i].detach);
@@ -169,7 +168,6 @@ function appendClick() {
   };
   var clickRequest = gapi.client.sheets.spreadsheets.values.update(clickinputParams, clickinputRangeBody);
   clickRequest.then(function(response) {
-    alert("Clicks have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
@@ -201,9 +199,8 @@ function appendMajor()
   };
   var majorRequest = gapi.client.sheets.spreadsheets.values.update(majorinputParams, majorinputRangeBody);
   majorRequest.then(function(response) {
-    alert("Major deducts have been entered into the spreadsheet.");
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
-    alert("Error.");
+    alert("Error: " + reason.result.error.message);
   });
 }
