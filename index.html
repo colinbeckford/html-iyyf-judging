@@ -12,41 +12,18 @@
       <br>
       <br>
       <div id='login'>
-        <a href='https://docs.google.com/document/d/1h3ZDP2WSt_OIxu-BVcYvYsudYDjECUZTacr46kqmefs/edit'>Instructions</a>
-        <br>
-        <br>
-        <text> What is your judge position? </text>
-        <br>
-        <br>
-        <select id="judge-selection">
-        <option value="head">Head</option>
-        <option value="clicker">Clicker</option>
-        <option value="eval">Eval</option>
+        <select id="contest-selection">
         </select>
         <br>
         <br>
-        <text> What is your name? </text>
+        <button> Continue </button>
         <br>
         <br>
-        <input id="judge-name"> </input>
-        <br>
-        <br>
-        <text> What round are you judging? </text>
-        <br>
-        <br>
-        <select id="round-selection">
-        <option value="qualifying">Prelim/Semi-Final (4 evaluations)</option>
-        <option value="final">Final (8 evaluations)</option>
-        </select>
-        <br>
-        <br>
-        <text> Input Spreadsheet Link Here </text>
-        <br>
-        <br>
-        <input id="spreadsheet-id"> </input>
-        <br>
-        <br>
-        <button onclick="getJudge()"> Submit </button>
+        <button onclick="function()
+        {
+          $('#login').hide();
+          $('#contest-info').show();
+        }"> Create New Contest </button>
       </div>
       <div id='contest-info'>
         <text> Input Contest Name </text>
@@ -67,6 +44,9 @@
         <text> Input Eval Judges </text>
         <br>
         <textarea id="eval-judges"></textarea>
+        <br>
+        <br>
+        <input id="sheet-link"> Input Spreadsheet Link </input>
         <br>
         <br>
         <button onclick="enterInfo()"> Submit </button>
@@ -343,6 +323,7 @@
   }
 
   function retrievePlayers() {
+    // gets players from spreadsheet
     gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
     range: "PLAYER!B4:B103"
@@ -370,206 +351,33 @@
   }
 
   function getJudge() {
+    // gets list of judges
     spreadsheet = $('#spreadsheet-id').val();
     var beginId = spreadsheet.indexOf("d/") + 2;
     var endId = spreadsheet.indexOf("/e");
     spreadsheetId = spreadsheet.slice(beginId, endId);
-    var judgeChoice = document.getElementById("judge-selection");
-    judgename = $('#judge-name').val();
-    judgeType = judgeChoice.options[judgeChoice.selectedIndex].value;
-    if (judgeType == "head")
-    {
-    $("#login").hide();
-    $('#contest-info').show();
-    }
-    else if (judgeType == "clicker")
-    {
     gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
     range: "SET-UP!F3:F8"
     }).then((response) => {
     clicker_judges = response.result.values;
-    processType(clicker_judges, judgeType);
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
     });
-    }
-    else if (judgeType = "eval")
-    {
     gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
     range: "SET-UP!F16:F21"
     }).then((response) => {
     eval_judges = response.result.values;
-    processType(eval_judges, judgeType);
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
     });
-    }
+    console.log(clicker_judges, eval_judges);
   }
 
-  function processType(list, type) {
-    var judgeverified = false;
-    retrievePlayers();
-    var roundChoice = document.getElementById("round-selection");
-    roundType = roundChoice.options[roundChoice.selectedIndex].value;
-    if (type == "clicker")
-    {
-      for (var i=0; i<list.length; i++)
-      {
-        if (list[i] == judgename)
-        {
-          if (i == 0)
-          {
-            range = "RAW-TEx!F4:G104";
-          }
-          else if (i == 1)
-          {
-            range = "RAW-TEx!H4:I104";
-          }
-          else if (i == 2)
-          {
-            range = "RAW-TEx!J4:K104";
-          }
-          else if (i == 3)
-          {
-            range = "RAW-TEx!L4:M104";
-          }
-          else if (i == 4)
-          {
-            range = "RAW-TEx!N4:O104";
-          }
-          else if (i == 5)
-          {
-            range = "RAW-TEx!P4:Q104";
-          }
-        }
-      }
-      for (var i=0; i<list.length; i++)
-      {
-        if (list[i][0] == judgename)
-        {
-          judgeverified = true;
-        }
-      }
-      if (judgeverified == false)
-      {
-        alert("Name entered is not registered to judge this event.");
-        window.location.reload();
-      }
-      else
-      {
-        $("#login").hide();
-        $('#click-input').show();
-      }
-    }
-    else if (type == "eval" && roundType == "final")
-    {
-      $('#eval-final-table').show();
-      $('#eval-final-input').show();
-      for (var i=0; i<list.length; i++)
-      {
-        if (list[i] == judgename)
-        {
-          if (i == 0)
-          {
-            range = "RAW-TEvPEv!C4:J104";
-          }
-          else if (i == 1)
-          {
-            range = "RAW-TEvPEv!K4:R104";
-          }
-          else if (i == 2)
-          {
-            range = "RAW-TEvPEv!S4:Z104";
-          }
-          else if (i == 3)
-          {
-            range = "RAW-TEvPEv!A4:AH104";
-          }
-          else if (i == 4)
-          {
-            range = "RAW-TEvPEv!AI4:AP104";
-          }
-          else if (i == 5)
-          {
-            range = "RAW-TEvPEv!AQ4:AX104";
-          }
-        }
-      }
-      for (var i=0; i<list.length; i++)
-      {
-        if (list[i][0] == judgename)
-        {
-          judgeverified = true;
-        }
-      }
-      if (judgeverified == false)
-      {
-        alert("Name entered is not registered to judge this event.");
-        window.location.reload();
-      }
-      else
-      {
-        $("#login").hide();
-        $('#eval-input').show();
-      }
-    }
-    else if (type == "eval" && roundType == "qualifying")
-    {
-      $('#eval-qualifying-input').show();
-      $('#eval-qualifying-table').show();
-      for (var i=0; i<list.length; i++)
-      {
-        if (list[i] == judgename)
-        {
-          if (i == 0)
-          {
-            range = "RAW-TEvPEv!C4:F104";
-          }
-          else if (i == 1)
-          {
-            range = "RAW-TEvPEv!G4:J104";
-          }
-          else if (i == 2)
-          {
-            range = "RAW-TEvPEv!K4:N104";
-          }
-          else if (i == 3)
-          {
-            range = "RAW-TEvPEv!O4:R104";
-          }
-          else if (i == 4)
-          {
-            range = "RAW-TEvPEv!S4:V104";
-          }
-          else if (i == 5)
-          {
-            range = "RAW-TEvPEv!W4:Z104";
-          }
-        }
-      }
-      for (var i=0; i<list.length; i++)
-      {
-        if (list[i][0] == judgename)
-        {
-          judgeverified = true;
-        }
-      }
-      if (judgeverified == false)
-      {
-        alert("Name entered is not registered to judge this event.");
-        window.location.reload();
-      }
-      else
-      {
-        $("#login").hide();
-        $('#eval-input').show();
-      }
-    }
-  }
+
 </script>
 
 <script async defer src="https://apis.google.com/js/api.js"
