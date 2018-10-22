@@ -19,11 +19,7 @@
         <button> Continue </button>
         <br>
         <br>
-        <button onclick="function()
-        {
-          $('#login').hide();
-          $('#contest-info').show();
-        }"> Create New Contest </button>
+        <button onclick="createNew()"> Create New Contest </button>
       </div>
       <div id='contest-info'>
         <text> Input Contest Name </text>
@@ -232,8 +228,6 @@
     $("#click-input").hide();
     $("#eval-final-input").hide();
     $("#eval-qualifying-input").hide();
-    $("#results-chart").hide();
-    $("#texcomp-chart").hide();
     $("#finish-eval").hide();
     $("#finish-click").hide();
     $("#eval-qualifying-table").hide();
@@ -304,12 +298,34 @@
 
   }
 
+  function createNew()
+  {
+    $('#login').hide();
+    $('#contest-info').show();
+  }
+
+  function getContests()
+  {
+    //gets contests to select from
+    gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: '1FCssxQv3_yPsPt6c-Poeicj_ODNH0ZJyCUI6gwxGFS4',
+    range: "A1:C100"
+    }).then((response) => {
+    contests = response.result.values;
+    console.log(contests);
+    }, function(reason) {
+    console.error("error: " + reason.result.error.message);
+    alert("Error.");
+    });
+  }
+
   function handleClientLoad() {
   gapi.load("client:auth2", initClient);
   }
 
   function updateSignInStatus(isSignedIn) {
     if (isSignedIn) {
+      getContests();
       $("#login").show();
     }
   }
