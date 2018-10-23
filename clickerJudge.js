@@ -8,6 +8,7 @@ function loadClickTable(num) {
     var clickRow = '<tr><td>' + playerList[i] + '</td><td>' + "<input id="+i+"positive size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"negative size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"restart size="+'3'+"</input>" + '</td><td>' + "<input id="+i+"discard size="+'3'+"</input>" + '</td><td>' + "<input id=" + i + "detach size="+'3'+"</input>" + "</td><td> <button id=" + i + "edit onclick=updateClickEntry(" + i + ")> Edit </button> </td></tr>";
     $('#click-table').append(clickRow);
   }
+  $('#click-table').show();
 }
 
 function loadClickScores() {

@@ -12,19 +12,61 @@
       <br>
       <br>
       <div id='login'>
+        <br>
+        <h2> Set Up Spreadsheet for a Contest </h2>
+        <button onclick="createNew()"> Create New Contest </button>
+        <br>
+        <br>
+        <h2> Select a Contest to Judge </h1>
         <select id="contest-selection">
         </select>
         <br>
         <br>
-        <button> Continue </button>
+        <button onclick="loadJudge()"> Continue </button>
         <br>
         <br>
-        <button onclick="createNew()"> Create New Contest </button>
+      </div>
+      <div id='judge-1'>
+        <select id="div-selection">
+        </select>
+        <br>
+        <br>
+        <select id="judge-type">
+          <option> Clicker </option>
+          <option> Evaluation </option>
+        </select>
+        <br>
+        <br>
+        <button onclick="chooseJudge()"> View Judges </button>
+        <br>
+      </div>
+      <div id='judge-2'>
+        <br>
+        <select id="judge-list">
+        </select>
+        <br>
+        <br>
+        <text> Which are you judging? </text>
+        <br>
+        <text> Prelim/Semi-final/Sport (4 evaluations) </text>
+        <input type="checkbox" id="4">
+        <br>
+        <text> Final (8 evaluations) </text>
+        <input type="checkbox" id="8">
+        <br>
+        <br>
+        <button onclick="startJudging()"> Start Judging </button>
+        <br>
       </div>
       <div id='contest-info'>
         <text> Input Contest Name </text>
         <br>
         <input id="contest-name"> </input>
+        <br>
+        <br>
+        <text> Input Round </text>
+        <br>
+        <input id="round"> </input>
         <br>
         <br>
         <text> Input Division Name </text>
@@ -42,7 +84,9 @@
         <textarea id="eval-judges"></textarea>
         <br>
         <br>
-        <input id="sheet-link"> Input Spreadsheet Link </input>
+        <text> Input Spreadsheet Link </text>
+        <br>
+        <input id="sheet-link">  </input>
         <br>
         <br>
         <button onclick="enterInfo()"> Submit </button>
@@ -223,6 +267,8 @@
   <script type="text/javascript">
   $(function() {
     $("#login").hide();
+    $("#judge-1").hide();
+    $("#judge-2").hide();
     $("#contest-info").hide();
     $("#player-info").hide();
     $("#click-input").hide();
@@ -263,22 +309,22 @@
   var techScores = [];
   var techevalScores = [];
   var perfevalScores = [];
-  var techeval = 0;
-  var perfeval = 0;
-  var major = 0;
-  var results_order = [];
-  var tech_comp = [];
   var oneJ = [];
   var twoJ = [];
   var threeJ = [];
   var fourJ = [];
   var fiveJ = [];
   var sixJ = [];
-  var liveClicks  = [];
+  var liveClicks = [];
   var liveEvals = [];
-  var judgeType = "";
   var numPlayers = 0;
-  var roundType = "";
+  var contests = [];
+  var contests_list = [];
+  var selectedDivision;
+  var selectedJudgeType;
+  var selectedContest;
+  var selectedJudgeName;
+  var roundType;
 
 
   function initClient() {
@@ -312,11 +358,109 @@
     range: "A1:C100"
     }).then((response) => {
     contests = response.result.values;
-    console.log(contests);
+    for (i=0;i<contests.length;i++)
+    {
+      if (contests_list.includes(contests[i][0]) == false)
+      {
+        contests_list.push(contests[i][0]);
+        var contest_select = document.getElementById("contest-selection");
+        var option = document.createElement("option");
+        option.text = contests[i][0];
+        contest_select.add(option);
+      }
+      else
+      {
+        continue;
+      }
+    }
     }, function(reason) {
     console.error("error: " + reason.result.error.message);
     alert("Error.");
     });
+  }
+
+  function loadJudge()
+  {
+    var selectedContestDropdown = document.getElementById("contest-selection");
+    selectedContest = selectedContestDropdown.options[selectedContestDropdown.selectedIndex].text;
+    for (i=0;i<contests.length;i++)
+    {
+      if (contests[i][0] ==  selectedContest)
+      {
+      var div_select = document.getElementById("div-selection");
+      var option = document.createElement("option");
+      option.text = contests[i][1];
+      div_select.add(option);
+      }
+      else
+      {
+        continue;
+      }
+    }
+    $('#judge-1').show();
+  }
+
+  function chooseJudge()
+  {
+    $('#judge-2').show();
+    var selectedContestDropdown = document.getElementById("contest-selection");
+    selectedContest = selectedContestDropdown.options[selectedContestDropdown.selectedIndex].text;
+    var selectedDivTypeDropdown = document.getElementById("div-selection");
+    selectedDivision = selectedDivTypeDropdown.options[selectedDivTypeDropdown.selectedIndex].text;
+    var selectedJudgeTypeDropdown = document.getElementById("judge-type");
+    selectedJudgeType = selectedJudgeTypeDropdown.options[selectedJudgeTypeDropdown.selectedIndex].text;
+    for (i=0;i<contests.length;i++)
+    {
+      if (contests[i][0] == selectedContest && contests[i][1] == selectedDivision)
+      {
+        if (selectedJudgeType == "Clicker")
+        {
+          spreadsheet = contests[i][2];
+          var beginId = spreadsheet.indexOf("d/") + 2;
+          var endId = spreadsheet.indexOf("/e");
+          spreadsheetId = spreadsheet.slice(beginId, endId);
+          gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: spreadsheetId,
+          range: "SET-UP!F3:F8"
+          }).then((response) => {
+          clicker_judges = response.result.values.slice();
+          for (var i=0;i<clicker_judges.length;i++)
+          {
+            var judge_list = document.getElementById("judge-list");
+            var option = document.createElement("option");
+            option.text = clicker_judges[i];
+            judge_list.add(option);
+          }
+          }, function(reason) {
+          console.error("error: " + reason.result.error.message);
+          alert("Error.");
+          });
+        }
+        else if (selectedJudgeType == "Evaluation")
+        {
+          spreadsheet = contests[i][2];
+          var beginId = spreadsheet.indexOf("d/") + 2;
+          var endId = spreadsheet.indexOf("/e");
+          spreadsheetId = spreadsheet.slice(beginId, endId);
+          gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: spreadsheetId,
+          range: "SET-UP!F16:F21"
+          }).then((response) => {
+          eval_judges = response.result.values.slice();
+          for (var i=0;i<eval_judges.length;i++)
+          {
+            var judge_list = document.getElementById("judge-list");
+            var option = document.createElement("option");
+            option.text = eval_judges[i];
+            judge_list.add(option);
+          }
+          }, function(reason) {
+          console.error("error: " + reason.result.error.message);
+          alert("Error.");
+          });
+        }
+      }
+    }
   }
 
   function handleClientLoad() {
@@ -338,6 +482,21 @@
     gapi.auth2.getAuthInstance().signOut();
   }
 
+  function startJudging() {
+    $('#judge-1').hide();
+    $('#judge-2').hide();
+    $("#login").hide();
+    retrievePlayers();
+    if (selectedJudgeType == "Clicker")
+    {
+      processType(clicker_judges);
+    }
+    else if (selectedJudgeType == "Evaluation")
+    {
+      processType(eval_judges);
+    }
+  }
+
   function retrievePlayers() {
     // gets players from spreadsheet
     gapi.client.sheets.spreadsheets.values.get({
@@ -350,12 +509,13 @@
       playerList.push(players[i][0]);
     }
     numPlayers = players.length;
-    if (judgeType == "clicker")
+    if (selectedJudgeType == "Clicker")
     {
     loadClickTable(numPlayers);
     loadClickScores();
+    $("#click-input").show();
     }
-    else if (judgeType == "eval")
+    else if (selectedJudgeType == "Evaluation")
     {
     loadEvalTable(numPlayers);
     loadEvalScores();
@@ -366,32 +526,112 @@
     });
   }
 
-  function getJudge() {
-    // gets list of judges
-    spreadsheet = $('#spreadsheet-id').val();
-    var beginId = spreadsheet.indexOf("d/") + 2;
-    var endId = spreadsheet.indexOf("/e");
-    spreadsheetId = spreadsheet.slice(beginId, endId);
-    gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheetId,
-    range: "SET-UP!F3:F8"
-    }).then((response) => {
-    clicker_judges = response.result.values;
-    }, function(reason) {
-    console.error("error: " + reason.result.error.message);
-    alert("Error.");
-    });
-    gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheetId,
-    range: "SET-UP!F16:F21"
-    }).then((response) => {
-    eval_judges = response.result.values;
-    }, function(reason) {
-    console.error("error: " + reason.result.error.message);
-    alert("Error.");
-    });
-    console.log(clicker_judges, eval_judges);
-  }
+  function processType(list) {
+      var selectedJudgeDropdown = document.getElementById("judge-list");
+      selectedJudgeName = selectedJudgeDropdown.options[selectedJudgeDropdown.selectedIndex].text;
+      if (selectedJudgeType == "Clicker")
+      {
+        for (var i=0; i<list.length; i++)
+        {
+          if (list[i] == selectedJudgeName)
+          {
+            if (i == 0)
+            {
+              range = "RAW-TEx!F4:G104";
+            }
+            else if (i == 1)
+            {
+              range = "RAW-TEx!H4:I104";
+            }
+            else if (i == 2)
+            {
+              range = "RAW-TEx!J4:K104";
+            }
+            else if (i == 3)
+            {
+              range = "RAW-TEx!L4:M104";
+            }
+            else if (i == 4)
+            {
+              range = "RAW-TEx!N4:O104";
+            }
+            else if (i == 5)
+            {
+              range = "RAW-TEx!P4:Q104";
+            }
+          }
+        }
+      }
+      else if (selectedJudgeType == "Evaluation" && $('#8').prop('checked'))
+      {
+        roundType = "final";
+        for (var i=0; i<list.length; i++)
+        {
+          if (list[i] == selectedJudgeName)
+          {
+            if (i == 0)
+            {
+              range = "RAW-TEvPEv!C4:J104";
+            }
+            else if (i == 1)
+            {
+              range = "RAW-TEvPEv!K4:R104";
+            }
+            else if (i == 2)
+            {
+              range = "RAW-TEvPEv!S4:Z104";
+            }
+            else if (i == 3)
+            {
+              range = "RAW-TEvPEv!A4:AH104";
+            }
+            else if (i == 4)
+            {
+              range = "RAW-TEvPEv!AI4:AP104";
+            }
+            else if (i == 5)
+            {
+              range = "RAW-TEvPEv!AQ4:AX104";
+            }
+          }
+        }
+      }
+      else if (selectedJudgeType == "Evaluation" && $('#4').prop('checked'))
+      {
+        roundType = "qualifying";
+        for (var i=0; i<list.length; i++)
+        {
+          if (list[i] == selectedJudgeName)
+          {
+            if (i == 0)
+            {
+              range = "RAW-TEvPEv!C4:F104";
+            }
+            else if (i == 1)
+            {
+              range = "RAW-TEvPEv!G4:J104";
+            }
+            else if (i == 2)
+            {
+              range = "RAW-TEvPEv!K4:N104";
+            }
+            else if (i == 3)
+            {
+              range = "RAW-TEvPEv!04:R104";
+            }
+            else if (i == 4)
+            {
+              range = "RAW-TEvPEv!S4:V104";
+            }
+            else if (i == 5)
+            {
+              range = "RAW-TEvPEv!W4:Z104";
+            }
+          }
+        }
+      }
+      $("#login").hide();
+    }
 
 
 </script>

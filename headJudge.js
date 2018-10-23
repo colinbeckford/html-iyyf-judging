@@ -6,12 +6,32 @@ var eval_judges;
 var players;
 
 function enterInfo() {
+  spreadsheet = $('#sheet-link').val();
+  var beginId = spreadsheet.indexOf("d/") + 2;
+  var endId = spreadsheet.indexOf("/e");
+  spreadsheetId = spreadsheet.slice(beginId, endId);
   contest_name = $('#contest-name').val();
   div_name = $('#div-name').val();
   round = $('#round').val();
   clicker_judges = $('#clicker-judges').val().split('\n');
   eval_judges = $('#eval-judges').val().split('\n');
   appendInfo();
+  var params = {
+       spreadsheetId: '1FCssxQv3_yPsPt6c-Poeicj_ODNH0ZJyCUI6gwxGFS4',
+       range: 'A1:C101',
+       valueInputOption: 'RAW',
+       insertDataOption: 'OVERWRITE',
+     };
+     var valueRangeBody = {
+       "range": 'A1:C101',
+       "majorDimension": "ROWS",
+       "values": [[contest_name, div_name, spreadsheet]],
+     };
+     var addSpreadsheet = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+     addSpreadsheet.then(function(response) {
+     }, function(reason) {
+       console.error('error: ' + reason.result.error.message);
+     });
 }
 function appendInfo() {
   var contestParams = {
@@ -63,7 +83,6 @@ function appendInfo() {
   });
   request3.then(function(response) {
     $('#contest-info').hide();
-    alert("Info has been entered.");
     $('#player-info').show();
   }, function(reason) {
     console.error("error: " + reason.result.error.message);
@@ -88,6 +107,5 @@ function appendInfo() {
     var request4 = gapi.client.sheets.spreadsheets.values.update(playerParams, playerRangeBody);
     request4.then(function(response) {
       $('#player-info').hide();
-      alert("Player list has been entered.");
   });
 }
